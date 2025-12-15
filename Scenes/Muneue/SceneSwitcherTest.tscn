@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbo212hvofyjy"]
+[gd_scene load_steps=3 format=3 uid="uid://bgg6s62u1p6sq"]
 
 [ext_resource type="Script" uid="uid://dso3whlfk3bia" path="res://Scripts/Mune/SceneSwitcherTest.gd" id="1_7g7gc"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="2_fbe26"]

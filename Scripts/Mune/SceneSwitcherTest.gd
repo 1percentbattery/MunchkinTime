@@ -1,3 +1,4 @@
+class_name sceneSwitcher
 extends Node2D
 @onready var Subviewport: SubViewport = $SubViewportContainer/SubViewport
 const WOW = preload("res://Scenes/Worlds/wow.tscn")
@@ -10,8 +11,7 @@ var games = [WOW,FALLING_OBJECTS,MURDER_PIM]
 var global_game
 var global_rng
 var previous_game 
-var Score = 0
-var Lives = 3
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	G.SceneSwitcher = self
@@ -22,14 +22,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Debug"):
 		switch()
-	ScoreCounter.text = str(Score)
-	LivesCounter.text = str(Lives)
+	ScoreCounter.text = str(G.Score)
+	LivesCounter.text = str(G.Lives)
 	
-	if Lives <= 0:
+	if G.Lives <= 0:
 		get_tree().quit()
 
 func switch():
-	
 	if global_game != null:
 		previous_game = global_rng
 		global_game.queue_free()
@@ -41,8 +40,6 @@ func switch():
 		print("SAME SAME")
 		switch()
 	Subviewport.add_child(game)
-	
-
 	print(rng)
 	print(previous_game)
 	

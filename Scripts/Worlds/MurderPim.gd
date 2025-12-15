@@ -9,7 +9,7 @@ extends Node2D
 @onready var EndAnimation: AnimationPlayer = $Node2D2/AnimationPlayer
 @onready var EndFadeout: ColorRect = $Node2D2/ColorRect
 @onready var HitFade: ColorRect = $ColorRect
-const BLOOD = preload("uid://d0f5la4el8ne0")
+const BLOOD = preload("res://Scenes/Effects/BloodParticles.tscn")
 @onready var Knife: Sprite2D = $Knife/Knife
 
 var hit: int = 15
@@ -30,7 +30,6 @@ func _process(delta: float) -> void:
 				Animations.stop()
 				Animations.play("Swing")
 				hit -= 1
-		
 	if hit <= 0:
 		PimDead.visible = true
 		PimIdle.visible = false
