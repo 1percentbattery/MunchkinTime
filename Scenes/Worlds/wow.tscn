@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://7ga4nhgwkawx"]
+[gd_scene load_steps=29 format=3 uid="uid://7ga4nhgwkawx"]
 
 [ext_resource type="Script" uid="uid://ck8oge6pjfng5" path="res://Scripts/Worlds/wow.gd" id="1_8ovph"]
 [ext_resource type="Script" uid="uid://bbwb6evvupdet" path="res://Scripts/Objects/obj_scroller_spawner.gd" id="1_kc1v2"]
 [ext_resource type="Script" uid="uid://c4guf37sq5kfa" path="res://Scripts/PlayerTypes/WOWController.gd" id="2_5yd8y"]
 [ext_resource type="PackedScene" uid="uid://bs6ti68dm2vja" path="res://Scenes/Objects/blocks/block_1.tscn" id="2_7ffhx"]
+[ext_resource type="Shader" uid="uid://pd7rphb58n8b" path="res://Scripts/Shader/Dissolve.gdshader" id="2_sh368"]
 [ext_resource type="Texture2D" uid="uid://dpr3byy6gtwpd" path="res://Textures/Images/WOWWOW.webp" id="3_53sxc"]
 [ext_resource type="PackedScene" uid="uid://c5lfeqwr588eg" path="res://Scenes/Objects/blocks/block2.tscn" id="3_wwhou"]
 [ext_resource type="Script" uid="uid://c0prkxru6tdbw" path="res://Scripts/Objects/kill_box.gd" id="4_uxbtt"]
@@ -11,6 +12,36 @@
 [ext_resource type="Texture2D" uid="uid://dkalxq8vgf5f1" path="res://Textures/Images/WOW.webp" id="6_sqo7n"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="7_nusk5"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="8_pvalw"]
+
+[sub_resource type="Gradient" id="Gradient_sh368"]
+offsets = PackedFloat32Array(0, 0.025423728, 0.06779661, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1, 0.104347825, 0.104347825, 0.104347825, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ayon8"]
+gradient = SubResource("Gradient_sh368")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sh368"]
+frequency = 0.0021
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ayon8"]
+noise = SubResource("FastNoiseLite_sh368")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ratbn"]
+frequency = 0.0044
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cydkp"]
+noise = SubResource("FastNoiseLite_ratbn")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayon8"]
+shader = ExtResource("2_sh368")
+shader_parameter/gradient = SubResource("GradientTexture1D_ayon8")
+shader_parameter/textureDissolve = SubResource("NoiseTexture2D_ayon8")
+shader_parameter/textureOverlay = SubResource("NoiseTexture2D_cydkp")
+shader_parameter/scroll1 = Vector2(0.1, -0.1)
+shader_parameter/scroll2 = Vector2(0.5, 0.3)
+shader_parameter/dissovleState = 0.3790000180025
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5yd8y"]
 animations = [{
@@ -123,15 +154,18 @@ size = Vector2(30.96466, 1171.4265)
 script = ExtResource("1_8ovph")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+material = SubResource("ShaderMaterial_ayon8")
 position = Vector2(947.4507, 516.3256)
 collision_mask = 6
 script = ExtResource("2_5yd8y")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+use_parent_material = true
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_5yd8y")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
 position = Vector2(-1.4506836, 1.1743774)
 shape = SubResource("RectangleShape2D_sh368")
 
@@ -142,6 +176,7 @@ collision_mask = 4
 script = ExtResource("5_5yd8y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/HitDetector"]
+visible = false
 shape = SubResource("CapsuleShape2D_ayon8")
 
 [node name="WinAnimation" type="AnimationPlayer" parent="."]
