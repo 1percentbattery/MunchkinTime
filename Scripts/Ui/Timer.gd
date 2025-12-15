@@ -19,9 +19,11 @@ func _on_timer_timeout() -> void:
 		G.SceneSwitcher.switch()
 	else:
 		if WinOnTimeout:
-			G.CurrentGame.win()
+			if G.CurrentGame != null:
+				G.CurrentGame.win()
 		else:
-			G.CurrentGame.lose()
+			if G.CurrentGame != null:
+				G.CurrentGame.lose()
 		
 func stop():
 	TimerNode.stop()
