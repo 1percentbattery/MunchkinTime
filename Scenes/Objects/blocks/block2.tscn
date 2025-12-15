@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5lfeqwr588eg"]
+
+[ext_resource type="Script" uid="uid://bvpiom446287k" path="res://Scripts/Objects/deathBlock.gd" id="1_bwc7v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gdh2"]
+size = Vector2(20, 65)
+
+[node name="Block1" type="Area2D"]
+script = ExtResource("1_bwc7v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22.5)
+shape = SubResource("RectangleShape2D_1gdh2")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.08627451, 0.047058824, 1)
+polygon = PackedVector2Array(-10, -55, 10, -55, 10, 10, -10, 10)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
