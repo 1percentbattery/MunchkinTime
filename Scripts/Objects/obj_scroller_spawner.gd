@@ -4,6 +4,7 @@ extends Node2D
 @export var scrollSpeed := Vector2(-300,0)
 @export var objFreq := 1.0
 @export var rotSpeed := 45.0
+@export var on := false
 var spawnCounter := 0.0
 var spawnList : Array
 var spawnPoints : Array[Node2D]
@@ -13,6 +14,8 @@ func _ready():
 		#child.look_at(self.global_position)
 func _physics_process(delta: float) -> void:
 	#rotation_degrees += rotSpeed * delta
+	if !on:
+		return
 	spawnCounter += delta
 	if spawnCounter >= objFreq:
 		spawnObj()
