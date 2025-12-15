@@ -1,0 +1,23 @@
+extends Node2D
+@onready var TimerNode: Timer = $Timer
+@onready var ProgressBarNode: ProgressBar = $ProgressBar
+@export var time: int= 10
+@export var QuitSceneOnTimeout: bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	TimerNode.wait_time = time
+	ProgressBarNode.max_value = time
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	ProgressBarNode.value = TimerNode.time_left
+
+func _on_timer_timeout() -> void:
+	if QuitSceneOnTimeout:
+		get_parent().queue_free()
+	else:
+		G.CurrentGame.win()
+		
+func stop():
+	TimerNode.stop()

@@ -1,18 +1,37 @@
 extends Node2D
+@onready var CountLabel: Label = $Walls/CountLabel
+@onready var TimerScene: Node2D = $Timer
+@onready var Video: VideoStreamPlayer = $Walls/Charlie
+@onready var WinAnimation: AnimationPlayer = $WinAnimation/AnimationPlayer
 const SHMALOOGLE = preload("uid://c6yjl7ftjfimr")
+var spawning: bool = false
+var count: int = 0
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	G.CurrentGame = self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func _process(_delta: float) -> void:
+	CountLabel.text = str(count)
 
 func _on_spawn_delay_timer_timeout() -> void:
-	var smoog = SHMALOOGLE.instantiate()
-	self.add_child(smoog)
-	smoog.global_position = Vector2(randf_range(10,1910),50.0)
+	if spawning:
+		var smoog = SHMALOOGLE.instantiate()
+		self.add_child(smoog)
+		smoog.global_position = Vector2(randf_range(170,1750),-50.0)
+
+func start_round():
+	spawning = true
+	TimerScene.TimerNode.start()
+	
+func win():
+	spawning = false
+	WinAnimation.play("Win")
+	for object in get_tree().get_nodes_in_group("Objective"):
+		object.queue_free()
+	
+func end():
+	queue_free()

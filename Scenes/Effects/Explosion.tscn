@@ -38,7 +38,7 @@ _data = {
 &"RESET": SubResource("Animation_xoldq")
 }
 
-[node name="Node2D" type="Sprite2D"]
+[node name="Explosion" type="Sprite2D"]
 scale = Vector2(7.9256034, 7.9256034)
 texture = ExtResource("1_wa5ji")
 hframes = 5

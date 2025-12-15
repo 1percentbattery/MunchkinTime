@@ -1,0 +1,278 @@
+[gd_scene load_steps=20 format=3 uid="uid://bne2oqiiedlmb"]
+
+[ext_resource type="Script" uid="uid://cg87p4w3v3cug" path="res://Scripts/Worlds/MurderPim.gd" id="1_atkc0"]
+[ext_resource type="Texture2D" uid="uid://byqfudane4d5d" path="res://Textures/Backgrounds/MurderPim.webp" id="2_16xea"]
+[ext_resource type="Texture2D" uid="uid://bsyn0u3tnmmvy" path="res://Textures/Images/Pim_29.webp" id="3_cqvw7"]
+[ext_resource type="Texture2D" uid="uid://cjue4d47m1q8o" path="res://Textures/Images/Pimcropped.webp" id="4_j5ksi"]
+[ext_resource type="Texture2D" uid="uid://chpsctpb3yavb" path="res://Textures/Images/PimDead.png" id="5_4b8cw"]
+[ext_resource type="Texture2D" uid="uid://c408mu05c7u1a" path="res://Textures/Images/pngimg.com - knife_PNG106130.png" id="6_uqcxy"]
+[ext_resource type="Script" uid="uid://c4gk22bwiqjif" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="7_ogp8u"]
+[ext_resource type="Script" uid="uid://dwcdnbhdlni5g" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="8_s60kw"]
+[ext_resource type="Script" uid="uid://bmqgyfl5jkygk" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="9_1dwgt"]
+[ext_resource type="Script" uid="uid://dbfj765haimqk" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="10_7gbon"]
+[ext_resource type="Script" uid="uid://bubcpu3121y34" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="11_fu4ux"]
+[ext_resource type="Script" uid="uid://c5jnblraugfr8" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="12_syhd5"]
+
+[sub_resource type="Animation" id="Animation_jfyqi"]
+resource_name = "Swing"
+step = 0.0111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.011111111, 0.08888889, 0.21111113, 0.26666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1208.3528, 815.74524), Vector2(786, 787), Vector2(786, 787), Vector2(1337, 844), Vector2(1208.3528, 815.74524)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Knife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.011111111, 0.08888889, 0.1, 0.23333335, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.7090011, -0.06404853, -0.06404853, -0.40440112, 1.8815603, 1.7090011]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Pim/Idle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.011111111, 0.15555556),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Pim/Screaming:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.011111111, 0.15555556),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Pim:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.022222223, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(93, 197), Vector2(36, 194.00002), Vector2(93, 197)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Pim:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.022222223, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.19455615, 0.0]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Node2D/HitShake")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.011111111),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_shake"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ifsta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1208.3528, 815.74524)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Knife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.7090011]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Pim/Idle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Pim/Screaming:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Pim:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(93, 197)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Pim:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocgas"]
+_data = {
+&"RESET": SubResource("Animation_ifsta"),
+&"Swing": SubResource("Animation_jfyqi")
+}
+
+[sub_resource type="Resource" id="Resource_r6gpc"]
+script = ExtResource("9_1dwgt")
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="Resource" id="Resource_a4cff"]
+script = ExtResource("11_fu4ux")
+PositionShake = Array[ExtResource("8_s60kw")]([SubResource("Resource_r6gpc")])
+RotationShake = Array[ExtResource("10_7gbon")]([null])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[sub_resource type="Resource" id="Resource_udjfv"]
+script = ExtResource("12_syhd5")
+metadata/_custom_type_script = "uid://c5jnblraugfr8"
+
+[sub_resource type="Resource" id="Resource_prhxk"]
+script = ExtResource("11_fu4ux")
+PositionShake = Array[ExtResource("8_s60kw")]([SubResource("Resource_udjfv")])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_atkc0")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(946, 580)
+rotation = -8.941061e-05
+scale = Vector2(3.2524889, 3.2524889)
+texture = ExtResource("2_16xea")
+
+[node name="Pim" type="Node2D" parent="."]
+position = Vector2(93, 197)
+
+[node name="Idle" type="TextureRect" parent="Pim"]
+offset_left = -17.0
+offset_top = 6.0
+offset_right = 653.0
+offset_bottom = 967.0
+texture = ExtResource("3_cqvw7")
+
+[node name="Screaming" type="TextureRect" parent="Pim"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_j5ksi")
+
+[node name="Dead" type="TextureRect" parent="Pim"]
+visible = false
+offset_left = 41.0
+offset_top = -45.0
+offset_right = 401.0
+offset_bottom = 534.0
+scale = Vector2(1.7615201, 1.7615201)
+texture = ExtResource("5_4b8cw")
+
+[node name="Knife" type="Node2D" parent="."]
+
+[node name="Knife" type="Sprite2D" parent="Knife"]
+position = Vector2(1208.3528, 815.74524)
+rotation = 1.7090011
+scale = Vector2(0.66396433, 0.7079253)
+texture = ExtResource("6_uqcxy")
+offset = Vector2(-373.04834, -77.76099)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Knife"]
+libraries = {
+&"": SubResource("AnimationLibrary_ocgas")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-13.246359, 7.0380206)
+rotation = -0.0025033774
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+position = Vector2(-73.10224, 47.138657)
+offset = Vector2(960, 540)
+zoom = Vector2(1.09, 1.09)
+
+[node name="IdleShake" type="Node2D" parent="Node2D"]
+script = ExtResource("7_ogp8u")
+is_playing = true
+AutoPlay = true
+intensity = 15.0
+shake_speed = 0.5
+shakerPreset = SubResource("Resource_a4cff")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="HitShake" type="Node2D" parent="Node2D"]
+script = ExtResource("7_ogp8u")
+intensity = 20.0
+duration = 0.1
+fade_in = 1e-05
+shakerPreset = SubResource("Resource_prhxk")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
