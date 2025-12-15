@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvfuxq4sugbkd"]
+
+[ext_resource type="Theme" uid="uid://cgyedjomtpdcs" path="res://Scenes/Muneue/MunueTHeme.tres" id="1_5lrqb"]
+
+[node name="Mune" type="Node2D"]
+
+[node name="Base" type="Node2D" parent="."]
+position = Vector2(588, 262)
+
+[node name="Container" type="Container" parent="Base"]
+theme = ExtResource("1_5lrqb")
+
+[node name="Label" type="Label" parent="Base/Container"]
+layout_mode = 2
+theme = ExtResource("1_5lrqb")
+text = "Munchkin Time !!!!!!"
+
+[node name="Button" type="Button" parent="Base/Container"]
+layout_mode = 2
+text = "Start Mix"
+
+[node name="Button2" type="Button" parent="Base/Container"]
+layout_mode = 2
+text = "Select Level"

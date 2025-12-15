@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8vj5a6ienjsk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ef45"]
+size = Vector2(1934, 76)
+
+[node name="Dinsour Game" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(967, 38)
+shape = SubResource("RectangleShape2D_0ef45")
