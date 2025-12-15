@@ -22,6 +22,7 @@ func _on_body_entered(body: Node) -> void:
 		G.CurrentGame.Video.paused = false
 		for object in get_tree().get_nodes_in_group("Objective"):
 			object.queue_free()
+		G.CurrentGame.lose()
 	if body is CharacterBody2D:
 		G.CurrentGame.count += 1.0
 	queue_free()

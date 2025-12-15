@@ -34,4 +34,8 @@ func win():
 		object.queue_free()
 	
 func end():
-	queue_free()
+	G.SceneSwitcher.switch()
+
+func lose():
+	await get_tree().create_timer(4.0).timeout
+	G.SceneSwitcher.switch()

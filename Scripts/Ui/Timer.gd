@@ -3,6 +3,7 @@ extends Node2D
 @onready var ProgressBarNode: ProgressBar = $ProgressBar
 @export var time: int= 10
 @export var QuitSceneOnTimeout: bool = false
+@export var WinOnTimeout: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,9 +16,12 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if QuitSceneOnTimeout:
-		get_parent().queue_free()
+		G.SceneSwitcher.switch()
 	else:
-		G.CurrentGame.win()
+		if WinOnTimeout:
+			G.CurrentGame.win()
+		else:
+			G.CurrentGame.lose()
 		
 func stop():
 	TimerNode.stop()
