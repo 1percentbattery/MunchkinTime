@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cktreiqklm2jj"]
+
+[ext_resource type="Texture2D" uid="uid://uaq2rs23out4" path="res://Textures/Images/Basket.png" id="1_6hnqf"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -85.0
+offset_top = -62.0
+offset_right = 860.0
+offset_bottom = 830.0
+scale = Vector2(0.1841515, 0.11411672)
+texture = ExtResource("1_6hnqf")

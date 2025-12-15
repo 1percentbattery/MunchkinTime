@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://csa384ovrvh7y"]
+
+[ext_resource type="PackedScene" uid="uid://copt3p53wa7mg" path="res://Scenes/PlayerTypes/SideScrollerPlayer.tscn" id="1_4c26r"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fkwt4"]
+b = Vector2(1920, 0)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1081)
+shape = SubResource("SegmentShape2D_fkwt4")
+
+[node name="CharacterBody2D" parent="StaticBody2D" instance=ExtResource("1_4c26r")]
+position = Vector2(931, 96)

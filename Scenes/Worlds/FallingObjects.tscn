@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://babybec8acwon"]
+
+[ext_resource type="Script" uid="uid://grgxjgejef05" path="res://Scripts/Worlds/FallingObjects.gd" id="1_562vh"]
+[ext_resource type="PackedScene" uid="uid://copt3p53wa7mg" path="res://Scenes/PlayerTypes/SideScrollerPlayer.tscn" id="1_jomr7"]
+[ext_resource type="PackedScene" uid="uid://cktreiqklm2jj" path="res://Scenes/Objects/Held/Basket.tscn" id="2_2ajde"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fkwt4"]
+b = Vector2(1920, 0)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_562vh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1081)
+shape = SubResource("SegmentShape2D_fkwt4")
+
+[node name="CharacterBody2D" parent="StaticBody2D" instance=ExtResource("1_jomr7")]
+position = Vector2(908, 983)
+WalkSpeed = 2400
+SprintSpeed = 2400
+MovementLerpSpeed = 15.0
+CanJump = false
+
+[node name="Node2D" parent="StaticBody2D/CharacterBody2D" instance=ExtResource("2_2ajde")]
+position = Vector2(33, -25)
+
+[node name="SpawnDelayTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

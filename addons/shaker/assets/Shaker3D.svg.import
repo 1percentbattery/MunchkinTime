@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwgsgk3ov04hs"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://dm4yc7w77q1u8"
+path="res://.godot/imported/Shaker3D.svg-ed425183c69b0c043ce3ce5088c6ff49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://addons/shaker/assets/Shaker3D.svg"
+dest_files=["res://.godot/imported/Shaker3D.svg-ed425183c69b0c043ce3ce5088c6ff49.ctex"]
 
 [params]
 

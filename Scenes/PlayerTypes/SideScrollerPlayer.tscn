@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://copt3p53wa7mg"]
+
+[ext_resource type="Script" uid="uid://b51jxu6j717o3" path="res://Scripts/PlayerTypes/SideScrollerPlayer.gd" id="1_juhfm"]
+[ext_resource type="Texture2D" uid="uid://cs38ho8fs3y7r" path="res://Textures/Images/SoggyCat.jpg" id="2_31gnt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylhp7"]
+size = Vector2(72, 96)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_juhfm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.3719834, 0.3719834)
+texture = ExtResource("2_31gnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 48)
+shape = SubResource("RectangleShape2D_ylhp7")
