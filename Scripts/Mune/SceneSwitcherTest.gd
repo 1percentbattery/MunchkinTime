@@ -3,11 +3,15 @@ extends Node2D
 const WOW = preload("res://Scenes/Worlds/wow.tscn")
 const FALLING_OBJECTS = preload("uid://babybec8acwon")
 const MURDER_PIM = preload("uid://bne2oqiiedlmb")
+@onready var ScoreCounter: Label = $Label
+@onready var LivesCounter: Label = $Lives
 
 var games = [WOW,FALLING_OBJECTS,MURDER_PIM]
 var global_game
 var global_rng
 var previous_game 
+var Score = 0
+var Lives = 3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	G.SceneSwitcher = self
@@ -18,6 +22,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Debug"):
 		switch()
+	ScoreCounter.text = str(Score)
+	LivesCounter.text = str(Lives)
+	
+	if Lives <= 0:
+		get_tree().quit()
 
 func switch():
 	

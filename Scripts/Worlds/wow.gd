@@ -1,7 +1,11 @@
 extends Node2D
 func win():
+	
 	$CharacterBody2D/Sprite2D.play("WOW")
 	$WinAnimation.active = true
+	G.SceneSwitcher.Score += 1
+	await get_tree().create_timer(3.0).timeout
+	G.SceneSwitcher.switch()
 func lose():
 	
 	

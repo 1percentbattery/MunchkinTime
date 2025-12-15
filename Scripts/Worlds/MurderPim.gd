@@ -43,10 +43,12 @@ func start():
 	started = true
 	
 func end():
+	
 	EndAnimation.play("End")
 	EndFadeout.visible = true
 
 func lose():
+	G.SceneSwitcher.Lives -= 1
 	PimIdle.hide()
 	PimScream.hide()
 	PimSad.show()
@@ -56,4 +58,5 @@ func lose():
 	G.SceneSwitcher.switch()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	G.SceneSwitcher.Score += 1
 	G.SceneSwitcher.switch()

@@ -1,5 +1,4 @@
 extends Node2D
-@onready var CountLabel: Label = $Walls/CountLabel
 @onready var TimerScene: Node2D = $Timer
 @onready var Video: VideoStreamPlayer = $Walls/Charlie
 @onready var WinAnimation: AnimationPlayer = $WinAnimation/AnimationPlayer
@@ -13,9 +12,6 @@ var count: int = 0
 func _ready() -> void:
 	G.CurrentGame = self
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	CountLabel.text = str(count)
 
 func _on_spawn_delay_timer_timeout() -> void:
 	if spawning:
@@ -28,6 +24,7 @@ func start():
 	TimerScene.TimerNode.start()
 	
 func win():
+	G.SceneSwitcher.Score += 1
 	spawning = false
 	WinAnimation.play("Win")
 	for object in get_tree().get_nodes_in_group("Objective"):

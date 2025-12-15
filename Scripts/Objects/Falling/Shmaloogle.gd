@@ -16,13 +16,13 @@ func _on_body_entered(body: Node) -> void:
 		var explosion = EXPLOSION.instantiate()
 		get_parent().add_child(explosion)
 		explosion.global_position = self.global_position
-		G.CurrentGame.TimerScene.stop()
-		G.CurrentGame.spawning = false
-		G.CurrentGame.Video.visible = true
-		G.CurrentGame.Video.paused = false
+		get_parent().TimerScene.stop()
+		get_parent().spawning = false
+		get_parent().Video.visible = true
+		get_parent().Video.paused = false
+		get_parent().lose()
+		G.SceneSwitcher.Lives -= 1
 		for object in get_tree().get_nodes_in_group("Objective"):
 			object.queue_free()
-		G.CurrentGame.lose()
-	if body is CharacterBody2D:
-		G.CurrentGame.count += 1.0
+		
 	queue_free()
