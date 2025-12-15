@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://j0uajsta88xs"]
+
+[ext_resource type="Shader" uid="uid://pd7rphb58n8b" path="res://Scripts/Shader/Dissolve.gdshader" id="1_t35hw"]
+
+[sub_resource type="Gradient" id="Gradient_sh368"]
+offsets = PackedFloat32Array(0, 0.025423728, 0.06779661, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1, 0.104347825, 0.104347825, 0.104347825, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ayon8"]
+gradient = SubResource("Gradient_sh368")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sh368"]
+frequency = 0.0021
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ayon8"]
+noise = SubResource("FastNoiseLite_sh368")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ratbn"]
+frequency = 0.0044
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cydkp"]
+noise = SubResource("FastNoiseLite_ratbn")
+seamless = true
+
+[resource]
+shader = ExtResource("1_t35hw")
+shader_parameter/gradient = SubResource("GradientTexture1D_ayon8")
+shader_parameter/textureDissolve = SubResource("NoiseTexture2D_ayon8")
+shader_parameter/textureOverlay = SubResource("NoiseTexture2D_cydkp")
+shader_parameter/scroll1 = Vector2(0.1, -0.1)
+shader_parameter/scroll2 = Vector2(0.5, 0.3)
+shader_parameter/dissovleState = 0.0
