@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bne2oqiiedlmb"]
+[gd_scene load_steps=22 format=3 uid="uid://bne2oqiiedlmb"]
 
 [ext_resource type="Script" uid="uid://cg87p4w3v3cug" path="res://Scripts/Worlds/MurderPim.gd" id="1_atkc0"]
 [ext_resource type="Texture2D" uid="uid://byqfudane4d5d" path="res://Textures/Backgrounds/MurderPim.webp" id="2_16xea"]
@@ -6,12 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cjue4d47m1q8o" path="res://Textures/Images/Pimcropped.webp" id="4_j5ksi"]
 [ext_resource type="Texture2D" uid="uid://chpsctpb3yavb" path="res://Textures/Images/PimDead.png" id="5_4b8cw"]
 [ext_resource type="Texture2D" uid="uid://c408mu05c7u1a" path="res://Textures/Images/pngimg.com - knife_PNG106130.png" id="6_uqcxy"]
+[ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="7_16xea"]
 [ext_resource type="Script" uid="uid://c4gk22bwiqjif" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="7_ogp8u"]
 [ext_resource type="Script" uid="uid://dwcdnbhdlni5g" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="8_s60kw"]
 [ext_resource type="Script" uid="uid://bmqgyfl5jkygk" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="9_1dwgt"]
 [ext_resource type="Script" uid="uid://dbfj765haimqk" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="10_7gbon"]
 [ext_resource type="Script" uid="uid://bubcpu3121y34" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="11_fu4ux"]
 [ext_resource type="Script" uid="uid://c5jnblraugfr8" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="12_syhd5"]
+[ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="14_cqvw7"]
 
 [sub_resource type="Animation" id="Animation_jfyqi"]
 resource_name = "Swing"
@@ -252,13 +254,55 @@ libraries = {
 }
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-13.246359, 7.0380206)
+position = Vector2(8.374577, -12.44454)
 rotation = -0.0025033774
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 position = Vector2(-73.10224, 47.138657)
 offset = Vector2(960, 540)
-zoom = Vector2(1.09, 1.09)
+
+[node name="LeftWallColor" type="ColorRect" parent="Node2D/Camera2D"]
+z_index = 2
+offset_left = -25.485373
+offset_top = -10.0638
+offset_right = 14.514627
+offset_bottom = 29.9362
+scale = Vector2(2.07868, 27.238686)
+color = Color(0, 0, 0, 1)
+
+[node name="RightWallColor" type="ColorRect" parent="Node2D/Camera2D"]
+z_index = 2
+offset_left = 1847.0
+offset_top = -10.0
+offset_right = 1887.0
+offset_bottom = 30.0
+scale = Vector2(2.07868, 27.238686)
+color = Color(0, 0, 0, 1)
+
+[node name="FloorColor" type="ColorRect" parent="Node2D/Camera2D"]
+offset_left = 1968.0
+offset_top = 991.0
+offset_right = 2008.0
+offset_bottom = 1031.0
+rotation = 1.5707964
+scale = Vector2(2.4721975, 51.395275)
+color = Color(0, 0, 0, 1)
+
+[node name="CeilingColor" type="ColorRect" parent="Node2D/Camera2D"]
+z_index = 2
+offset_left = 1871.0
+offset_top = -8.999995
+offset_right = 1911.0
+offset_bottom = 31.000004
+rotation = 1.5707964
+scale = Vector2(2.4721975, 46.355274)
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" parent="Node2D/Camera2D" instance=ExtResource("7_16xea")]
+position = Vector2(-14.133827, 3.8688977)
+rotation = 0.0025033774
+scale = Vector2(1.0000001, 1.0000001)
+time = 5
 
 [node name="IdleShake" type="Node2D" parent="Node2D"]
 script = ExtResource("7_ogp8u")
@@ -266,6 +310,7 @@ is_playing = true
 AutoPlay = true
 intensity = 15.0
 shake_speed = 0.5
+fade_out = 1e-05
 shakerPreset = SubResource("Resource_a4cff")
 metadata/_custom_type_script = "uid://c4gk22bwiqjif"
 
@@ -276,3 +321,7 @@ duration = 0.1
 fade_in = 1e-05
 shakerPreset = SubResource("Resource_prhxk")
 metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="SceneOpener" parent="." instance=ExtResource("14_cqvw7")]
+position = Vector2(-101, 92)
+Objective = "MURDER PIM"

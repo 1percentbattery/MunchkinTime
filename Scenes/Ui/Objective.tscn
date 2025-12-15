@@ -1,0 +1,156 @@
+[gd_scene load_steps=15 format=3 uid="uid://dwswfxflqmmm"]
+
+[ext_resource type="Script" uid="uid://b5eefmfe10c1p" path="res://Scripts/Ui/objective.gd" id="1_pkyht"]
+[ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="1_rqcp5"]
+[ext_resource type="Script" uid="uid://c4gk22bwiqjif" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="3_p2bvk"]
+[ext_resource type="Script" uid="uid://dwcdnbhdlni5g" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_70x7x"]
+[ext_resource type="Script" uid="uid://c5jnblraugfr8" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="5_apvxw"]
+[ext_resource type="Script" uid="uid://dbfj765haimqk" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_dcc61"]
+[ext_resource type="Script" uid="uid://d24820x8yvs4j" path="res://addons/shaker/data/Single/ShakerTypeRandom1D.gd" id="7_1pwdy"]
+[ext_resource type="Script" uid="uid://bubcpu3121y34" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="8_v2hcl"]
+
+[sub_resource type="Animation" id="Animation_qtrdu"]
+resource_name = "Start"
+length = 1.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/ObjectiveText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.3333334, 1.8333334),
+"transitions": PackedFloat32Array(3.1383355, 1),
+"update": 0,
+"values": [Vector2(-9993.864, -106.639), Vector2(-9993.864, 1081.435)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/ObjectiveText:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.37827918, 0.3929326),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(14.458462, 14.458462), Vector2(1, 1), Vector2(0.5363987, 0.5363987), Vector2(1.1292132, 1.1292132)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1.4333333, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.39999998), Color(0, 0, 0, 0.39999998), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0wh6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/ObjectiveText:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/ObjectiveText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-276.9065, -112.0108)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.39999998)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wn3h4"]
+_data = {
+&"RESET": SubResource("Animation_0wh6e"),
+&"Start": SubResource("Animation_qtrdu")
+}
+
+[sub_resource type="Resource" id="Resource_wpr5e"]
+script = ExtResource("5_apvxw")
+metadata/_custom_type_script = "uid://c5jnblraugfr8"
+
+[sub_resource type="Resource" id="Resource_1hdxw"]
+script = ExtResource("7_1pwdy")
+amplitude = 0.01
+metadata/_custom_type_script = "uid://d24820x8yvs4j"
+
+[sub_resource type="Resource" id="Resource_ixmb0"]
+script = ExtResource("8_v2hcl")
+PositionShake = Array[ExtResource("4_70x7x")]([SubResource("Resource_wpr5e")])
+RotationShake = Array[ExtResource("6_dcc61")]([SubResource("Resource_1hdxw")])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[node name="SceneOpener" type="Node2D"]
+script = ExtResource("1_pkyht")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(47.99851, 26.952347)
+color = Color(0, 0, 0, 0.39999998)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wn3h4")
+}
+autoplay = "Start"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(975.8558, 548.6965)
+rotation = 0.029545479
+
+[node name="ObjectiveText" type="Label" parent="Node2D"]
+z_index = 3
+offset_left = -276.9065
+offset_top = -112.0108
+offset_right = 19723.094
+offset_bottom = 95.9892
+pivot_offset = Vector2(10028.754, 110.99399)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 58
+theme_override_fonts/font = ExtResource("1_rqcp5")
+theme_override_font_sizes/font_size = 207
+text = "GREG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShakerComponent2D" type="Node2D" parent="Node2D"]
+script = ExtResource("3_p2bvk")
+is_playing = true
+AutoPlay = true
+intensity = 2.0
+shakerPreset = SubResource("Resource_ixmb0")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

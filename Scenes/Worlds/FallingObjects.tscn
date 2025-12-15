@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://babybec8acwon"]
+[gd_scene load_steps=28 format=3 uid="uid://babybec8acwon"]
 
 [ext_resource type="Script" uid="uid://grgxjgejef05" path="res://Scripts/Worlds/FallingObjects.gd" id="1_562vh"]
 [ext_resource type="PackedScene" uid="uid://copt3p53wa7mg" path="res://Scenes/PlayerTypes/SideScrollerPlayer.tscn" id="1_jomr7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c5jnblraugfr8" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="12_e8456"]
 [ext_resource type="Script" uid="uid://dbfj765haimqk" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="13_gly0o"]
 [ext_resource type="Script" uid="uid://bubcpu3121y34" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="14_w8wle"]
+[ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="15_e8456"]
 [ext_resource type="Script" uid="uid://bmqgyfl5jkygk" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="15_miccp"]
 [ext_resource type="PackedScene" uid="uid://bcqqfvfhfsqe8" path="res://Scenes/Effects/Explosion.tscn" id="16_e8456"]
 
@@ -36,153 +37,6 @@ script = ExtResource("14_w8wle")
 PositionShake = Array[ExtResource("11_miccp")]([SubResource("Resource_3tjwf")])
 metadata/_custom_type_script = "uid://bubcpu3121y34"
 
-[sub_resource type="Resource" id="Resource_l7iht"]
-script = ExtResource("12_e8456")
-metadata/_custom_type_script = "uid://c5jnblraugfr8"
-
-[sub_resource type="Resource" id="Resource_mw2ow"]
-script = ExtResource("14_w8wle")
-PositionShake = Array[ExtResource("11_miccp")]([SubResource("Resource_l7iht")])
-RotationShake = Array[ExtResource("13_gly0o")]([null])
-metadata/_custom_type_script = "uid://bubcpu3121y34"
-
-[sub_resource type="Animation" id="Animation_f0ojp"]
-resource_name = "Intro"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ObjectiveText:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334, 0.34841046, 0.36479163),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(9.072548, 9.072548), Vector2(1, 1), Vector2(0.71822655, 0.71822655), Vector2(1.0085734, 1.0085734)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Fade:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.117361315, 0.33382773, 0.9688828, 1.1331886),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0.3019608, 0.3019608, 0.3019608, 0.5411765), Color(0.3019608, 0.3019608, 0.3019608, 0.5411765), Color(0.3019608, 0.3019608, 0.3019608, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ObjectiveText:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.9701868, 1.255766),
-"transitions": PackedFloat32Array(3.1383355, 1),
-"update": 0,
-"values": [Vector2(126.000114, 435.55933), Vector2(126.00257, 1405.0859)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../ScreenShake")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.33382773),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_shake"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.0001792),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start_round"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../WinAnimation:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.0052160583),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_1h30l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ObjectiveText:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Fade:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.3019608, 0.3019608, 0.3019608, 0.5411765)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ObjectiveText:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(126.000114, 435.55933)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../WinAnimation:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wbbai"]
-_data = {
-&"Intro": SubResource("Animation_f0ojp"),
-&"RESET": SubResource("Animation_1h30l")
-}
-
 [sub_resource type="Resource" id="Resource_gly0o"]
 script = ExtResource("12_e8456")
 amplitude = Vector2(25, 25)
@@ -198,6 +52,81 @@ script = ExtResource("14_w8wle")
 PositionShake = Array[ExtResource("11_miccp")]([SubResource("Resource_gly0o")])
 ScaleShake = Array[ExtResource("11_miccp")]([SubResource("Resource_w8wle")])
 metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[sub_resource type="Animation" id="Animation_3tjwf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WinText:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.4354855, 1.4354855)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3019608, 0.3019608, 0.3019608, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WinText:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_wbbai"]
 resource_name = "Win"
@@ -301,81 +230,6 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_3tjwf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WinText:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.4354855, 1.4354855)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Fade:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.3019608, 0.3019608, 0.3019608, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Explosion:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Explosion:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("WinText:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h84l6"]
@@ -518,36 +372,8 @@ offset_bottom = -22.000092
 scale = Vector2(40.125725, 40.125725)
 color = Color(0.3019608, 0.3019608, 0.3019608, 0)
 
-[node name="StartAnimation" type="Node2D" parent="."]
-position = Vector2(-2.361405, -1.1080638)
-
-[node name="ObjectiveText" type="Label" parent="StartAnimation"]
-z_index = 3
-offset_left = 126.00257
-offset_top = 1405.0859
-offset_right = 1785.0026
-offset_bottom = 1613.0867
-pivot_offset = Vector2(815.8827, 107.98721)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 58
-theme_override_fonts/font = ExtResource("6_qiypp")
-theme_override_font_sizes/font_size = 207
-text = "CAPTURE THE SHMALOOGLES"
-
-[node name="TextShake" type="Node2D" parent="StartAnimation"]
-script = ExtResource("10_vpkd8")
-AutoPlay = true
-intensity = 2.795
-shakerPreset = SubResource("Resource_mw2ow")
-metadata/_custom_type_script = "uid://c4gk22bwiqjif"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StartAnimation"]
-libraries = {
-&"": SubResource("AnimationLibrary_wbbai")
-}
-autoplay = "Intro"
+[node name="SceneOpener" parent="." instance=ExtResource("15_e8456")]
+Objective = "CATCH THE SHMALOOGLES"
 
 [node name="WinAnimation" type="Node2D" parent="."]
 visible = false

@@ -23,7 +23,7 @@ func _on_spawn_delay_timer_timeout() -> void:
 		self.add_child(smoog)
 		smoog.global_position = Vector2(randf_range(170,1750),-50.0)
 
-func start_round():
+func start():
 	spawning = true
 	TimerScene.TimerNode.start()
 	
