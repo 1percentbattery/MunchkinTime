@@ -7,8 +7,9 @@ func win():
 		$objScroller_spawner.queue_free()
 func lose():
 	lost = true
+	$CharacterBody2D/Sprite2D.play("WOW")
 	$objScroller_spawner.queue_free()
-	
+	$loseAnimation.play("WOWyoulost")
 func start():
 	$objScroller_spawner.on = true
 	$Timer.start()
@@ -17,4 +18,6 @@ func _ready() -> void:
 	G.CurrentGame = self
 	$CharacterBody2D/Sprite2D.play("default")
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	pass # Replace with function body.
+func _on_lose_animation_animation_finished(anim_name: StringName) -> void:
 	pass # Replace with function body.

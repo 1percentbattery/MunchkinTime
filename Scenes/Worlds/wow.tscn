@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://7ga4nhgwkawx"]
+[gd_scene load_steps=30 format=3 uid="uid://7ga4nhgwkawx"]
 
 [ext_resource type="Script" uid="uid://ck8oge6pjfng5" path="res://Scripts/Worlds/wow.gd" id="1_8ovph"]
 [ext_resource type="Script" uid="uid://bbwb6evvupdet" path="res://Scripts/Objects/obj_scroller_spawner.gd" id="1_kc1v2"]
@@ -41,7 +41,7 @@ shader_parameter/textureDissolve = SubResource("NoiseTexture2D_ayon8")
 shader_parameter/textureOverlay = SubResource("NoiseTexture2D_cydkp")
 shader_parameter/scroll1 = Vector2(0.1, -0.1)
 shader_parameter/scroll2 = Vector2(0.5, 0.3)
-shader_parameter/dissovleState = 0.3790000180025
+shader_parameter/dissovleState = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5yd8y"]
 animations = [{
@@ -135,10 +135,39 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_ratbn"]
+resource_name = "WOWyoulost"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5, 0.73333335, 0.93333334, 1.1333333, 1.3, 1.4666667, 1.6, 1.8333334, 2, 2.2333333, 2.4333334, 2.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(1, 1), Vector2(3, 3), Vector2(1, 1), Vector2(3, 3), Vector2(1, 1), Vector2(3, 3), Vector2(1, 1), Vector2(3, 3), Vector2(1, 1), Vector2(3, 3), Vector2(1, 1), Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-180, 0, 0.6333333, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.1013753, 0.0, 3.141592653589793, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ratbn"]
 _data = {
 &"RESET": SubResource("Animation_ayon8"),
-&"WOWAnimation": SubResource("Animation_sh368")
+&"WOWAnimation": SubResource("Animation_sh368"),
+&"WOWyoulost": SubResource("Animation_ratbn")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2llm"]
@@ -180,6 +209,11 @@ visible = false
 shape = SubResource("CapsuleShape2D_ayon8")
 
 [node name="WinAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ratbn")
+}
+
+[node name="loseAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ratbn")
 }
@@ -488,6 +522,7 @@ position = Vector2(-10, 0)
 Objective = "Avoid Death Boxes"
 
 [connection signal="animation_finished" from="WinAnimation" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="loseAnimation" to="." method="_on_lose_animation_animation_finished"]
 [connection signal="area_entered" from="Boxes/killBox" to="Boxes/killBox" method="_on_area_entered"]
 [connection signal="body_entered" from="Boxes/killBox" to="Boxes/killBox" method="_on_body_entered"]
 [connection signal="area_entered" from="Boxes/killBox2" to="Boxes/killBox2" method="_on_area_entered"]
