@@ -8,11 +8,11 @@ extends Node2D
 func _ready() -> void:
 	TimerNode.wait_time = time
 	ProgressBarNode.max_value = time
-
+func start():
+	TimerNode.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	ProgressBarNode.value = TimerNode.time_left
-
 func _on_timer_timeout() -> void:
 	if QuitSceneOnTimeout:
 		get_parent().queue_free()
