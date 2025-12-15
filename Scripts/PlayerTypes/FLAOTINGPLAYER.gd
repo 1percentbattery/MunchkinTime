@@ -23,7 +23,3 @@ func _physics_process(delta: float) -> void:
 			Speed = lerp(Speed,WalkSpeed,delta * MovementLerpSpeed)
 	
 	move_and_slide()
-func hit(from,damage):
-	print("WOW")
-	
-	pass

@@ -26,7 +26,7 @@ func move(item : CollisionObject2D,delta : float):
 	item.global_position += (scrollSpeed * delta).rotated(item.rotation)
 func spawnObj():
 	var tempObj: CollisionObject2D = objList.pick_random().instantiate()
-	get_parent().add_child(tempObj)
+	add_child(tempObj)
 	var temp = spawnPoints.pick_random()
 	tempObj.global_transform = temp.global_transform
 	spawnList += [tempObj]
