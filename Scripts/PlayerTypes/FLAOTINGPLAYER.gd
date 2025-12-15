@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name floatingBody
 var Speed: int = 1000
 @export var WalkSpeed: int = 1000
 @export var SprintSpeed: int = 2000
