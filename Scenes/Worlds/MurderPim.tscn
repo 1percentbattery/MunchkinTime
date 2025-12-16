@@ -317,6 +317,7 @@ _data = {
 
 [sub_resource type="SystemFont" id="SystemFont_uqcxy"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_atkc0")

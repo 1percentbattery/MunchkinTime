@@ -21,8 +21,6 @@ func _on_body_entered(body: Node) -> void:
 		get_parent().Video.visible = true
 		get_parent().Video.paused = false
 		get_parent().lose()
-		G.SceneSwitcher.Lives -= 1
 		for object in get_tree().get_nodes_in_group("Objective"):
 			object.queue_free()
-		
 	queue_free()

@@ -54,8 +54,7 @@ func lose():
 	TimerScene.stop()
 	Knife.hide()
 	await get_tree().create_timer(2.0).timeout
-	G.SceneSwitcher.switch()
+	G.lostGame()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	G.SceneSwitcher.Score += 1
-	G.SceneSwitcher.switch()
+	G.wonGame()
