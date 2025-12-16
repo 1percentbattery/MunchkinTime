@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@export var on = false
 @export var spaceSize :=  75.0
 @export var timeBetweenJumps := 0.1
 var MovementLerpSpeed := 10.0
@@ -11,6 +11,8 @@ var directions = {
 	"Down" : Vector2(0,1)
 }
 func _process(delta: float) -> void:
+	if !on:
+		return
 	jumpTimer -= delta
 	if Input.is_action_just_pressed("Left"):
 		if !Input.is_action_just_pressed("Right"):

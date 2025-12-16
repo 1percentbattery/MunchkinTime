@@ -4,7 +4,6 @@ extends Node2D
 @export var time: int= 10
 @export var QuitSceneOnTimeout: bool = false
 @export var WinOnTimeout: bool = true
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TimerNode.wait_time = time
