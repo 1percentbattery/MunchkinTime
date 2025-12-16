@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bu0qyhxcesltu"]
+[gd_scene load_steps=43 format=3 uid="uid://bu0qyhxcesltu"]
 
 [ext_resource type="Script" uid="uid://cyqfi8h8yb71w" path="res://Scripts/Worlds/Alarm.gd" id="1_t60p1"]
 [ext_resource type="Texture2D" uid="uid://bbpirxjo8jgdk" path="res://Textures/Images/IMG_0339.png" id="2_n1uc3"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="11_syd26"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="12_f77m8"]
 [ext_resource type="Texture2D" uid="uid://drj28paukgcmu" path="res://Textures/Backgrounds/Alarm.png" id="13_n1uc3"]
+[ext_resource type="Texture2D" uid="uid://docyq4lmi0ylf" path="res://Textures/Images/IMG_0342 (1).png" id="14_kc4nf"]
+[ext_resource type="Texture2D" uid="uid://cjph0eksmn2dh" path="res://Textures/Images/IMG_0343 (1).png" id="15_si3lg"]
+[ext_resource type="Script" uid="uid://c5jnblraugfr8" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="16_ydlpg"]
 
 [sub_resource type="Resource" id="Resource_uew1b"]
 script = ExtResource("5_kc4nf")
@@ -111,6 +114,239 @@ PositionShake = Array[ExtResource("4_4wnhn")]([SubResource("Resource_yxtmr"), Su
 RotationShake = Array[ExtResource("6_si3lg")]([SubResource("Resource_kc4nf")])
 metadata/_custom_type_script = "uid://bubcpu3121y34"
 
+[sub_resource type="Animation" id="Animation_n1uc3"]
+resource_name = "Win"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2666667),
+"transitions": PackedFloat32Array(1.9318731, 1),
+"update": 0,
+"values": [Vector2(855.2795, 650.8414), Vector2(855.2795, 1616.0001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cursor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4333334),
+"transitions": PackedFloat32Array(2.1435473, 1),
+"update": 0,
+"values": [Vector2(1555.0013, 716.9991), Vector2(1555.0013, 2442)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.56, 1.8, 2.2, 3.4666667, 3.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinLoseImages:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WinLoseImages/Win:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yxtmr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(855.2795, 650.8414)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cursor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1555.0013, 716.9991)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinLoseImages:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WinLoseImages/Win:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WinLoseImages/Lose:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r6b4e"]
+resource_name = "Lose"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2666667),
+"transitions": PackedFloat32Array(1.9318731, 1),
+"update": 0,
+"values": [Vector2(855.2795, 650.8414), Vector2(855.2795, 1616.0001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cursor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4333334),
+"transitions": PackedFloat32Array(2.1435473, 1),
+"update": 0,
+"values": [Vector2(1555.0013, 716.9991), Vector2(1555.0013, 2442)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.56, 2.1333334, 2.2, 3.4666667, 3.5666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinLoseImages:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WinLoseImages/Lose:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WinLoseImages/ShakerComponent2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_shake"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wnhn"]
+_data = {
+&"Lose": SubResource("Animation_r6b4e"),
+&"RESET": SubResource("Animation_yxtmr"),
+&"Win": SubResource("Animation_n1uc3")
+}
+
+[sub_resource type="Resource" id="Resource_umdqn"]
+script = ExtResource("16_ydlpg")
+metadata/_custom_type_script = "uid://c5jnblraugfr8"
+
+[sub_resource type="Resource" id="Resource_6rohs"]
+script = ExtResource("8_r6b4e")
+PositionShake = Array[ExtResource("4_4wnhn")]([SubResource("Resource_umdqn")])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_t60p1")
 
@@ -119,8 +355,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(854.5458, 650.7871)
-rotation = -0.07544738
+position = Vector2(855.2795, 650.8414)
+rotation = -0.07544739
 scale = Vector2(0.9112784, 0.95162684)
 skew = 0.038759947
 
@@ -170,9 +406,10 @@ position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_p6238")
 
 [node name="Cursor" type="Area2D" parent="." groups=["Cursor"]]
-position = Vector2(1151.1003, 354.77112)
+position = Vector2(1555.0013, 716.9991)
 
 [node name="ColorRect" type="ColorRect" parent="Cursor"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -273,4 +510,46 @@ AutoPlay = true
 intensity = 30.0
 shake_speed = 0.1
 shakerPreset = SubResource("Resource_si3lg")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4wnhn")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(47.01457, 26.360323)
+color = Color(0, 0, 0, 0)
+
+[node name="WinLoseImages" type="Node2D" parent="."]
+visible = false
+position = Vector2(-1.4603138e-06, 2.6151538e-06)
+
+[node name="Lose" type="TextureRect" parent="WinLoseImages"]
+visible = false
+z_index = -3
+offset_left = -305.0
+offset_top = -277.0
+offset_right = 1615.0
+offset_bottom = 803.0
+scale = Vector2(1.2756238, 1.2756238)
+texture = ExtResource("14_kc4nf")
+
+[node name="Win" type="TextureRect" parent="WinLoseImages"]
+visible = false
+z_index = -3
+offset_left = -382.0
+offset_top = -120.000015
+offset_right = 1538.0
+offset_bottom = 960.0
+scale = Vector2(1.4139981, 1.4139981)
+texture = ExtResource("15_si3lg")
+
+[node name="ShakerComponent2D" type="Node2D" parent="WinLoseImages"]
+script = ExtResource("3_yxtmr")
+intensity = 7.0
+shakerPreset = SubResource("Resource_6rohs")
 metadata/_custom_type_script = "uid://c4gk22bwiqjif"

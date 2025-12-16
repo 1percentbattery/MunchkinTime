@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dso3whlfk3bia" path="res://Scripts/Mune/SceneSwitcherTest.gd" id="1_7g7gc"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="2_fbe26"]
-[ext_resource type="VideoStream" uid="uid://c0v6x40npp7e3" path="res://Video/skelton.ogv" id="3_ibf1n"]
+[ext_resource type="VideoStream" uid="uid://dk7ev0e448vxw" path="res://Video/betterskelton.ogv" id="3_ibf1n"]
 
 [sub_resource type="Animation" id="Animation_sexfu"]
 length = 0.001
@@ -138,6 +138,7 @@ scale = Vector2(0.77495366, 0.77708703)
 stream = ExtResource("3_ibf1n")
 autoplay = true
 paused = true
+expand = true
 loop = true
 
 [node name="ColorRect" type="ColorRect" parent="VideoStreamPlayer"]

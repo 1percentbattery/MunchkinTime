@@ -6,6 +6,11 @@ extends Node2D
 @onready var TimerScene: Node2D = $Timer
 var started = false
 @onready var Blur: TextureRect = $TextureRect
+@onready var PhoneShake: ShakerComponent2D = $Node2D/ShakerComponent2D
+@onready var HandShake1: ShakerComponent2D = $Cursor/ShakerComponent2D
+@onready var HandShake2: ShakerComponent2D = $Cursor/Node2D/ShakerComponent2D
+@onready var BGShake: ShakerComponent2D = $Node2D2/ShakerComponent2D
+@onready var Animations: AnimationPlayer = $AnimationPlayer
 
 var wasd_movement_speed = 15.0
 
@@ -48,16 +53,23 @@ func start():
 func win():
 	TimerScene.stop()
 	TimerScene.hide()
-	await get_tree().create_timer(2.0).timeout
+	Animations.play("Win")
+	fadeout()
+	await get_tree().create_timer(4.4).timeout
 	G.wonGame()
+	
+	
 func lose():
 	TimerScene.stop()
 	TimerScene.hide()
-	await get_tree().create_timer(2.0).timeout
+	Animations.play("Lose")
+	fadeout()
+	await get_tree().create_timer(4.4).timeout
 	G.lostGame()
+	
 
-## Creates a PlayStation 2-like accumulation motion blur effect.
-##
-## Add to _process(). The frame blending effect is applied to the area 
-## within the boundaries of the texture_rect node.
-## It is recommended to only set the alpha from 0 to less than 1.
+func fadeout():
+	PhoneShake.stop_shake()
+	HandShake1.stop_shake()
+	HandShake2.stop_shake()
+	BGShake.stop_shake()
