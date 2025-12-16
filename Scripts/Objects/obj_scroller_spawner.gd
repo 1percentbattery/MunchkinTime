@@ -5,7 +5,7 @@ extends Node2D
 @export var objFreq := 1.0
 @export var rotSpeed := 45.0
 @export var on := false
-var spawnCounter := 0.0
+@export var spawnCounter := 0.0
 var spawnList : Array
 var spawnPoints : Array[Node2D]
 func _ready():

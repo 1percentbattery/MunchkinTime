@@ -1,12 +1,11 @@
 extends floatingBody
 
-@export var whereToSendLose : Node
 var dissovleState = 0.0
 var lsot = false
 func _ready():
 	material = material.duplicate(true)
 func hit(from,damage):
-	whereToSendLose.lose()
+	get_parent().lose()
 	lsot = true
 func _process(delta: float) -> void:
 	if lsot:

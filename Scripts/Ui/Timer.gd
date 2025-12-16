@@ -4,7 +4,6 @@ extends Node2D
 @export var time: int= 10
 @export var QuitSceneOnTimeout: bool = false
 @export var WinOnTimeout: bool = true
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TimerNode.wait_time = time
@@ -16,12 +15,11 @@ func _process(delta: float) -> void:
 	ProgressBarNode.value = TimerNode.time_left
 func _on_timer_timeout() -> void:
 	if QuitSceneOnTimeout:
-		G.SceneSwitcher.switch()
+		G.lostGame()
 	else:
 		if WinOnTimeout:
 			get_parent().win()
 		else:
-			G.CurrentGame.lose()
-		
+			get_parent().lose()
 func stop():
 	TimerNode.stop()

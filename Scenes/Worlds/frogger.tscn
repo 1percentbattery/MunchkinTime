@@ -1,0 +1,318 @@
+[gd_scene load_steps=21 format=3 uid="uid://cup220pspjpfk"]
+
+[ext_resource type="Script" uid="uid://owdw0r7jcwh5" path="res://Scripts/Worlds/frogger.gd" id="1_umnbs"]
+[ext_resource type="Script" uid="uid://dyh1mnuijj3a" path="res://FroggerBody.gd" id="2_1sd8u"]
+[ext_resource type="Texture2D" uid="uid://deudswf33mlv7" path="res://Textures/Images/Forg.png" id="3_an2ax"]
+[ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="4_qwllj"]
+[ext_resource type="Script" uid="uid://c7gwfha8yucg5" path="res://Scripts/Objects/RushSpawners.gd" id="5_2s2dy"]
+[ext_resource type="PackedScene" uid="uid://dla8emsv03dqx" path="res://Scenes/Objects/obj_scroller_spawner.tscn" id="6_g1pa2"]
+[ext_resource type="PackedScene" uid="uid://f6ex3jyurn0y" path="res://Scenes/Objects/blocks/froggerBlock2.tscn" id="7_ch1f1"]
+[ext_resource type="PackedScene" uid="uid://bei3jutckuyu5" path="res://Scenes/Objects/blocks/froggerBlock.tscn" id="8_jrlhp"]
+[ext_resource type="Script" uid="uid://lelr7u2fxago" path="res://Scripts/Objects/win_box.gd" id="9_w8d11"]
+[ext_resource type="Texture2D" uid="uid://c7wcddtxepufo" path="res://Textures/Images/light_default_square.png" id="10_iq0tt"]
+[ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="11_wad7s"]
+[ext_resource type="Shader" uid="uid://d2dpof31s3haq" path="res://Scripts/Shader/Overlay.gdshader" id="12_1sd8u"]
+[ext_resource type="Texture2D" uid="uid://c2s8mtxt01ewo" path="res://Textures/Images/skull(tuff).webp" id="13_an2ax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byso3"]
+size = Vector2(22, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uduw"]
+size = Vector2(1920, 302)
+
+[sub_resource type="Animation" id="Animation_umnbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1sd8u"]
+resource_name = "Winner"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1.1095697),
+"update": 0,
+"values": [0.0, 3.141592653589793]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.05, 0.05)]
+}
+
+[sub_resource type="Animation" id="Animation_an2ax"]
+resource_name = "Winner"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_an2ax"]
+_data = {
+&"Loser": SubResource("Animation_1sd8u"),
+&"RESET": SubResource("Animation_umnbs"),
+&"Winner": SubResource("Animation_an2ax")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_an2ax"]
+shader = ExtResource("12_1sd8u")
+shader_parameter/tex = ExtResource("13_an2ax")
+shader_parameter/scrollSpeed = Vector2(0.1, 0.1)
+
+[node name="Frogger" type="Node2D"]
+script = ExtResource("1_umnbs")
+metadata/_edit_horizontal_guides_ = [-44.0]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+z_index = 7
+position = Vector2(975, 975)
+collision_mask = 14
+script = ExtResource("2_1sd8u")
+timeBetweenJumps = 0.0
+
+[node name="Forg" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.261, 0.25)
+texture = ExtResource("3_an2ax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_byso3")
+
+[node name="Timer" parent="." instance=ExtResource("4_qwllj")]
+time = 15
+WinOnTimeout = false
+
+[node name="Spawners" type="Node2D" parent="."]
+script = ExtResource("5_2s2dy")
+rushMod = 10.0
+
+[node name="objScroller_spawner" parent="Spawners" instance=ExtResource("6_g1pa2")]
+position = Vector2(-38, 900)
+objList = Array[PackedScene]([ExtResource("7_ch1f1")])
+scrollSpeed = Vector2(300, 0)
+objFreq = 1.5
+on = true
+spawnCounter = 1.0
+
+[node name="objScroller_spawner2" parent="Spawners" instance=ExtResource("6_g1pa2")]
+position = Vector2(1958, 825)
+objList = Array[PackedScene]([ExtResource("8_jrlhp")])
+scrollSpeed = Vector2(-300, 0)
+objFreq = 1.5
+on = true
+
+[node name="objScroller_spawner3" parent="Spawners" instance=ExtResource("6_g1pa2")]
+position = Vector2(1958, 675)
+objList = Array[PackedScene]([ExtResource("8_jrlhp")])
+scrollSpeed = Vector2(-300, 0)
+objFreq = 1.5
+on = true
+
+[node name="objScroller_spawner4" parent="Spawners" instance=ExtResource("6_g1pa2")]
+position = Vector2(-38, 600)
+objList = Array[PackedScene]([ExtResource("7_ch1f1")])
+scrollSpeed = Vector2(300, 0)
+objFreq = 1.5
+on = true
+
+[node name="objScroller_spawner5" parent="Spawners" instance=ExtResource("6_g1pa2")]
+position = Vector2(1958, 450)
+objList = Array[PackedScene]([ExtResource("7_ch1f1")])
+scrollSpeed = Vector2(-300, 0)
+objFreq = 1.5
+on = true
+
+[node name="objScroller_spawner7" parent="Spawners" instance=ExtResource("6_g1pa2")]
+position = Vector2(-38, 375)
+objList = Array[PackedScene]([ExtResource("8_jrlhp")])
+scrollSpeed = Vector2(300, 0)
+objFreq = 1.5
+on = true
+
+[node name="WinBox" type="Area2D" parent="."]
+script = ExtResource("9_w8d11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinBox"]
+position = Vector2(960, 151)
+shape = SubResource("RectangleShape2D_4uduw")
+
+[node name="decoration" type="Node2D" parent="."]
+
+[node name="LightDefaultSquare2" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 933.75)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare3" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 860)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare4" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 790)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare5" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 715)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare6" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 635)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare7" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 560)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare8" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 490)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare9" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 415)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare10" type="Sprite2D" parent="decoration"]
+modulate = Color(0.24313726, 0.3764706, 1, 1)
+z_index = -1
+position = Vector2(936, 340)
+scale = Vector2(2.5908203, 0.006347699)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare" type="Sprite2D" parent="decoration"]
+modulate = Color(0.19832385, 0.048316292, 0, 1)
+z_index = -5
+position = Vector2(969, 545.5)
+scale = Vector2(1.9082031, 1.0693359)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare11" type="Sprite2D" parent="decoration"]
+modulate = Color(0.2, 0.45490196, 0, 1)
+z_index = -5
+position = Vector2(976, 1014.5)
+scale = Vector2(1.921875, 0.1533203)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare12" type="Sprite2D" parent="decoration"]
+modulate = Color(0.2, 0.45490196, 0, 1)
+z_index = -5
+position = Vector2(993.9999, 162.25002)
+scale = Vector2(1.984375, 0.34521484)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare13" type="Sprite2D" parent="decoration"]
+modulate = Color(0.2, 0.45490196, 0, 1)
+z_index = -5
+position = Vector2(1008, 753)
+scale = Vector2(1.9970702, 0.07495117)
+texture = ExtResource("10_iq0tt")
+
+[node name="LightDefaultSquare14" type="Sprite2D" parent="decoration"]
+modulate = Color(0.2, 0.45490196, 0, 1)
+z_index = -5
+position = Vector2(1000.00006, 525)
+scale = Vector2(1.9970702, 0.07495117)
+texture = ExtResource("10_iq0tt")
+
+[node name="SceneOpener" parent="." instance=ExtResource("11_wad7s")]
+Objective = "FROG IT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_an2ax")
+}
+
+[node name="WinBackground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.08235294, 1)
+z_index = -6
+position = Vector2(1003, 519)
+scale = Vector2(2.1289063, 1.1191406)
+texture = ExtResource("10_iq0tt")
+
+[node name="WinBackground2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.08235294, 1)
+z_index = 10
+material = SubResource("ShaderMaterial_an2ax")
+position = Vector2(962, 537.99994)
+scale = Vector2(1.8847656, 1.0585936)
+texture = ExtResource("10_iq0tt")
+
+[node name="Block1" parent="." instance=ExtResource("7_ch1f1")]
+position = Vector2(-37, 427)
+scale = Vector2(1, 50)
+
+[node name="Block2" parent="." instance=ExtResource("7_ch1f1")]
+position = Vector2(1965, 574)
+scale = Vector2(1, 50)
+
+[node name="Block3" parent="." instance=ExtResource("7_ch1f1")]
+position = Vector2(1089, 1125)
+scale = Vector2(40, 1)
+
+[connection signal="area_entered" from="WinBox" to="." method="_on_win_box_area_entered"]
+[connection signal="body_entered" from="WinBox" to="." method="_on_win_box_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
