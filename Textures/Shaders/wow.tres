@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://j0uajsta88xs"]
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://da14fw283ixm6"]
 
-[ext_resource type="Shader" uid="uid://pd7rphb58n8b" path="res://Scripts/Shader/Dissolve.gdshader" id="1_t35hw"]
+[ext_resource type="Shader" path="res://Scripts/Shader/Dissolve.gdshader" id="1_t35hw"]
 
 [sub_resource type="Gradient" id="Gradient_sh368"]
 offsets = PackedFloat32Array(0, 0.025423728, 0.06779661, 1)

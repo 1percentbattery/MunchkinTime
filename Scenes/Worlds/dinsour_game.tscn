@@ -1,0 +1,339 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8xeaucibao4x"]
+
+[ext_resource type="Script" uid="uid://bbwb6evvupdet" path="res://Scripts/Objects/obj_scroller_spawner.gd" id="1_8dyt8"]
+[ext_resource type="Script" path="res://Scripts/Objects/kill_box.gd" id="2_hdadl"]
+[ext_resource type="PackedScene" uid="uid://bs6ti68dm2vja" path="res://Scenes/Objects/blocks/block_1.tscn" id="2_mici0"]
+[ext_resource type="PackedScene" uid="uid://c5lfeqwr588eg" path="res://Scenes/Objects/blocks/block2.tscn" id="3_nw8bq"]
+[ext_resource type="Script" uid="uid://dq7olg0cns62n" path="res://Scripts/PlayerTypes/FLAOTINGPLAYER.gd" id="5_r4hx1"]
+[ext_resource type="Texture2D" uid="uid://dkalxq8vgf5f1" path="res://Textures/Images/WOW.webp" id="6_5koyq"]
+[ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="7_5koyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2llm"]
+size = Vector2(55, 1975)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ef45"]
+size = Vector2(1934, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mici0"]
+size = Vector2(30.96466, 1171.4265)
+
+[node name="WOW" type="Node2D"]
+
+[node name="objScroller_spawner" type="Node2D" parent="."]
+position = Vector2(974.7921, 522.5531)
+script = ExtResource("1_8dyt8")
+objList = Array[PackedScene]([ExtResource("2_mici0"), ExtResource("3_nw8bq")])
+scrollSpeed = Vector2(0, -300)
+objFreq = 0.2
+
+[node name="Node2D" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(885.2079, -521.5531)
+rotation = -3.1415927
+
+[node name="Node2D2" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-10.792114, -530.5531)
+rotation = -3.1415927
+
+[node name="Node2D3" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-943.7921, -539.5531)
+rotation = -3.1415927
+
+[node name="Node2D4" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-529.7921, -553.5531)
+rotation = -3.1415927
+
+[node name="Node2D5" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(711.2079, -539.5531)
+rotation = -3.1415927
+
+[node name="Node2D6" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(711.2079, -539.5531)
+rotation = -3.1415927
+
+[node name="Node2D7" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(366.2079, -544.5531)
+rotation = -3.1415927
+
+[node name="Node2D8" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(366.2079, -544.5531)
+rotation = -3.1415927
+
+[node name="Node2D9" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-267.7921, -544.5531)
+rotation = -3.1415927
+
+[node name="Node2D10" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-267.7921, -544.5531)
+rotation = -3.1415927
+
+[node name="Node2D11" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-708.7921, -549.5531)
+rotation = -3.1415927
+
+[node name="Node2D12" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-708.7921, -549.5531)
+rotation = -3.1415927
+
+[node name="Node2D13" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1000.2079, -420.5531)
+rotation = -1.5707964
+
+[node name="Node2D14" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1000.2079, -420.5531)
+rotation = -1.5707964
+
+[node name="Node2D15" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1005.2079, -250.5531)
+rotation = -1.5707964
+
+[node name="Node2D16" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1005.2079, -250.5531)
+rotation = -1.5707964
+
+[node name="Node2D17" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1019.2079, -94.5531)
+rotation = -1.5707964
+
+[node name="Node2D18" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1019.2079, -94.5531)
+rotation = -1.5707964
+
+[node name="Node2D19" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1019.2079, 52.4469)
+rotation = -1.5707964
+
+[node name="Node2D20" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1019.2079, 52.4469)
+rotation = -1.5707964
+
+[node name="Node2D21" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1024.2079, 204.4469)
+rotation = -1.5707964
+
+[node name="Node2D22" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1024.2079, 204.4469)
+rotation = -1.5707964
+
+[node name="Node2D23" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1006.2079, 342.4469)
+rotation = -1.5707964
+
+[node name="Node2D24" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1006.2079, 342.4469)
+rotation = -1.5707964
+
+[node name="Node2D25" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1011.2079, 461.4469)
+rotation = -1.5707964
+
+[node name="Node2D26" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1011.2079, 461.4469)
+rotation = -1.5707964
+
+[node name="Node2D27" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1006.2079, 544.4469)
+rotation = -1.5707964
+
+[node name="Node2D28" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(1006.2079, 544.4469)
+rotation = -1.5707964
+
+[node name="Node2D29" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(877.2079, 724.4469)
+
+[node name="Node2D30" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(886.2079, 664.4469)
+
+[node name="Node2D31" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(731.2079, 737.4469)
+
+[node name="Node2D32" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(740.2079, 677.4469)
+
+[node name="Node2D33" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(631.2079, 724.4469)
+
+[node name="Node2D34" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(640.2079, 664.4469)
+
+[node name="Node2D35" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(460.2079, 716.4469)
+
+[node name="Node2D36" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(469.2079, 656.4469)
+
+[node name="Node2D37" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(280.2079, 712.4469)
+
+[node name="Node2D38" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(289.2079, 652.4469)
+
+[node name="Node2D39" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(96.207886, 708.4469)
+
+[node name="Node2D40" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(105.207886, 648.4469)
+
+[node name="Node2D41" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-108.792114, 712.4469)
+
+[node name="Node2D42" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-99.792114, 652.4469)
+
+[node name="Node2D43" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-304.7921, 725.4469)
+
+[node name="Node2D44" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-295.7921, 665.4469)
+
+[node name="Node2D45" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-546.7921, 712.4469)
+
+[node name="Node2D46" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-537.7921, 652.4469)
+
+[node name="Node2D47" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-692.7921, 716.4469)
+
+[node name="Node2D48" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-683.7921, 656.4469)
+
+[node name="Node2D49" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-876.7921, 724.4469)
+
+[node name="Node2D50" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-867.7921, 664.4469)
+
+[node name="Node2D51" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-955.7921, 732.4469)
+
+[node name="Node2D52" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-946.7921, 672.4469)
+
+[node name="Node2D53" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-1056.7921, 73.4469)
+rotation = 1.5707964
+
+[node name="Node2D54" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-1060.7921, 261.4469)
+rotation = 1.5707964
+
+[node name="Node2D55" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-1047.7921, 411.4469)
+rotation = 1.5707964
+
+[node name="Node2D56" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-1034.7921, 549.4469)
+rotation = 1.5707964
+
+[node name="Node2D57" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-1051.7921, -14.553101)
+rotation = 1.5707964
+
+[node name="Node2D58" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-1047.7921, -206.5531)
+rotation = 1.5707964
+
+[node name="Node2D59" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-1060.7921, -327.5531)
+rotation = 1.5707964
+
+[node name="Node2D60" type="Node2D" parent="objScroller_spawner"]
+position = Vector2(-1052.7921, -456.5531)
+rotation = 1.5707964
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="killBox" type="Area2D" parent="Boxes"]
+position = Vector2(-55, 967)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_hdadl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/killBox"]
+position = Vector2(-48, -410)
+shape = SubResource("RectangleShape2D_p2llm")
+
+[node name="killBox2" type="Area2D" parent="Boxes"]
+position = Vector2(2079, 957)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_hdadl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/killBox2"]
+position = Vector2(-34.562622, -408.15955)
+shape = SubResource("RectangleShape2D_p2llm")
+
+[node name="killBox3" type="Area2D" parent="Boxes"]
+position = Vector2(1985.5626, 957.15955)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_hdadl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/killBox3"]
+position = Vector2(-1033.5626, 255.84045)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_p2llm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boxes/killBox3"]
+position = Vector2(-1046.5626, -1130.1595)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_p2llm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boxes"]
+position = Vector2(0, 1080)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/StaticBody2D"]
+position = Vector2(967, 38)
+shape = SubResource("RectangleShape2D_0ef45")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boxes"]
+position = Vector2(-8, -77)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/StaticBody2D2"]
+position = Vector2(967, 38)
+shape = SubResource("RectangleShape2D_0ef45")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boxes"]
+position = Vector2(-8, -77)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/StaticBody2D3"]
+position = Vector2(-6.4823303, 616.28674)
+shape = SubResource("RectangleShape2D_mici0")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boxes"]
+position = Vector2(1942.6549, -50.9411)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/StaticBody2D4"]
+position = Vector2(-6.4823303, 616.28674)
+shape = SubResource("RectangleShape2D_mici0")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(947.4507, 516.3256)
+collision_mask = 3
+script = ExtResource("5_r4hx1")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_5koyq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(-9.450684, 24.674377, -9.450684, -22.325623, -4.4506836, -29.325623, 3.5493164, -28.325623, 6.5493164, -20.325623, 6.5493164, 24.674377)
+
+[node name="Node2D" parent="." instance=ExtResource("7_5koyq")]
+position = Vector2(1336, 312)
+
+[connection signal="area_entered" from="Boxes/killBox" to="Boxes/killBox" method="_on_area_entered"]
+[connection signal="body_entered" from="Boxes/killBox" to="Boxes/killBox" method="_on_body_entered"]
+[connection signal="area_entered" from="Boxes/killBox2" to="Boxes/killBox2" method="_on_area_entered"]
+[connection signal="body_entered" from="Boxes/killBox2" to="Boxes/killBox2" method="_on_body_entered"]
+[connection signal="area_entered" from="Boxes/killBox3" to="Boxes/killBox3" method="_on_area_entered"]
+[connection signal="body_entered" from="Boxes/killBox3" to="Boxes/killBox3" method="_on_body_entered"]
