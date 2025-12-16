@@ -47,7 +47,6 @@ func end():
 	EndFadeout.visible = true
 
 func lose():
-	G.SceneSwitcher.Lives -= 1
 	PimIdle.hide()
 	PimScream.hide()
 	PimSad.show()

@@ -3,6 +3,8 @@ extends floatingBody
 @export var whereToSendLose : Node
 var dissovleState = 0.0
 var lsot = false
+func _ready():
+	material = material.duplicate(true)
 func hit(from,damage):
 	whereToSendLose.lose()
 	lsot = true

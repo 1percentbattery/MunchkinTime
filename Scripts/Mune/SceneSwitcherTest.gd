@@ -7,7 +7,7 @@ const MURDER_PIM = preload("uid://bne2oqiiedlmb")
 @onready var ScoreCounter: Label = $Label
 @onready var LivesCounter: Label = $Lives
 
-var games = [WOW,FALLING_OBJECTS,MURDER_PIM]
+var games = []
 var global_game
 var global_rng
 var previous_game 
@@ -15,9 +15,16 @@ var previous_game
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	G.SceneSwitcher = self
+	findlevels("res://Scenes/Worlds/")
+	print(games)
 	switch()
 
-
+func findlevels(path):
+	var dir = DirAccess.open(path)
+	if dir:
+		var potential = dir.get_files()
+		for file in potential:
+			games += [path + "/" +file]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Debug"):
@@ -27,13 +34,14 @@ func _process(delta: float) -> void:
 	
 	if G.Lives <= 0:
 		get_tree().quit()
-
 func switch():
 	if global_game != null:
 		previous_game = global_rng
 		global_game.queue_free()
 	var rng = randi_range(0,games.size()-1)
-	var game = games[rng].instantiate()
+	var temp = load(games[rng])
+	print(temp)
+	var game = temp.instantiate()
 	global_game = game
 	global_rng = rng
 	if previous_game == rng:
