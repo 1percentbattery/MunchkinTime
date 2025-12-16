@@ -12,6 +12,8 @@ func _ready():
 	for child : Node2D in get_children():
 		spawnPoints += [child]
 		#child.look_at(self.global_position)
+	if spawnPoints.is_empty():
+		spawnPoints += [self]
 func _physics_process(delta: float) -> void:
 	#rotation_degrees += rotSpeed * delta
 	if !on:

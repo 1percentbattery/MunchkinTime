@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dla8emsv03dqx"]
+
+[ext_resource type="Script" uid="uid://bbwb6evvupdet" path="res://Scripts/Objects/obj_scroller_spawner.gd" id="1_cbi8b"]
+[ext_resource type="PackedScene" uid="uid://bs6ti68dm2vja" path="res://Scenes/Objects/blocks/block_1.tscn" id="2_yq7c4"]
+[ext_resource type="PackedScene" uid="uid://c5lfeqwr588eg" path="res://Scenes/Objects/blocks/block2.tscn" id="3_bbk5r"]
+
+[node name="objScroller_spawner" type="Node2D"]
+script = ExtResource("1_cbi8b")
+objList = Array[PackedScene]([ExtResource("2_yq7c4"), ExtResource("3_bbk5r")])
+scrollSpeed = Vector2(0, -300)
+objFreq = 0.2

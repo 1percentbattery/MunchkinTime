@@ -16,7 +16,6 @@ func lose():
 func start():
 	$objScroller_spawner.on = true
 	$Timer.start()
-
 func _ready() -> void:
 	$LightDefaultSquare.material = $LightDefaultSquare.material.duplicate()
 	$CharacterBody2D.whereToSendLose = self
