@@ -14,7 +14,7 @@ func win():
 	$decoration.queue_free()
 	$WinBox.queue_free()
 	$CharacterBody2D.position = Vector2(960,540)
-	
+	$AnimationPlayer.play("Winner")
 func lose():
 	$Spawners.set_process_mode(ProcessMode.PROCESS_MODE_DISABLED)
 	$CharacterBody2D.set_process_mode(ProcessMode.PROCESS_MODE_DISABLED)
