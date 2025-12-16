@@ -7,12 +7,12 @@
 [ext_resource type="Material" uid="uid://da14fw283ixm6" path="res://Textures/Shaders/wow.tres" id="2_ayon8"]
 [ext_resource type="Texture2D" uid="uid://dpr3byy6gtwpd" path="res://Textures/Images/WOWWOW.webp" id="3_53sxc"]
 [ext_resource type="PackedScene" uid="uid://c5lfeqwr588eg" path="res://Scenes/Objects/blocks/block2.tscn" id="3_wwhou"]
-[ext_resource type="Script" uid="uid://c0prkxru6tdbw" path="res://Scripts/Objects/kill_box.gd" id="4_uxbtt"]
+[ext_resource type="Script" path="res://Scripts/Objects/kill_box.gd" id="4_uxbtt"]
 [ext_resource type="Script" uid="uid://durmknb5jotgo" path="res://Scripts/Objects/hit_detector.gd" id="5_5yd8y"]
 [ext_resource type="Texture2D" uid="uid://dkalxq8vgf5f1" path="res://Textures/Images/WOW.webp" id="6_sqo7n"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="7_nusk5"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="8_pvalw"]
-[ext_resource type="Shader" uid="uid://by64p05b4ikqt" path="res://Textures/Shaders/Background.gdshader" id="13_cydkp"]
+[ext_resource type="Shader" path="res://Textures/Shaders/Background.gdshader" id="13_cydkp"]
 [ext_resource type="Texture2D" uid="uid://c7wcddtxepufo" path="res://Textures/Images/light_default_square.png" id="13_ratbn"]
 [ext_resource type="Texture2D" uid="uid://qkxxsatnkh4s" path="res://Textures/Images/skull.webp" id="14_lunhl"]
 
@@ -53,6 +53,33 @@ size = Vector2(62, 61)
 radius = 8.549316
 height = 55.348755
 
+[sub_resource type="Animation" id="Animation_ayon8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_sh368"]
 resource_name = "WOWAnimation"
 length = 3.0
@@ -79,33 +106,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.2617993877991494, 0.0, 0.0, -0.2617993877991494]
-}
-
-[sub_resource type="Animation" id="Animation_ayon8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ratbn"]
@@ -159,6 +159,7 @@ shader_parameter/scroll1 = Vector2(0.1, -0.1)
 shader_parameter/add = Vector4(0, 0, 0, 0)
 
 [node name="WOW" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_8ovph")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]

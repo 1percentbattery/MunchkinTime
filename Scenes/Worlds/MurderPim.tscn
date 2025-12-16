@@ -320,6 +320,7 @@ font_names = PackedStringArray("Comic Sans MS")
 subpixel_positioning = 0
 
 [node name="Node2D" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_atkc0")
 
 [node name="Background" type="Sprite2D" parent="."]

@@ -23,10 +23,9 @@ b = Vector2(1920, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ecdjq"]
 shader = ExtResource("7_ji6nv")
-shader_parameter/key_color = Color(0, 1, 0, 1)
-shader_parameter/similarity = 0.4
-shader_parameter/smoothness = 0.08
-shader_parameter/spill = 0.1
+shader_parameter/transparent_color = Color(0, 1, 0, 1)
+shader_parameter/pickup_range = 0.350000016625
+shader_parameter/fade_amount = 0.5
 
 [sub_resource type="Resource" id="Resource_3tjwf"]
 script = ExtResource("12_e8456")
@@ -239,6 +238,7 @@ _data = {
 }
 
 [node name="FallingObjects" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_562vh")
 
 [node name="SideScrollerPlayer" parent="." instance=ExtResource("1_jomr7")]
@@ -320,12 +320,15 @@ scale = Vector2(6.165564, 6.165564)
 texture = ExtResource("8_clbhu")
 
 [node name="Charlie" type="VideoStreamPlayer" parent="Walls"]
+visible = false
+material = SubResource("ShaderMaterial_ecdjq")
 offset_left = 1262.0
 offset_top = 676.0
 offset_right = 3182.0
 offset_bottom = 1756.0
 scale = Vector2(0.30580667, 0.30580667)
 stream = ExtResource("6_hw1gk")
+volume_db = 20.0
 autoplay = true
 paused = true
 
@@ -354,6 +357,7 @@ shakerPreset = SubResource("Resource_h84l6")
 metadata/_custom_type_script = "uid://c4gk22bwiqjif"
 
 [node name="Fade" type="ColorRect" parent="."]
+visible = false
 offset_left = -97.00003
 offset_top = -62.00009
 offset_right = -40.935028

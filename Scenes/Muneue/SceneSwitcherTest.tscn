@@ -1,9 +1,89 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgg6s62u1p6sq"]
+[gd_scene load_steps=7 format=3 uid="uid://bgg6s62u1p6sq"]
 
 [ext_resource type="Script" uid="uid://dso3whlfk3bia" path="res://Scripts/Mune/SceneSwitcherTest.gd" id="1_7g7gc"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="2_fbe26"]
+[ext_resource type="VideoStream" uid="uid://c0v6x40npp7e3" path="res://Video/skelton.ogv" id="3_ibf1n"]
+
+[sub_resource type="Animation" id="Animation_sexfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(236.00002, 136)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VideoStreamPlayer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(234, 131)]
+}
+
+[sub_resource type="Animation" id="Animation_qf4l0"]
+resource_name = "Transition"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.46666667, 0.56666666, 1.1, 1.4666668),
+"transitions": PackedFloat32Array(2.9281707, 1, 1, 1, 0.3660218, 2.9281707),
+"update": 0,
+"values": [Vector2(236.00002, 136), Vector2(-1595, 136), Vector2(-1595, 1407), Vector2(2020, 1407), Vector2(2020, 139), Vector2(236.00002, 136)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VideoStreamPlayer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333333, 0.46666667, 0.96666664, 1.2333333),
+"transitions": PackedFloat32Array(0.5358869, 1, 2.4622886, 1),
+"update": 0,
+"values": [Vector2(2140, 131), Vector2(234, 131), Vector2(234, 131), Vector2(-1682.9999, 131)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.23333333, 1.2333333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"playvideo"
+}, {
+"args": [],
+"method": &"restartvideo"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8wwd"]
+_data = {
+&"RESET": SubResource("Animation_sexfu"),
+&"Transition": SubResource("Animation_qf4l0")
+}
 
 [node name="Node2D" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_7g7gc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -35,11 +115,36 @@ text = "3"
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 236.00002
 offset_top = 136.0
-offset_right = 2156.0
-offset_bottom = 1216.0
+offset_right = 2156.0032
+offset_bottom = 1216.0002
 scale = Vector2(0.7738961, 0.7738961)
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o8wwd")
+}
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 234.0
+offset_top = 131.0
+offset_right = 2154.0027
+offset_bottom = 1211.0
+scale = Vector2(0.77495366, 0.77708703)
+stream = ExtResource("3_ibf1n")
+autoplay = true
+paused = true
+loop = true
+
+[node name="ColorRect" type="ColorRect" parent="VideoStreamPlayer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

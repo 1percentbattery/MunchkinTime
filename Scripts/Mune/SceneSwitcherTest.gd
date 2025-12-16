@@ -6,6 +6,8 @@ const FALLING_OBJECTS = preload("uid://babybec8acwon")
 const MURDER_PIM = preload("uid://bne2oqiiedlmb")
 @onready var ScoreCounter: Label = $Label
 @onready var LivesCounter: Label = $Lives
+@onready var Video: VideoStreamPlayer = $VideoStreamPlayer
+@onready var TransitionAnimation: AnimationPlayer = $AnimationPlayer
 
 var games = []
 var global_game
@@ -29,12 +31,16 @@ func findlevels(path):
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Debug"):
 		switch()
+		
 	ScoreCounter.text = str(G.Score)
 	LivesCounter.text = str(G.Lives)
 	
 	if G.Lives <= 0:
 		get_tree().quit()
 func switch():
+	get_tree().paused = true
+	TransitionAnimation.play("Transition")
+	await get_tree().create_timer(0.3).timeout
 	if global_game != null:
 		previous_game = global_rng
 		global_game.queue_free()
@@ -50,4 +56,11 @@ func switch():
 	Subviewport.add_child(game)
 	print(rng)
 	print(previous_game)
+	await get_tree().create_timer(0.9).timeout
+	get_tree().paused = false
 	
+func playvideo():
+	Video.paused = false
+func restartvideo():
+	Video.loop = true
+	Video.paused = true

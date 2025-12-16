@@ -1,33 +1,18 @@
 shader_type canvas_item;
 
-uniform vec4 key_color : source_color = vec4(0,1,0,1);
-uniform float similarity : hint_range(0.0,1.0) = 0.4;
-uniform float smoothness : hint_range(0.00,1.0) = 0.08;
-uniform float spill : hint_range(0.0,1.0) = 0.1;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-// From https://github.com/libretro/glsl-shaders/blob/master/nnedi3/shaders/rgb-to-yuv.glsl
-vec2 RGBtoUV(vec3 rgb) {
-  return vec2(
-    rgb.r * -0.169 + rgb.g * -0.331 + rgb.b *  0.5    + 0.5,
-    rgb.r *  0.5   + rgb.g * -0.419 + rgb.b * -0.081  + 0.5
-  );
-}
+uniform vec4 transparent_color: source_color = vec4(1.0);
+uniform float pickup_range: hint_range(0.0, 1.0, 0.001) = 0.3;
+uniform float fade_amount: hint_range(0.0, 1.0, 0.1) = 0.5;
 
-vec4 ProcessChromaKey(sampler2D tex,vec2 texCoord) {
-  vec4 rgba = texture(tex, texCoord);
-  float chromaDist = distance(RGBtoUV(texture(tex, texCoord).rgb), RGBtoUV(key_color.rgb));
-
-  float baseMask = chromaDist - similarity;
-  float fullMask = pow(clamp(baseMask / smoothness, 0., 1.), 1.5);
-  rgba.a = fullMask;
-
-  float spillVal = pow(clamp(baseMask / spill, 0., 1.), 1.5);
-  float desat = clamp(rgba.r * 0.2126 + rgba.g * 0.7152 + rgba.b * 0.0722, 0., 1.);
-  rgba.rgb = mix(vec3(desat, desat, desat), rgba.rgb, spillVal);
-
-  return rgba;
+float compare_rbg_values(vec3 orig_c, vec3 transparent_c) {
+	float r = abs(orig_c.r - transparent_c.r);
+	float g = abs(orig_c.g - transparent_c.g);
+	float b = abs(orig_c.b - transparent_c.b);
+	return smoothstep(pickup_range * fade_amount, pickup_range, (r+g+b)/3.0);
 }
 
 void fragment() {
-  COLOR = ProcessChromaKey(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 orig_color = texture(TEXTURE,UV);
+	float comparison = compare_rbg_values(orig_color.rgb, transparent_color.rgb);
+	COLOR = vec4(orig_color.rgb,comparison);
 }
