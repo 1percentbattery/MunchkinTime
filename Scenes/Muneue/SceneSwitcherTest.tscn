@@ -82,7 +82,7 @@ _data = {
 &"Transition": SubResource("Animation_qf4l0")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_7g7gc")
 
