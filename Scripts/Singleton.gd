@@ -10,6 +10,7 @@ func lostGame():
 	SceneSwitcher.switch()
 	Lives -= 1
 func wonGame():
+	Engine.time_scale += 0.1
 	SceneSwitcher.switch()
 	Score += 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,0 +1,276 @@
+[gd_scene load_steps=34 format=3 uid="uid://bu0qyhxcesltu"]
+
+[ext_resource type="Script" uid="uid://cyqfi8h8yb71w" path="res://Scripts/Worlds/Alarm.gd" id="1_t60p1"]
+[ext_resource type="Texture2D" uid="uid://bbpirxjo8jgdk" path="res://Textures/Images/IMG_0339.png" id="2_n1uc3"]
+[ext_resource type="Script" uid="uid://c4gk22bwiqjif" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="3_yxtmr"]
+[ext_resource type="Script" uid="uid://dwcdnbhdlni5g" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_4wnhn"]
+[ext_resource type="Script" uid="uid://bmqgyfl5jkygk" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="5_kc4nf"]
+[ext_resource type="Script" uid="uid://dbfj765haimqk" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_si3lg"]
+[ext_resource type="Script" uid="uid://ltsd0i755nt7" path="res://addons/shaker/data/Single/ShakerTypeSineWave1D.gd" id="7_ydlpg"]
+[ext_resource type="Script" uid="uid://bubcpu3121y34" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="8_r6b4e"]
+[ext_resource type="Script" uid="uid://bh48dcan0w4h4" path="res://addons/shaker/data/Vector2/ShakerTypeNoiseShake2D.gd" id="9_umdqn"]
+[ext_resource type="Texture2D" uid="uid://dvaegnumakwfq" path="res://Textures/Images/IMG_0336.png" id="10_6rohs"]
+[ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="11_syd26"]
+[ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="12_f77m8"]
+[ext_resource type="Texture2D" uid="uid://drj28paukgcmu" path="res://Textures/Backgrounds/Alarm.png" id="13_n1uc3"]
+
+[sub_resource type="Resource" id="Resource_uew1b"]
+script = ExtResource("5_kc4nf")
+amplitude = Vector2(3, 0.3)
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="Resource" id="Resource_033pw"]
+script = ExtResource("5_kc4nf")
+frequency = Vector2(7, 7)
+amplitude = Vector2(0.05, 0.05)
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="Resource" id="Resource_kkswf"]
+script = ExtResource("7_ydlpg")
+amplitude = 0.001
+metadata/_custom_type_script = "uid://ltsd0i755nt7"
+
+[sub_resource type="Resource" id="Resource_45mew"]
+script = ExtResource("8_r6b4e")
+PositionShake = Array[ExtResource("4_4wnhn")]([SubResource("Resource_uew1b"), SubResource("Resource_033pw"), null])
+RotationShake = Array[ExtResource("6_si3lg")]([SubResource("Resource_kkswf")])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6238"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nct4n"]
+size = Vector2(40, 40)
+
+[sub_resource type="Resource" id="Resource_ad8x5"]
+script = ExtResource("5_kc4nf")
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="Resource" id="Resource_sioaw"]
+script = ExtResource("5_kc4nf")
+frequency = Vector2(0.4, 0.4)
+phase = Vector2(2, 2)
+amplitude = Vector2(0.995, 0.5)
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="Resource" id="Resource_goumb"]
+script = ExtResource("5_kc4nf")
+frequency = Vector2(0.3, 0.3)
+amplitude = Vector2(3, 3)
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p6238"]
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rjsg7"]
+noise = SubResource("FastNoiseLite_p6238")
+
+[sub_resource type="Resource" id="Resource_bf5p5"]
+script = ExtResource("9_umdqn")
+noise_texture = SubResource("NoiseTexture2D_rjsg7")
+amplitude = Vector2(0.2, 0.2)
+metadata/_custom_type_script = "uid://bh48dcan0w4h4"
+
+[sub_resource type="Resource" id="Resource_nct4n"]
+script = ExtResource("5_kc4nf")
+frequency = Vector2(0.05, 0.05)
+amplitude = Vector2(-2, -2)
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="Resource" id="Resource_tjyou"]
+script = ExtResource("8_r6b4e")
+PositionShake = Array[ExtResource("4_4wnhn")]([SubResource("Resource_ad8x5"), SubResource("Resource_sioaw"), SubResource("Resource_goumb"), SubResource("Resource_bf5p5"), SubResource("Resource_nct4n")])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[sub_resource type="Resource" id="Resource_up3nq"]
+script = ExtResource("7_ydlpg")
+metadata/_custom_type_script = "uid://ltsd0i755nt7"
+
+[sub_resource type="Resource" id="Resource_8kvym"]
+script = ExtResource("8_r6b4e")
+RotationShake = Array[ExtResource("6_si3lg")]([SubResource("Resource_up3nq")])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[sub_resource type="Resource" id="Resource_yxtmr"]
+script = ExtResource("5_kc4nf")
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="Resource" id="Resource_4wnhn"]
+script = ExtResource("5_kc4nf")
+frequency = Vector2(3, 3)
+metadata/_custom_type_script = "uid://bmqgyfl5jkygk"
+
+[sub_resource type="Resource" id="Resource_kc4nf"]
+script = ExtResource("7_ydlpg")
+amplitude = 0.002
+metadata/_custom_type_script = "uid://ltsd0i755nt7"
+
+[sub_resource type="Resource" id="Resource_si3lg"]
+script = ExtResource("8_r6b4e")
+PositionShake = Array[ExtResource("4_4wnhn")]([SubResource("Resource_yxtmr"), SubResource("Resource_4wnhn"), null])
+RotationShake = Array[ExtResource("6_si3lg")]([SubResource("Resource_kc4nf")])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_t60p1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(854.5458, 650.7871)
+rotation = -0.07544738
+scale = Vector2(0.9112784, 0.95162684)
+skew = 0.038759947
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+z_index = -2
+offset_left = -889.17395
+offset_top = -495.6458
+offset_right = 1158.826
+offset_bottom = 1552.3542
+scale = Vector2(0.5526424, 0.5526424)
+texture = ExtResource("2_n1uc3")
+
+[node name="ShakerComponent2D" type="Node2D" parent="Node2D"]
+script = ExtResource("3_yxtmr")
+AutoPlay = true
+intensity = 200.0
+shake_speed = 0.3
+shakerPreset = SubResource("Resource_45mew")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="Snooze" type="Area2D" parent="Node2D"]
+position = Vector2(-460.64825, -138.99557)
+rotation = 0.0016255677
+scale = Vector2(7.373475, 3.5697768)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D/Snooze"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Snooze"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_p6238")
+
+[node name="Stop" type="Area2D" parent="Node2D"]
+position = Vector2(-422.67178, 18.323767)
+rotation = 0.0016255677
+scale = Vector2(5.4813557, 2.6537306)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D/Stop"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Stop"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_p6238")
+
+[node name="Cursor" type="Area2D" parent="." groups=["Cursor"]]
+position = Vector2(1151.1003, 354.77112)
+
+[node name="ColorRect" type="ColorRect" parent="Cursor"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nct4n")
+
+[node name="ShakerComponent2D" type="Node2D" parent="Cursor"]
+script = ExtResource("3_yxtmr")
+AutoPlay = true
+intensity = 100.0
+fade_in = 1.0000001
+shakerPreset = SubResource("Resource_tjyou")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="Node2D" type="Node2D" parent="Cursor"]
+rotation = 0.13287117
+
+[node name="TextureRect" type="TextureRect" parent="Cursor/Node2D"]
+z_index = -2
+offset_left = -967.0
+offset_top = -391.0
+offset_right = 1081.0
+offset_bottom = 1657.0
+scale = Vector2(0.6421873, 0.6421873)
+pivot_offset = Vector2(978, 402)
+texture = ExtResource("10_6rohs")
+
+[node name="ShakerComponent2D" type="Node2D" parent="Cursor/Node2D"]
+script = ExtResource("3_yxtmr")
+AutoPlay = true
+intensity = 0.1
+shake_speed = 0.2
+shakerPreset = SubResource("Resource_8kvym")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="SceneOpener" parent="." instance=ExtResource("11_syd26")]
+Objective = "SNOOZE"
+
+[node name="Timer" parent="." instance=ExtResource("12_f77m8")]
+WinOnTimeout = false
+
+[node name="LeftWallColor" type="ColorRect" parent="."]
+z_index = 2
+offset_left = -25.485373
+offset_top = -10.0638
+offset_right = 14.514627
+offset_bottom = 29.9362
+scale = Vector2(2.07868, 27.238686)
+color = Color(0, 0, 0, 1)
+
+[node name="RightWallColor" type="ColorRect" parent="."]
+z_index = 2
+offset_left = 1847.0
+offset_top = -10.0
+offset_right = 1887.0
+offset_bottom = 30.0
+scale = Vector2(2.07868, 27.238686)
+color = Color(0, 0, 0, 1)
+
+[node name="FloorColor" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 1968.0
+offset_top = 991.0
+offset_right = 2008.0
+offset_bottom = 1031.0
+rotation = 1.5707964
+scale = Vector2(2.4721975, 51.395275)
+color = Color(0, 0, 0, 1)
+
+[node name="CeilingColor" type="ColorRect" parent="."]
+z_index = 2
+offset_left = 1871.0
+offset_top = -8.999995
+offset_right = 1911.0
+offset_bottom = 31.000004
+rotation = 1.5707964
+scale = Vector2(2.4721975, 46.355274)
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(969.68976, 471.47925)
+rotation = 0.09176662
+
+[node name="TextureRect" type="TextureRect" parent="Node2D2"]
+z_index = -3
+offset_left = -1261.0212
+offset_top = -675.6654
+offset_right = -521.02124
+offset_bottom = -195.6654
+scale = Vector2(3.3464258, 3.3464258)
+texture = ExtResource("13_n1uc3")
+
+[node name="ShakerComponent2D" type="Node2D" parent="Node2D2"]
+scale = Vector2(1.3161594, 1.1423609)
+script = ExtResource("3_yxtmr")
+AutoPlay = true
+intensity = 30.0
+shake_speed = 0.1
+shakerPreset = SubResource("Resource_si3lg")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
