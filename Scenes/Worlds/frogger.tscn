@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cup220pspjpfk"]
+[gd_scene load_steps=23 format=3 uid="uid://cup220pspjpfk"]
 
 [ext_resource type="Script" uid="uid://owdw0r7jcwh5" path="res://Scripts/Worlds/frogger.gd" id="1_umnbs"]
 [ext_resource type="Script" uid="uid://dyh1mnuijj3a" path="res://FroggerBody.gd" id="2_1sd8u"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="11_wad7s"]
 [ext_resource type="Shader" uid="uid://d2dpof31s3haq" path="res://Scripts/Shader/Overlay.gdshader" id="12_1sd8u"]
 [ext_resource type="Texture2D" uid="uid://c2s8mtxt01ewo" path="res://Textures/Images/skull(tuff).webp" id="13_an2ax"]
+[ext_resource type="Script" uid="uid://cd2hsy1fhcmq2" path="res://Scripts/Objects/push_right.gd" id="14_qwllj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byso3"]
 size = Vector2(22, 68)
@@ -100,7 +101,10 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_an2ax"]
 shader = ExtResource("12_1sd8u")
 shader_parameter/tex = ExtResource("13_an2ax")
-shader_parameter/scrollSpeed = Vector2(0.1, 0.1)
+shader_parameter/scrollSpeed = Vector2(0.5, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an2ax"]
+size = Vector2(1941.5, 40)
 
 [node name="Frogger" type="Node2D"]
 script = ExtResource("1_umnbs")
@@ -301,17 +305,50 @@ position = Vector2(962, 537.99994)
 scale = Vector2(1.8847656, 1.0585936)
 texture = ExtResource("10_iq0tt")
 
-[node name="Block1" parent="." instance=ExtResource("7_ch1f1")]
+[node name="Arears" type="Node2D" parent="."]
+
+[node name="Block1" parent="Arears" instance=ExtResource("7_ch1f1")]
 position = Vector2(-37, 427)
 scale = Vector2(1, 50)
 
-[node name="Block2" parent="." instance=ExtResource("7_ch1f1")]
+[node name="Block2" parent="Arears" instance=ExtResource("7_ch1f1")]
 position = Vector2(1965, 574)
 scale = Vector2(1, 50)
 
-[node name="Block3" parent="." instance=ExtResource("7_ch1f1")]
+[node name="Block3" parent="Arears" instance=ExtResource("7_ch1f1")]
 position = Vector2(1089, 1125)
 scale = Vector2(40, 1)
+
+[node name="Push right" type="Area2D" parent="Arears"]
+script = ExtResource("14_qwllj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arears/Push right"]
+position = Vector2(968.5, 897)
+shape = SubResource("RectangleShape2D_an2ax")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Arears/Push right"]
+position = Vector2(966.75, 375)
+shape = SubResource("RectangleShape2D_an2ax")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Arears/Push right"]
+position = Vector2(967, 598)
+shape = SubResource("RectangleShape2D_an2ax")
+
+[node name="Push Left" type="Area2D" parent="Arears"]
+script = ExtResource("14_qwllj")
+speed = Vector2(-300, 0)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Arears/Push Left"]
+position = Vector2(968, 672)
+shape = SubResource("RectangleShape2D_an2ax")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Arears/Push Left"]
+position = Vector2(969, 825)
+shape = SubResource("RectangleShape2D_an2ax")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Arears/Push Left"]
+position = Vector2(969, 449)
+shape = SubResource("RectangleShape2D_an2ax")
 
 [connection signal="area_entered" from="WinBox" to="." method="_on_win_box_area_entered"]
 [connection signal="body_entered" from="WinBox" to="." method="_on_win_box_body_entered"]
