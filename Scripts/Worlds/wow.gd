@@ -1,7 +1,8 @@
 extends Node2D
-var lost  =false
+var lost =false
 func win():
 	if !lost:
+		$Timer.hide()
 		$CharacterBody2D/Sprite2D.play("WOW")
 		$WinAnimation.play("WOWAnimation")
 		$objScroller_spawner.queue_free()
@@ -9,6 +10,7 @@ func lose():
 	lost = true
 	$CharacterBody2D/Sprite2D.play("WOW")
 	$objScroller_spawner.queue_free()
+	$Timer.hide()
 	$LightDefaultSquare.material.set_shader_parameter("add",Vector4(0,-1,-1,0))
 	$loseAnimation.play("WOWyoulost")
 func start():
@@ -16,10 +18,10 @@ func start():
 	$Timer.start()
 
 func _ready() -> void:
+	$LightDefaultSquare.material = $LightDefaultSquare.material.duplicate()
 	$CharacterBody2D.whereToSendLose = self
 	$CharacterBody2D/Sprite2D.play("default")
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	G.wonGame()
 func _on_lose_animation_animation_finished(anim_name: StringName) -> void:
 	G.lostGame()
-	pass # Replace with function body.
