@@ -16,12 +16,11 @@ func _process(delta: float) -> void:
 	ProgressBarNode.value = TimerNode.time_left
 func _on_timer_timeout() -> void:
 	if QuitSceneOnTimeout:
-		G.SceneSwitcher.switch()
+		G.lostGame()
 	else:
 		if WinOnTimeout:
 			get_parent().win()
 		else:
-			G.CurrentGame.lose()
-		
+			get_parent().lose()
 func stop():
 	TimerNode.stop()
