@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bbwb6evvupdet" path="res://Scripts/Objects/obj_scroller_spawner.gd" id="1_kc1v2"]
 [ext_resource type="Script" uid="uid://c4guf37sq5kfa" path="res://Scripts/PlayerTypes/WOWController.gd" id="2_5yd8y"]
 [ext_resource type="PackedScene" uid="uid://bs6ti68dm2vja" path="res://Scenes/Objects/blocks/block_1.tscn" id="2_7ffhx"]
-[ext_resource type="Material" uid="uid://j0uajsta88xs" path="res://Textures/Shaders/wow.tres" id="2_ayon8"]
+[ext_resource type="Material" uid="uid://da14fw283ixm6" path="res://Textures/Shaders/wow.tres" id="2_ayon8"]
 [ext_resource type="Texture2D" uid="uid://dpr3byy6gtwpd" path="res://Textures/Images/WOWWOW.webp" id="3_53sxc"]
 [ext_resource type="PackedScene" uid="uid://c5lfeqwr588eg" path="res://Scenes/Objects/blocks/block2.tscn" id="3_wwhou"]
 [ext_resource type="Script" uid="uid://c0prkxru6tdbw" path="res://Scripts/Objects/kill_box.gd" id="4_uxbtt"]
