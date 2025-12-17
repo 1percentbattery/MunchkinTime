@@ -51,7 +51,7 @@ gradient = SubResource("Gradient_pdjym")
 shader = ExtResource("9_13jfn")
 shader_parameter/tex = SubResource("GradientTexture1D_fgacm")
 shader_parameter/scrollSpeed = Vector2(0.1, 0)
-shader_parameter/amnt = 0.5750000273125
+shader_parameter/amnt = 0.0
 
 [sub_resource type="Gradient" id="Gradient_nqh0d"]
 offsets = PackedFloat32Array(0.008474576, 1)

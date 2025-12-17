@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwrbd8i5vby1c"]
+
+[ext_resource type="Script" uid="uid://cq437phchbafk" path="res://Scripts/Worlds/HammerGame.gd" id="1_i2p2l"]
+
+[node name="HammerGame" type="Node2D"]
+script = ExtResource("1_i2p2l")

@@ -27,9 +27,9 @@ func _process(delta: float) -> void:
 	if currentLevel > targets[currentBar] + range:
 		lose()
 		return
-	if Input.is_action_just_pressed("Special"):
+	if Input.is_action_just_pressed("Special") or Input.is_action_just_pressed("Jump"):
 		if currentLevel > targets[currentBar] - range:
-			nextBar()
+			nextBar() 
 			$AnimationPlayer.play("Good")
 		else:
 			lose()
