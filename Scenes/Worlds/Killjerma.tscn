@@ -1,0 +1,200 @@
+[gd_scene load_steps=19 format=3 uid="uid://jqehy5dsr7qf"]
+
+[ext_resource type="Script" uid="uid://bxyxhrs4jty5v" path="res://Scripts/Worlds/KillJerma.gd" id="1_xyuaw"]
+[ext_resource type="Texture2D" uid="uid://1eumfavqx4m3" path="res://Textures/Backgrounds/KillJerma.jpg" id="2_folkx"]
+[ext_resource type="Texture2D" uid="uid://ciqkyklpiw104" path="res://Textures/Images/Jermer.png" id="3_s3d0x"]
+[ext_resource type="Script" uid="uid://c4gk22bwiqjif" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="4_iekk4"]
+[ext_resource type="Script" uid="uid://dwcdnbhdlni5g" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="5_fmi2j"]
+[ext_resource type="Script" uid="uid://c5jnblraugfr8" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="6_jfc67"]
+[ext_resource type="Script" uid="uid://dbfj765haimqk" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="7_lkoee"]
+[ext_resource type="Script" uid="uid://bubcpu3121y34" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="8_dfrn7"]
+[ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="9_1718j"]
+[ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="10_v7w51"]
+[ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="11_200b3"]
+[ext_resource type="Texture2D" uid="uid://2e7bk4imiw55" path="res://Textures/Fonts/JermaLose.webp" id="12_bwls0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_glscx"]
+radius = 419.01074
+
+[sub_resource type="Resource" id="Resource_51px3"]
+script = ExtResource("6_jfc67")
+metadata/_custom_type_script = "uid://c5jnblraugfr8"
+
+[sub_resource type="Resource" id="Resource_q8hvi"]
+script = ExtResource("8_dfrn7")
+PositionShake = Array[ExtResource("5_fmi2j")]([SubResource("Resource_51px3")])
+metadata/_custom_type_script = "uid://bubcpu3121y34"
+
+[sub_resource type="Animation" id="Animation_eojjk"]
+resource_name = "Lose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0002448065, 0.3113584),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lt0r0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0011530011),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82rub"]
+_data = {
+&"Lose": SubResource("Animation_eojjk"),
+&"RESET": SubResource("Animation_lt0r0")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xyuaw")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.3562273, 0.3129996)
+texture = ExtResource("2_folkx")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-1.8031758e-05, 36)
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+offset_left = 651.0
+offset_top = 314.0
+offset_right = 1263.0
+offset_bottom = 742.0
+scale = Vector2(2.5725837, 2.5725837)
+pivot_offset = Vector2(292.45593, 185.80415)
+texture = ExtResource("3_s3d0x")
+
+[node name="Area2D" type="Area2D" parent="Node2D/TextureRect"]
+position = Vector2(289.34616, 188.91386)
+scale = Vector2(0.38871428, 0.38871428)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/TextureRect/Area2D"]
+shape = SubResource("CircleShape2D_glscx")
+
+[node name="JermaArea" type="Area2D" parent="Node2D/TextureRect"]
+priority = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/TextureRect/JermaArea"]
+polygon = PackedVector2Array(257.47162, 125.942154, 263.69104, 166.36844, 259.0265, 211.84802, 257.0829, 246.05487, 258.63776, 300.47488, 256.6942, 337.79144, 258.63776, 356.061, 250.86348, 371.6096, 253.19576, 380.55002, 264.07977, 382.4936, 283.90417, 350.23032, 278.0735, 309.4153, 292.45593, 232.06116, 312.66907, 304.75073, 310.72546, 348.67545, 316.9449, 365.39017, 331.32733, 379.38388, 344.54364, 380.93872, 346.87592, 373.94186, 332.8822, 348.67545, 334.82574, 303.19586, 332.8822, 239.05801, 328.2176, 202.9076, 324.3305, 167.14587, 335.6032, 125.942154, 373.6972, 116.61302, 427.72845, 114.66945, 461.9353, 112.33716, 461.9353, 105.72902, 429.67206, 103.39673, 409.8476, 104.562874, 391.57806, 97.954735, 355.4276, 101.064445, 328.2176, 96.01116, 309.1706, 93.29016, 310.3368, 72.29959, 312.66907, 57.91716, 304.1173, 45.478302, 290.51233, 42.7573, 278.8509, 53.641304, 276.90735, 71.91087, 282.3493, 84.73845, 282.73804, 95.622444, 245.42146, 97.954735, 204.21776, 96.39987, 170.01091, 93.29016, 140.85733, 94.06759, 127.64105, 97.17731, 140.07991, 102.6193, 162.62534, 104.95159, 194.4999, 113.5033, 219.76634, 113.89202, 248.9199, 120.11145)
+
+[node name="ShakerComponent2D" type="Node2D" parent="Node2D"]
+script = ExtResource("4_iekk4")
+intensity = 28.0
+duration = 0.1
+fade_in = 5.895603e-05
+fade_out = 3.0314324
+shakerPreset = SubResource("Resource_q8hvi")
+metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="LeftWallColor" type="ColorRect" parent="."]
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 30.0
+scale = Vector2(2.07868, 27.238686)
+color = Color(0, 0, 0, 1)
+
+[node name="RightWallColor" type="ColorRect" parent="."]
+z_index = 2
+offset_left = 1847.0
+offset_top = -10.0
+offset_right = 1887.0
+offset_bottom = 30.0
+scale = Vector2(2.07868, 27.238686)
+color = Color(0, 0, 0, 1)
+
+[node name="FloorColor" type="ColorRect" parent="."]
+offset_left = 1968.0
+offset_top = 991.0
+offset_right = 2008.0
+offset_bottom = 1031.0
+rotation = 1.5707964
+scale = Vector2(2.4721975, 51.395275)
+color = Color(0, 0, 0, 1)
+
+[node name="CeilingColor" type="ColorRect" parent="."]
+z_index = 2
+offset_left = 1871.0
+offset_top = -8.999995
+offset_right = 1911.0
+offset_bottom = 31.000004
+rotation = 1.5707964
+scale = Vector2(2.4721975, 46.355274)
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" parent="." instance=ExtResource("9_1718j")]
+time = 10
+WinOnTimeout = false
+
+[node name="SceneOpener" parent="." instance=ExtResource("10_v7w51")]
+Objective = "KILL JERMA"
+
+[node name="WinloseIndicator" parent="." instance=ExtResource("11_200b3")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_82rub")
+}
+autoplay = "RESET"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+z_index = 2
+offset_top = -14.0
+offset_right = 640.0
+offset_bottom = 555.0
+scale = Vector2(3.0108278, 1.9735119)
+texture = ExtResource("12_bwls0")
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="area_entered" from="Node2D/TextureRect/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Node2D/TextureRect/JermaArea" to="." method="_on_jerma_area_area_entered"]

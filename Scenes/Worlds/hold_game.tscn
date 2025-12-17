@@ -1,6 +1,5 @@
 [gd_scene load_steps=32 format=3 uid="uid://72fpj6abeljh"]
 
-[ext_resource type="Script" path="res://Scripts/Worlds/hold_game.gd" id="1_8kqn3"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="2_f4ikv"]
 [ext_resource type="Shader" path="res://Textures/Shaders/shaderForBarstres.gdshader" id="3_mfp1u"]
 [ext_resource type="Texture2D" uid="uid://c83ggpwl1scik" path="res://Textures/Images/EvilGradient-export.png" id="4_13jfn"]
@@ -11,6 +10,73 @@
 [ext_resource type="Shader" path="res://Scripts/Shader/Overlay.gdshader" id="9_13jfn"]
 [ext_resource type="Texture2D" uid="uid://rttv4vqo5vis" path="res://Textures/Images/matrixNeo.webp" id="10_nqh0d"]
 [ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="11_pdjym"]
+
+[sub_resource type="GDScript" id="GDScript_nqh0d"]
+script/source = "extends Node2D
+@export var speedMod := 0.5
+var on = false
+var barList = []
+var targets = []
+@onready var indicator = $Indicator
+var currentLevel : float = 0.0
+var currentBar : int = -1
+@warning_ignore(\"shadowed_global_identifier\")
+@export var range : float = 0.1#either side
+@export var amnt = 0.0
+@export var evilAmnt = 0.0
+func _ready():
+	for bar in $Bars.get_children():
+		bar.material.set_shader_parameter(\"showFrom\",0.0)
+		barList += [bar]
+		targets += [randf_range(0.25,1.0)]
+	print(barList,targets)
+	nextBar()
+func _process(delta: float) -> void:
+	$LightDefaultSquare.material.set_shader_parameter(\"amnt\",amnt)
+	$EvilLightDefaultSquare.material.set_shader_parameter(\"amnt\",evilAmnt)
+	if !on:
+		return
+	currentLevel = min(1,currentLevel + delta * speedMod)
+	barList[currentBar].material.set_shader_parameter(\"showTo\",currentLevel)
+	if currentLevel > targets[currentBar] + range:
+		lose()
+	if Input.is_action_just_pressed(\"Special\"):
+		return
+	if Input.is_action_just_pressed(\"Special\") or Input.is_action_just_pressed(\"Jump\"):
+		if currentLevel > targets[currentBar] - range:
+			nextBar() 
+			$AnimationPlayer.play(\"Good\")
+		else:
+			lose()
+func nextBar():
+	currentLevel = 0.0
+	currentBar += 1
+	if currentBar >= barList.size():
+		win()
+		return
+	indicator.global_position = barList[currentBar].global_position
+	indicator.material.set_shader_parameter(\"showTo\",targets[currentBar] + range)
+	indicator.material.set_shader_parameter(\"showFrom\",targets[currentBar] - range)
+func start():
+	on = true
+func win():
+	on = false
+	$Indicator.hide()
+	#$AnimationPlayer.clear_queue()
+	$WinAnimation.play(\"Win\")
+	$WinloseIndicator.win()
+func lose():
+	$AnimationPlayer.play(\"Lose\")
+	$WinloseIndicator.lose()
+	on = false
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == \"Good\":
+		return
+	if anim_name == \"Lose\":
+		G.lostGame()
+func _on_win_animation_animation_finished(anim_name: StringName) -> void:
+	G.wonGame()
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_anlwh"]
 shader = ExtResource("3_mfp1u")
@@ -186,7 +252,7 @@ _data = {
 }
 
 [node name="HoldGame" type="Node2D"]
-script = ExtResource("1_8kqn3")
+script = SubResource("GDScript_nqh0d")
 range = 0.03
 
 [node name="SceneOpener" parent="." instance=ExtResource("2_f4ikv")]
