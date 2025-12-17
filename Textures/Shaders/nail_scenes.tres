@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bmecognvkcwru"]
+
+[ext_resource type="Shader" uid="uid://d2dpof31s3haq" path="res://Scripts/Shader/Overlay.gdshader" id="1_xyp5v"]
+[ext_resource type="Texture2D" uid="uid://e588dhq3gh2w" path="res://Textures/Images/Contruction.webp" id="2_0eh61"]
+
+[resource]
+shader = ExtResource("1_xyp5v")
+shader_parameter/tex = ExtResource("2_0eh61")
+shader_parameter/scrollSpeed = Vector2(0, 0)
+shader_parameter/amnt = 0.0

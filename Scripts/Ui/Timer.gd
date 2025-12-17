@@ -11,6 +11,8 @@ func _ready() -> void:
 	TimerNode.wait_time = time
 	ProgressBarNode.max_value = time
 func start():
+	TimerNode.wait_time = time
+	ProgressBarNode.max_value = time
 	FuzeAnimation.speed_scale = 1 / TimerNode.wait_time
 	FuzeAnimation.stop()
 	FuzeAnimation.play("Fuzer")
@@ -28,6 +30,3 @@ func _on_timer_timeout() -> void:
 			get_parent().lose()
 func stop():
 	TimerNode.stop()
-
-
-	
