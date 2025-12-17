@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 func _process(delta: float) -> void:
 	if WonGames >= 5:
-		Engine.time_scale += 0.2
+		Engine.time_scale += 0.5
 		WonGames = 0
 	
 func lostGame():
