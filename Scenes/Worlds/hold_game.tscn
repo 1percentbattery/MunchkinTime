@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://72fpj6abeljh"]
+[gd_scene load_steps=34 format=3 uid="uid://72fpj6abeljh"]
 
 [ext_resource type="Script" uid="uid://7hv03k3hafjt" path="res://Scripts/Worlds/hold_game.gd" id="1_8kqn3"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="2_f4ikv"]
@@ -40,18 +40,18 @@ shader_parameter/showTo = 0.3650000173375
 shader = ExtResource("7_mfp1u")
 shader_parameter/scroll = Vector2(0.1, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_13jfn"]
+[sub_resource type="Gradient" id="Gradient_pdjym"]
 offsets = PackedFloat32Array(0.008474576, 1)
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_nqh0d"]
-gradient = SubResource("Gradient_13jfn")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fgacm"]
+gradient = SubResource("Gradient_pdjym")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdjym"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkrx0"]
 shader = ExtResource("9_13jfn")
-shader_parameter/tex = SubResource("GradientTexture1D_nqh0d")
+shader_parameter/tex = SubResource("GradientTexture1D_fgacm")
 shader_parameter/scrollSpeed = Vector2(0.1, 0)
-shader_parameter/amnt = 0.0
+shader_parameter/amnt = 0.5750000273125
 
 [sub_resource type="Gradient" id="Gradient_nqh0d"]
 offsets = PackedFloat32Array(0.008474576, 1)
@@ -65,6 +65,38 @@ shader = ExtResource("9_13jfn")
 shader_parameter/tex = SubResource("GradientTexture1D_pdjym")
 shader_parameter/scrollSpeed = Vector2(0.1, 0)
 shader_parameter/amnt = 0.0
+
+[sub_resource type="Animation" id="Animation_13jfn"]
+resource_name = "win"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:amnt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333),
+"transitions": PackedFloat32Array(1.4640855, 0.08246921, 1),
+"update": 0,
+"values": [0.0, 0.8, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pdjym"]
+resource_name = "Lose"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:evilAmnt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.9]
+}
 
 [sub_resource type="Animation" id="Animation_nqh0d"]
 length = 0.001
@@ -105,61 +137,11 @@ tracks/2/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_pdjym"]
-resource_name = "Lose"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:evilAmnt")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.9]
-}
-
-[sub_resource type="Animation" id="Animation_13jfn"]
-resource_name = "win"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:amnt")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.23333333),
-"transitions": PackedFloat32Array(1.4640855, 0.08246921, 1),
-"update": 0,
-"values": [0.0, 0.8, 0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nqh0d"]
 _data = {
 &"Good": SubResource("Animation_13jfn"),
 &"Lose": SubResource("Animation_pdjym"),
 &"RESET": SubResource("Animation_nqh0d")
-}
-
-[sub_resource type="Animation" id="Animation_fgacm"]
-resource_name = "new_animation"
-
-[sub_resource type="Animation" id="Animation_mkrx0"]
-resource_name = "Win"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bars:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.96666664),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 25.227276), Vector2(0, 1100)]
 }
 
 [sub_resource type="Animation" id="Animation_kg0ks"]
@@ -177,11 +159,66 @@ tracks/0/keys = {
 "values": [Vector2(0, 25.227276)]
 }
 
+[sub_resource type="Animation" id="Animation_mkrx0"]
+resource_name = "Win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 25.227276), Vector2(0, 1100)]
+}
+
+[sub_resource type="Animation" id="Animation_fgacm"]
+resource_name = "new_animation"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f63ig"]
 _data = {
 &"RESET": SubResource("Animation_kg0ks"),
 &"Win": SubResource("Animation_mkrx0"),
 &"new_animation": SubResource("Animation_fgacm")
+}
+
+[sub_resource type="Animation" id="Animation_f63ig"]
+resource_name = "new_animation"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:evilAmnt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_kjy0o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:evilAmnt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epq34"]
+_data = {
+&"Lose": SubResource("Animation_f63ig"),
+&"RESET": SubResource("Animation_kjy0o")
 }
 
 [node name="HoldGame" type="Node2D"]
@@ -258,13 +295,14 @@ texture = ExtResource("8_mfp1u")
 
 [node name="LightDefaultSquare" type="Sprite2D" parent="."]
 z_index = 10
-material = SubResource("ShaderMaterial_pdjym")
-position = Vector2(954.5, 542)
-scale = Vector2(1.9345703, 1.1484375)
+material = SubResource("ShaderMaterial_mkrx0")
+position = Vector2(919.99994, 567)
+scale = Vector2(2.001953, 1.1972656)
 texture = ExtResource("6_pdjym")
 
 [node name="EvilLightDefaultSquare" type="Sprite2D" parent="."]
-z_index = 8
+visible = false
+z_index = 14
 material = SubResource("ShaderMaterial_fgacm")
 position = Vector2(954.5, 542)
 scale = Vector2(1.9345703, 1.1484375)
@@ -280,5 +318,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_f63ig")
 }
 
+[node name="LoseAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_epq34")
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="WinAnimation" to="." method="_on_win_animation_animation_finished"]
+[connection signal="animation_finished" from="LoseAnimation" to="." method="_on_lose_animation_animation_finished"]

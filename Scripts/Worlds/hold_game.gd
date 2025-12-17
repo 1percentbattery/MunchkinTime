@@ -11,21 +11,22 @@ var currentBar : int = -1
 @export var amnt = 0.0
 @export var evilAmnt = 0.0
 func _ready():
+	$EvilLightDefaultSquare.hide()
 	for bar in $Bars.get_children():
 		bar.material.set_shader_parameter("showFrom",0.0)
 		barList += [bar]
 		targets += [randf_range(0.25,1.0)]
-	print(barList,targets)
 	nextBar()
 func _process(delta: float) -> void:
 	$LightDefaultSquare.material.set_shader_parameter("amnt",amnt)
 	$EvilLightDefaultSquare.material.set_shader_parameter("amnt",evilAmnt)
 	if !on:
 		return
-	currentLevel = min(1,currentLevel + delta * speedMod)
+	currentLevel = currentLevel + delta * speedMod
 	barList[currentBar].material.set_shader_parameter("showTo",currentLevel)
 	if currentLevel > targets[currentBar] + range:
 		lose()
+		return
 	if Input.is_action_just_pressed("Special"):
 		if currentLevel > targets[currentBar] - range:
 			nextBar()
@@ -49,12 +50,10 @@ func win():
 	#$AnimationPlayer.clear_queue()
 	$WinAnimation.play("Win")
 func lose():
-	$AnimationPlayer.play("Lose")
+	$EvilLightDefaultSquare.show()
+	$LoseAnimation.play("Lose")
 	on = false
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Good":
-		return
-	if anim_name == "Lose":
-		G.lostGame()
 func _on_win_animation_animation_finished(anim_name: StringName) -> void:
 	G.wonGame()
+func _on_lose_animation_animation_finished(anim_name: StringName) -> void:
+	G.lostGame()
