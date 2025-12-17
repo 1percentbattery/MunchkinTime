@@ -1,0 +1,284 @@
+[gd_scene load_steps=31 format=3 uid="uid://72fpj6abeljh"]
+
+[ext_resource type="Script" uid="uid://7hv03k3hafjt" path="res://Scripts/Worlds/hold_game.gd" id="1_8kqn3"]
+[ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="2_f4ikv"]
+[ext_resource type="Shader" uid="uid://c3qgu4m3sj0ns" path="res://Textures/Shaders/shaderForBarstres.gdshader" id="3_mfp1u"]
+[ext_resource type="Texture2D" uid="uid://c83ggpwl1scik" path="res://Textures/Images/EvilGradient-export.png" id="4_13jfn"]
+[ext_resource type="Texture2D" uid="uid://dreten671yi22" path="res://Textures/Images/Texxtureizer.png" id="5_nqh0d"]
+[ext_resource type="Texture2D" uid="uid://c7wcddtxepufo" path="res://Textures/Images/light_default_square.png" id="6_pdjym"]
+[ext_resource type="Shader" uid="uid://8cp7j20lrqgy" path="res://Scripts/Shader/scroll.gdshader" id="7_mfp1u"]
+[ext_resource type="Texture2D" uid="uid://hlmkor43nt24" path="res://Textures/Images/random-numbers-matrix-background.webp" id="8_mfp1u"]
+[ext_resource type="Shader" uid="uid://d2dpof31s3haq" path="res://Scripts/Shader/Overlay.gdshader" id="9_13jfn"]
+[ext_resource type="Texture2D" uid="uid://rttv4vqo5vis" path="res://Textures/Images/matrixNeo.webp" id="10_nqh0d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anlwh"]
+shader = ExtResource("3_mfp1u")
+shader_parameter/showFrom = 0.0
+shader_parameter/showTo = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esnvc"]
+shader = ExtResource("3_mfp1u")
+shader_parameter/showFrom = 0.0
+shader_parameter/showTo = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpc2e"]
+shader = ExtResource("3_mfp1u")
+shader_parameter/showFrom = 0.0
+shader_parameter/showTo = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jh1cx"]
+shader = ExtResource("3_mfp1u")
+shader_parameter/showFrom = 0.0
+shader_parameter/showTo = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7pr4"]
+shader = ExtResource("3_mfp1u")
+shader_parameter/showFrom = 0.02800000133
+shader_parameter/showTo = 0.3650000173375
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqh0d"]
+shader = ExtResource("7_mfp1u")
+shader_parameter/scroll = Vector2(0.1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_13jfn"]
+offsets = PackedFloat32Array(0.008474576, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nqh0d"]
+gradient = SubResource("Gradient_13jfn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdjym"]
+shader = ExtResource("9_13jfn")
+shader_parameter/tex = SubResource("GradientTexture1D_nqh0d")
+shader_parameter/scrollSpeed = Vector2(0.1, 0)
+shader_parameter/amnt = 0.0
+
+[sub_resource type="Gradient" id="Gradient_nqh0d"]
+offsets = PackedFloat32Array(0.008474576, 1)
+colors = PackedColorArray(1, 0, 0.016666412, 1, 1, 0, 0.016666412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pdjym"]
+gradient = SubResource("Gradient_nqh0d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fgacm"]
+shader = ExtResource("9_13jfn")
+shader_parameter/tex = SubResource("GradientTexture1D_pdjym")
+shader_parameter/scrollSpeed = Vector2(0.1, 0)
+shader_parameter/amnt = 0.0
+
+[sub_resource type="Animation" id="Animation_nqh0d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:amnt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:evilAmnt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bars:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pdjym"]
+resource_name = "Lose"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:evilAmnt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.9]
+}
+
+[sub_resource type="Animation" id="Animation_13jfn"]
+resource_name = "win"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:amnt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333),
+"transitions": PackedFloat32Array(1.4640855, 0.08246921, 1),
+"update": 0,
+"values": [0.0, 0.8, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqh0d"]
+_data = {
+&"Good": SubResource("Animation_13jfn"),
+&"Lose": SubResource("Animation_pdjym"),
+&"RESET": SubResource("Animation_nqh0d")
+}
+
+[sub_resource type="Animation" id="Animation_fgacm"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_mkrx0"]
+resource_name = "Win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 25.227276), Vector2(0, 1100)]
+}
+
+[sub_resource type="Animation" id="Animation_kg0ks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 25.227276)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f63ig"]
+_data = {
+&"RESET": SubResource("Animation_kg0ks"),
+&"Win": SubResource("Animation_mkrx0"),
+&"new_animation": SubResource("Animation_fgacm")
+}
+
+[node name="HoldGame" type="Node2D"]
+script = ExtResource("1_8kqn3")
+range = 0.03
+
+[node name="SceneOpener" parent="." instance=ExtResource("2_f4ikv")]
+z_index = 5
+Objective = "Chop the Code!"
+
+[node name="Bars" type="Node2D" parent="."]
+position = Vector2(0, 25.227276)
+
+[node name="EvilGradientExport" type="Sprite2D" parent="Bars"]
+material = SubResource("ShaderMaterial_anlwh")
+position = Vector2(960, 367)
+scale = Vector2(38.4, 1)
+texture = ExtResource("4_13jfn")
+
+[node name="Texxtureizer" type="Sprite2D" parent="Bars/EvilGradientExport"]
+z_index = -4
+texture = ExtResource("5_nqh0d")
+
+[node name="EvilGradientExport2" type="Sprite2D" parent="Bars"]
+material = SubResource("ShaderMaterial_esnvc")
+position = Vector2(958, 478)
+scale = Vector2(38.4, 1)
+texture = ExtResource("4_13jfn")
+
+[node name="Texxtureizer" type="Sprite2D" parent="Bars/EvilGradientExport2"]
+z_index = -4
+texture = ExtResource("5_nqh0d")
+
+[node name="EvilGradientExport3" type="Sprite2D" parent="Bars"]
+material = SubResource("ShaderMaterial_cpc2e")
+position = Vector2(961.00006, 604)
+scale = Vector2(38.4, 1)
+texture = ExtResource("4_13jfn")
+
+[node name="Texxtureizer" type="Sprite2D" parent="Bars/EvilGradientExport3"]
+z_index = -4
+texture = ExtResource("5_nqh0d")
+
+[node name="EvilGradientExport4" type="Sprite2D" parent="Bars"]
+material = SubResource("ShaderMaterial_jh1cx")
+position = Vector2(960, 728)
+scale = Vector2(38.4, 1)
+texture = ExtResource("4_13jfn")
+
+[node name="Texxtureizer" type="Sprite2D" parent="Bars/EvilGradientExport4"]
+z_index = -4
+texture = ExtResource("5_nqh0d")
+
+[node name="MatrixNeo" type="Sprite2D" parent="Bars/EvilGradientExport4/Texxtureizer"]
+z_index = 2
+position = Vector2(0.13020706, -1360.5454)
+scale = Vector2(0.10046875, 5.8461537)
+texture = ExtResource("10_nqh0d")
+
+[node name="Indicator" type="Sprite2D" parent="."]
+modulate = Color(0.49411765, 1, 0.03137255, 1)
+z_index = -1
+material = SubResource("ShaderMaterial_u7pr4")
+position = Vector2(960.00006, 245.00003)
+scale = Vector2(1.8730468, 0.10839844)
+texture = ExtResource("6_pdjym")
+
+[node name="Amtrix" type="Sprite2D" parent="."]
+z_index = -11
+material = SubResource("ShaderMaterial_nqh0d")
+position = Vector2(949.00006, 536.5)
+scale = Vector2(3.904, 3.2371426)
+texture = ExtResource("8_mfp1u")
+
+[node name="LightDefaultSquare" type="Sprite2D" parent="."]
+z_index = 10
+material = SubResource("ShaderMaterial_pdjym")
+position = Vector2(954.5, 542)
+scale = Vector2(1.9345703, 1.1484375)
+texture = ExtResource("6_pdjym")
+
+[node name="EvilLightDefaultSquare" type="Sprite2D" parent="."]
+z_index = 8
+material = SubResource("ShaderMaterial_fgacm")
+position = Vector2(954.5, 542)
+scale = Vector2(1.9345703, 1.1484375)
+texture = ExtResource("6_pdjym")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nqh0d")
+}
+
+[node name="WinAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f63ig")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="WinAnimation" to="." method="_on_win_animation_animation_finished"]

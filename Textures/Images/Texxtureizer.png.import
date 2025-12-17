@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hbybw6bmr12s"
-valid=false
+uid="uid://dreten671yi22"
+path="res://.godot/imported/Texxtureizer.png-b4b2ce8310c4a0436ae75dfb41b1d3a4.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Textures/IMG_0341.png"
+source_file="res://Textures/Images/Texxtureizer.png"
+dest_files=["res://.godot/imported/Texxtureizer.png-b4b2ce8310c4a0436ae75dfb41b1d3a4.ctex"]
 
 [params]
 
