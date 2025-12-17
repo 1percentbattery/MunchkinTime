@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqbybjwv7upfu"]
+[gd_scene load_steps=18 format=3 uid="uid://cqbybjwv7upfu"]
 
 [ext_resource type="Script" uid="uid://df0r4f2ywkh43" path="res://Scripts/PlayerTypes/steve2.gd" id="1_saohq"]
+[ext_resource type="Texture2D" uid="uid://ci3hjhopu0d03" path="res://Models/Obj/textures/steve_large.webp" id="2_2f56t"]
 [ext_resource type="Script" uid="uid://1x72of1acex0" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="2_sn34n"]
 [ext_resource type="Script" uid="uid://de5q5mytop1k2" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="3_2f56t"]
 [ext_resource type="Script" uid="uid://d2be71d8rmrft" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="4_8xv3w"]
@@ -12,6 +13,11 @@
 size = Vector3(0.7, 1.94, 0.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sn34n"]
+albedo_texture = ExtResource("2_2f56t")
+uv1_scale = Vector3(-0.339, -1.025, 0.4)
+uv1_offset = Vector3(-0.165, 0, 0.295)
+uv1_triplanar = true
+texture_filter = 0
 use_z_clip_scale = true
 z_clip_scale = 0.5
 use_fov_override = true
@@ -107,13 +113,14 @@ metadata/_custom_type_script = "uid://dxuyjnid4oop4"
 script = ExtResource("1_saohq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_n7jmt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_sn34n")
 
 [node name="Neck" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013146252, 0.66760576, -1.4901161e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020747371, 0.6566136, -1.4901161e-08)
 
 [node name="Camera" type="Camera3D" parent="Neck"]
 

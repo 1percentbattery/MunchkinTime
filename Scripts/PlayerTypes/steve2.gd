@@ -6,8 +6,8 @@ var ground_lerp_speed = 14.0
 var air_lerp_speed = 2.0
 var lerp_speed = 15.0
 
-var walking_speed = 4.5
-var sprinting_speed = 7.0
+var walking_speed = 4.0
+var sprinting_speed = 5.0
 var speed = 6.0
 const JUMP_VELOCITY = 9.5
 @onready var jumpcooldowntimer: Timer = $"../Timer"
