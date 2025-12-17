@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://babybec8acwon"]
+[gd_scene load_steps=30 format=3 uid="uid://babybec8acwon"]
 
 [ext_resource type="Script" uid="uid://grgxjgejef05" path="res://Scripts/Worlds/FallingObjects.gd" id="1_562vh"]
-[ext_resource type="PackedScene" uid="uid://copt3p53wa7mg" path="res://Scenes/PlayerTypes/SideScrollerPlayer.tscn" id="1_jomr7"]
+[ext_resource type="Script" uid="uid://b51jxu6j717o3" path="res://Scripts/PlayerTypes/SideScrollerPlayer.gd" id="2_gly0o"]
 [ext_resource type="Texture2D" uid="uid://uaq2rs23out4" path="res://Textures/Images/Basket.png" id="3_miccp"]
+[ext_resource type="Texture2D" uid="uid://cs38ho8fs3y7r" path="res://Textures/Images/SoggyCat.jpg" id="3_w8wle"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="4_1lgrp"]
 [ext_resource type="Texture2D" uid="uid://chpsctpb3yavb" path="res://Textures/Images/PimDead.png" id="4_5c1c5"]
 [ext_resource type="VideoStream" uid="uid://bj2wa1bj1okev" path="res://Video/YTDown.com_YouTube_Charlie-yo-guys-this-is-me-Charlie-Smili_Media_cPFXzombbrs_001_1080p.ogv" id="6_hw1gk"]
@@ -17,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="15_e8456"]
 [ext_resource type="Script" uid="uid://bmqgyfl5jkygk" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="15_miccp"]
 [ext_resource type="PackedScene" uid="uid://bcqqfvfhfsqe8" path="res://Scenes/Effects/Explosion.tscn" id="16_e8456"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylhp7"]
+size = Vector2(124, 96)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fkwt4"]
 b = Vector2(1920, 0)
@@ -241,12 +245,23 @@ _data = {
 process_mode = 1
 script = ExtResource("1_562vh")
 
-[node name="SideScrollerPlayer" parent="." instance=ExtResource("1_jomr7")]
+[node name="SideScrollerPlayer" type="CharacterBody2D" parent="."]
 position = Vector2(908, 824)
+script = ExtResource("2_gly0o")
 WalkSpeed = 2400
 SprintSpeed = 2400
 MovementLerpSpeed = 15.0
 CanJump = false
+
+[node name="TextureRect" type="TextureRect" parent="SideScrollerPlayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.3719834, 0.3719834)
+texture = ExtResource("3_w8wle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SideScrollerPlayer"]
+position = Vector2(34, 48)
+shape = SubResource("RectangleShape2D_ylhp7")
 
 [node name="TextureRect2" type="TextureRect" parent="SideScrollerPlayer"]
 offset_left = -56.0
