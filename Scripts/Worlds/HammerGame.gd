@@ -18,7 +18,6 @@ func _ready():
 	$Blood2.material.set_shader_parameter("showFrom",0.0)
 	$Blurd.material.set_shader_parameter("showTo",1.0)
 	nextScene()
-	start()
 func start():
 	on = true
 	curScene.start()
