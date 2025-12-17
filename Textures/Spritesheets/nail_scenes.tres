@@ -1,0 +1,54 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://uh548ql5j2xv"]
+
+[ext_resource type="Texture2D" uid="uid://da2siol72bewg" path="res://Textures/Images/Nail1.png" id="1_cnrx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqu6o"]
+atlas = ExtResource("1_cnrx5")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnrx5"]
+atlas = ExtResource("1_cnrx5")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1c0d"]
+atlas = ExtResource("1_cnrx5")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4jei"]
+atlas = ExtResource("1_cnrx5")
+region = Rect2(750, 0, 250, 250)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqu6o")
+}],
+"loop": true,
+"name": &"Lost",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnrx5")
+}],
+"loop": true,
+"name": &"Nail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1c0d")
+}],
+"loop": true,
+"name": &"Won",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4jei")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
