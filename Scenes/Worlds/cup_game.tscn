@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwrbd8i5vby1c"]
+[gd_scene load_steps=16 format=3 uid="uid://cwrbd8i5vby1c"]
 
 [ext_resource type="Script" uid="uid://cq437phchbafk" path="res://Scripts/Worlds/HammerGame.gd" id="1_u8yr8"]
 [ext_resource type="Texture2D" uid="uid://dq0rdulvmvsna" path="res://Textures/Images/concrete.webp" id="2_587op"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b6jtuwpmjk8da" path="res://Textures/Images/blurd.webp" id="4_h3m4j"]
 [ext_resource type="Texture2D" uid="uid://dcuvkeiadlqa7" path="res://Textures/Images/Blood2.png" id="5_32nxo"]
 [ext_resource type="Texture2D" uid="uid://bw4ihsaswewkv" path="res://Textures/Images/star.webp" id="6_3uyqo"]
+[ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="7_587op"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f3ayd"]
 shader = ExtResource("3_vmsrt")
@@ -115,7 +116,6 @@ _data = {
 
 [node name="HammerGame" type="Node2D"]
 script = ExtResource("1_u8yr8")
-timePerNail = 10.0
 
 [node name="Concrete" type="Sprite2D" parent="."]
 z_index = -4
@@ -170,6 +170,9 @@ texture = ExtResource("6_3uyqo")
 [node name="Star5" type="Sprite2D" parent="Node2D"]
 position = Vector2(-749, 240)
 texture = ExtResource("6_3uyqo")
+
+[node name="SceneOpener" parent="." instance=ExtResource("7_587op")]
+Objective = "Hammer The Nails In Order"
 
 [connection signal="animation_finished" from="Lose" to="." method="_on_lose_animation_finished"]
 [connection signal="animation_finished" from="Win" to="." method="_on_win_animation_finished"]

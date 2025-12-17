@@ -1,5 +1,5 @@
 extends Node2D
-const KNIFE = preload("uid://8iune22d4j68")
+const KNIFE = preload("res://Scenes/Objects/Knife.tscn")
 @onready var Jerma: TextureRect = $Node2D/TextureRect
 @onready var BoardArea: Area2D = $Node2D/TextureRect/Area2D
 @onready var JermaArea: Area2D = $Node2D/TextureRect/JermaArea
