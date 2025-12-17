@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vfik7u814tyy"]
+[gd_scene load_steps=9 format=3 uid="uid://vfik7u814tyy"]
 
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="1_bp7xx"]
 [ext_resource type="Script" uid="uid://b1ojbn5djvp58" path="res://Scripts/Worlds/blocking_game.gd" id="1_vyhsq"]
@@ -10,11 +10,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyhsq"]
 size = Vector2(125, 125)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwqoe"]
+size = Vector2(20, 190.94006)
+
 [node name="BlockingGame" type="Node2D"]
 script = ExtResource("1_vyhsq")
 
 [node name="SceneOpener" parent="." instance=ExtResource("1_bp7xx")]
-Objective = "Protect Greg!"
+Objective = "Protect yer treasure!"
 
 [node name="Timer" parent="." instance=ExtResource("2_cnnwp")]
 time = 10
@@ -25,10 +28,17 @@ time = 10
 position = Vector2(1935, 540)
 objList = Array[PackedScene]([ExtResource("5_a7r1d")])
 scrollSpeed = Vector2(-200, 0)
-objFreq = 1.0
+objFreq = 1000.0
+
+[node name="objScroller_spawner4" parent="Spawners" instance=ExtResource("4_a7r1d")]
+position = Vector2(-25, 540)
+objList = Array[PackedScene]([ExtResource("5_a7r1d")])
+scrollSpeed = Vector2(200, 0)
+objFreq = 1000.0
 
 [node name="CharacterBody2D" type="Area2D" parent="."]
 position = Vector2(960, 540)
+collision_mask = 15
 
 [node name="Treasure" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -36,5 +46,25 @@ texture = ExtResource("6_kwqoe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_vyhsq")
+
+[node name="Area2DL" type="Area2D" parent="."]
+position = Vector2(815, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DL"]
+shape = SubResource("RectangleShape2D_kwqoe")
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2DL"]
+modulate = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(-10, 96, -10, -96, 10, -96, 10, 96)
+
+[node name="Area2DR" type="Area2D" parent="."]
+position = Vector2(1098, 543)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DR"]
+shape = SubResource("RectangleShape2D_kwqoe")
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2DR"]
+modulate = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(-10, 96, -10, -96, 10, -96, 10, 96)
 
 [connection signal="area_entered" from="CharacterBody2D" to="." method="_on_character_body_2d_area_entered"]
