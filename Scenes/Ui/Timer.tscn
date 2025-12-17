@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbb1q3hwu6r1v"]
+[gd_scene load_steps=14 format=3 uid="uid://cbb1q3hwu6r1v"]
 
 [ext_resource type="Script" uid="uid://dvqp7egoespb2" path="res://Scripts/Ui/Timer.gd" id="1_or8ij"]
+[ext_resource type="Shader" uid="uid://poakvbdcrd6" path="res://Textures/Shaders/Outline.gdshader" id="2_ammg1"]
+[ext_resource type="Texture2D" uid="uid://ckrby6ni07cd4" path="res://Textures/Images/IMG_0344 (1).png" id="2_bl1wu"]
+[ext_resource type="Texture2D" uid="uid://jkkyx0kl0fop" path="res://Textures/Images/IMG_0345.png" id="3_ammg1"]
+[ext_resource type="Texture2D" uid="uid://jhiyy1xfyt3g" path="res://Textures/Images/IMG_0347 (1).png" id="4_b046l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tjpa"]
 bg_color = Color(0, 0, 0, 1)
@@ -21,14 +25,68 @@ corner_radius_bottom_right = 1360
 corner_radius_bottom_left = 2200
 shadow_color = Color(1, 0, 0, 0.6)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b046l"]
+shader = ExtResource("2_ammg1")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 5.7130002713675
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qhiub"]
+texture = ExtResource("2_bl1wu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnm36"]
+texture = ExtResource("3_ammg1")
+
+[sub_resource type="Animation" id="Animation_fj7sx"]
+resource_name = "Fuzer"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Img0347(1):position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.7, 0.8666667, 0.93333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1828, 1078), Vector2(1538.0709, 1055), Vector2(1305.148, 1059), Vector2(717.793, 1051), Vector2(428.7904, 931), Vector2(308.09937, 873), Vector2(230, 887)]
+}
+
+[sub_resource type="Animation" id="Animation_nckic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Img0347(1):position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1038, 1047)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5y1om"]
+_data = {
+&"Fuzer": SubResource("Animation_fj7sx"),
+&"RESET": SubResource("Animation_nckic")
+}
+
 [node name="Timer" type="Node2D"]
 script = ExtResource("1_or8ij")
+time = null
+QuitSceneOnTimeout = null
+WinOnTimeout = null
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = 89.0
 offset_top = 1011.99994
 offset_right = 2009.0
@@ -38,5 +96,32 @@ theme_override_styles/background = SubResource("StyleBoxFlat_2tjpa")
 theme_override_styles/fill = SubResource("StyleBoxFlat_grbhd")
 value = 100.0
 show_percentage = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+material = SubResource("ShaderMaterial_b046l")
+offset_right = 40.0
+offset_bottom = 40.0
+step = 0.01
+value = 50.0
+texture_under = ExtResource("2_bl1wu")
+texture_progress = ExtResource("3_ammg1")
+
+[node name="ProgressBar2" type="ProgressBar" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/background = SubResource("StyleBoxTexture_qhiub")
+theme_override_styles/fill = SubResource("StyleBoxTexture_pnm36")
+value = 56.05
+show_percentage = false
+
+[node name="Img0347(1)" type="Sprite2D" parent="."]
+position = Vector2(1038, 1047)
+texture = ExtResource("4_b046l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5y1om")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

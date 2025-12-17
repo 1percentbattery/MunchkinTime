@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3 uid="uid://qdbx1l3s7fdd"]
+
+[ext_resource type="Script" uid="uid://ckqm3xbc1ssxi" path="res://Scripts/Worlds/ClickTheBarts.gd" id="1_mydwi"]
+[ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="2_vxraa"]
+[ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="3_mq6mj"]
+[ext_resource type="Texture2D" uid="uid://m56aff16aib4" path="res://Textures/Backgrounds/ClickTheBarts.png" id="4_sofvv"]
+[ext_resource type="Texture2D" uid="uid://co86bck5q5wsd" path="res://Textures/Images/Screenshot 2025-12-16 145759.png" id="5_gbeft"]
+[ext_resource type="Texture2D" uid="uid://c5ubrln0w5gj7" path="res://Textures/Images/bart_simpson_happy_pose_360-1.jpg" id="6_bao88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qrx5"]
+size = Vector2(1945, 20)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3431c"]
+b = Vector2(1920, 0)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mydwi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(962.5, 0)
+shape = SubResource("RectangleShape2D_6qrx5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(962.5, 1076)
+shape = SubResource("RectangleShape2D_6qrx5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 339)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6qrx5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1932, 380)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6qrx5")
+
+[node name="BartSpawner" type="Marker2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="BartSpawnDelay" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+autostart = true
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 129
+
+[node name="Floor" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, 991)
+shape = SubResource("SegmentShape2D_3431c")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(84, 76)
+rotation = 1.5707964
+shape = SubResource("SegmentShape2D_3431c")
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1846, 76)
+rotation = 1.5707964
+shape = SubResource("SegmentShape2D_3431c")
+
+[node name="LeftWallColor" type="ColorRect" parent="Walls"]
+z_index = 2
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 30.0
+scale = Vector2(2.07868, 27.238686)
+color = Color(0, 0, 0, 1)
+
+[node name="RightWallColor" type="ColorRect" parent="Walls"]
+z_index = 2
+offset_left = 1847.0
+offset_top = -10.0
+offset_right = 1887.0
+offset_bottom = 30.0
+scale = Vector2(2.07868, 27.238686)
+color = Color(0, 0, 0, 1)
+
+[node name="FloorColor" type="ColorRect" parent="Walls"]
+offset_left = 1968.0
+offset_top = 991.0
+offset_right = 2008.0
+offset_bottom = 1031.0
+rotation = 1.5707964
+scale = Vector2(2.4721975, 51.395275)
+color = Color(0, 0, 0, 1)
+
+[node name="CeilingColor" type="ColorRect" parent="Walls"]
+z_index = 2
+offset_left = 1871.0
+offset_top = -8.999995
+offset_right = 1911.0
+offset_bottom = 31.000004
+rotation = 1.5707964
+scale = Vector2(2.4721975, 46.355274)
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" parent="." instance=ExtResource("2_vxraa")]
+time = 15
+WinOnTimeout = false
+
+[node name="SceneOpener" parent="." instance=ExtResource("3_mq6mj")]
+Objective = "CLICK THE BARTS"
+
+[node name="ClickTheBarts" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(779, 355.99997)
+scale = Vector2(6.6317954, 6.6317954)
+texture = ExtResource("4_sofvv")
+
+[node name="Lose" type="ColorRect" parent="."]
+visible = false
+z_index = -1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Lose"]
+layout_mode = 0
+offset_left = 440.99997
+offset_top = 83.00001
+offset_right = 993.0
+offset_bottom = 588.0
+scale = Vector2(1.8154411, 1.8154411)
+texture = ExtResource("5_gbeft")
+
+[node name="Win" type="TextureRect" parent="."]
+visible = false
+z_index = -1
+offset_left = 78.0
+offset_top = 74.0
+offset_right = 1998.0
+offset_bottom = 1154.0
+scale = Vector2(0.9232701, 0.9232701)
+texture = ExtResource("6_bao88")
+
+[connection signal="timeout" from="BartSpawnDelay" to="." method="_on_bart_spawn_delay_timeout"]

@@ -9,6 +9,11 @@ const MURDER_PIM = preload("uid://bne2oqiiedlmb")
 @onready var Video: VideoStreamPlayer = $VideoStreamPlayer
 @onready var TransitionAnimation: AnimationPlayer = $AnimationPlayer
 
+@onready var _1: TextureRect = $"Node2D/1"
+@onready var _2: TextureRect = $"Node2D/2"
+@onready var _3: TextureRect = $"Node2D/3"
+
+
 var games = []
 var global_game
 var global_rng
@@ -32,10 +37,15 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Debug"):
 		switch()
 		
+	if G.Lives ==2:
+		_3.hide()
+	if G.Lives == 1:
+		_2.hide()
+		
 	ScoreCounter.text = str(G.Score)
-	LivesCounter.text = str(G.Lives)
 	
 	if G.Lives <= 0:
+		_1.hide()
 		get_tree().quit()
 func switch():
 	get_tree().paused = true
