@@ -11,7 +11,6 @@ func lostGame():
 	SceneSwitcher.switch()
 	Lives -= 1
 func wonGame():
-	
 	if WonGames%5 == 0 and WonGames != 0:
 		Engine.time_scale += 0.3
 	WonGames += 1

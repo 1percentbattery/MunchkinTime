@@ -1,5 +1,4 @@
 extends Node2D
-
 @onready var spawnerList = [$Spawners/objScroller_spawner3,$Spawners/objScroller_spawner4]
 @export var on = false
 @export var freq = 1.0
@@ -19,23 +18,29 @@ func _process(delta: float) -> void:
 			lose()
 		else:
 			for area in areas:
-				area.queue_free()
+				area.global_position = Vector2(0,3000)
 	if Input.is_action_just_pressed("Right"):
 		var areas: Array = $Area2DR.get_overlapping_areas()
 		if areas.is_empty():
 			lose()
 		else:
 			for area in areas:
-				area.queue_free()
+				area.global_position = Vector2(0,3000)
 func _on_character_body_2d_area_entered(area: Area2D) -> void:
 	lose()
 func start():
+	$Timer.start()
 	on = true
 	for item in spawnerList:
 		item.on = true
 func win():
-	pass
-	#on = false
+	$Timer.hide()
+	on = false
+	G.wonGame()
 func lose():
-	pass
-	#on = false
+	$Pirate.show()
+	$Label.show()
+	$Timer.hide()
+	on = false
+	await get_tree().create_timer(1.0).timeout
+	G.lostGame()
