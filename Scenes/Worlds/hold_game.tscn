@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 	barList[currentBar].material.set_shader_parameter(\"showTo\",currentLevel)
 	if currentLevel > targets[currentBar] + range:
 		lose()
+		return
 	if Input.is_action_just_pressed(\"Special\")or Input.is_action_just_pressed(\"Jump\"):
 		if currentLevel > targets[currentBar] - range:
 			nextBar() 
