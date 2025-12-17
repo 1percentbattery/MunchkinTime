@@ -1,0 +1,175 @@
+[gd_scene load_steps=15 format=3 uid="uid://cwrbd8i5vby1c"]
+
+[ext_resource type="Script" uid="uid://cq437phchbafk" path="res://Scripts/Worlds/HammerGame.gd" id="1_u8yr8"]
+[ext_resource type="Texture2D" uid="uid://dq0rdulvmvsna" path="res://Textures/Images/concrete.webp" id="2_587op"]
+[ext_resource type="Shader" uid="uid://c3qgu4m3sj0ns" path="res://Textures/Shaders/shaderForBarstres.gdshader" id="3_vmsrt"]
+[ext_resource type="Texture2D" uid="uid://b6jtuwpmjk8da" path="res://Textures/Images/blurd.webp" id="4_h3m4j"]
+[ext_resource type="Texture2D" uid="uid://dcuvkeiadlqa7" path="res://Textures/Images/Blood2.png" id="5_32nxo"]
+[ext_resource type="Texture2D" uid="uid://bw4ihsaswewkv" path="res://Textures/Images/star.webp" id="6_3uyqo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3ayd"]
+shader = ExtResource("3_vmsrt")
+shader_parameter/showFrom = 1.0
+shader_parameter/showTo = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atesk"]
+shader = ExtResource("3_vmsrt")
+shader_parameter/showFrom = 1.0
+shader_parameter/showTo = 1.0
+
+[sub_resource type="Animation" id="Animation_atesk"]
+resource_name = "Lose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:amntR")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.59460354, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:amntL")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.53588676, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ml0ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:amntR")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:amntL")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ml0ld"]
+_data = {
+&"Lose": SubResource("Animation_atesk"),
+&"RESET": SubResource("Animation_ml0ld")
+}
+
+[sub_resource type="Animation" id="Animation_50hte"]
+resource_name = "Win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.93333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1920, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jldqw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jldqw"]
+_data = {
+&"RESET": SubResource("Animation_jldqw"),
+&"Win": SubResource("Animation_50hte")
+}
+
+[node name="HammerGame" type="Node2D"]
+script = ExtResource("1_u8yr8")
+timePerNail = 10.0
+
+[node name="Concrete" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(976.5, 543)
+scale = Vector2(3.7203703, 3.161111)
+texture = ExtResource("2_587op")
+
+[node name="Blurd" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_f3ayd")
+position = Vector2(985, 564)
+scale = Vector2(3.094225, 2.1006944)
+texture = ExtResource("4_h3m4j")
+flip_h = true
+
+[node name="Blood2" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_atesk")
+position = Vector2(1410, 614.00006)
+scale = Vector2(2.989699, 2.4040308)
+texture = ExtResource("5_32nxo")
+flip_h = true
+
+[node name="Lose" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ml0ld")
+}
+
+[node name="Win" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jldqw")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Star" type="Sprite2D" parent="Node2D"]
+position = Vector2(-258, 585)
+texture = ExtResource("6_3uyqo")
+
+[node name="Star2" type="Sprite2D" parent="Node2D"]
+position = Vector2(-569, 588)
+texture = ExtResource("6_3uyqo")
+
+[node name="Star3" type="Sprite2D" parent="Node2D"]
+position = Vector2(-903, 585)
+texture = ExtResource("6_3uyqo")
+
+[node name="Star4" type="Sprite2D" parent="Node2D"]
+position = Vector2(-1217, 576)
+texture = ExtResource("6_3uyqo")
+
+[node name="Star5" type="Sprite2D" parent="Node2D"]
+position = Vector2(-749, 240)
+texture = ExtResource("6_3uyqo")
+
+[connection signal="animation_finished" from="Lose" to="." method="_on_lose_animation_finished"]
+[connection signal="animation_finished" from="Win" to="." method="_on_win_animation_finished"]

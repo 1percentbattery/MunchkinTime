@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dk8vulf5tuah7"]
+
+[ext_resource type="Shader" uid="uid://c3qgu4m3sj0ns" path="res://Textures/Shaders/shaderForBarstres.gdshader" id="1_who5q"]
+
+[resource]
+shader = ExtResource("1_who5q")
+shader_parameter/showFrom = 1.0
+shader_parameter/showTo = 1.0

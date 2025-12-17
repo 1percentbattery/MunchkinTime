@@ -6,7 +6,17 @@ var nailScene : PackedScene = load("res://Scenes/Objects/nail_scenes.tscn")
 var curScene : Node2D = null
 var curPoints : int = -1
 var on = false
+
+@export var amntR = 0.0
+@export var amntL = 0.0
+func setShaders():
+	$Blood2.material.set_shader_parameter("showTo",amntR)
+	$Blurd.material.set_shader_parameter("showFrom",1-amntL)
+func _process(delta: float) -> void:
+	setShaders()
 func _ready():
+	$Blood2.material.set_shader_parameter("showFrom",0.0)
+	$Blurd.material.set_shader_parameter("showTo",1.0)
 	nextScene()
 	start()
 func start():
@@ -26,6 +36,12 @@ func nextScene():
 	if on:
 		curScene.start()
 func win():
-	pass
+	curScene.queue_free()
+	$Win.play("Win")
 func lose():
-	pass
+	curScene.queue_free()
+	$Lose.play("Lose")
+func _on_lose_animation_finished(anim_name: StringName) -> void:
+	G.lostGame()
+func _on_win_animation_finished(anim_name: StringName) -> void:
+	G.wonGame()

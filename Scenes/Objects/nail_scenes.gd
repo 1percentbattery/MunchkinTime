@@ -22,7 +22,7 @@ func _ready():
 		displayList[order[x]].play(str(x))
 		#order.size() * timePerNail
 func start():
-	$Timer.waitTime = timePerNail
+	$Timer.time = timePerNail
 	$Timer.start()
 	on = true
 func _physics_process(delta: float) -> void:
@@ -59,7 +59,7 @@ func win():
 	on = false
 	$Win.play("Win")
 func _on_win_animation_finished(anim_name: StringName) -> void:
-	get_parent().win()
+	get_parent().nextScene()
 func lose():
 	on = false
 	get_parent().lose()
