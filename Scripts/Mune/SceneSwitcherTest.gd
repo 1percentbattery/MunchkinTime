@@ -55,6 +55,7 @@ func switch():
 		previous_game = global_rng
 		global_game.queue_free()
 	var rng = randi_range(0,games.size()-1)
+	print(rng,", ", games)
 	var temp = load(games[rng])
 	print(temp)
 	var game = temp.instantiate()
