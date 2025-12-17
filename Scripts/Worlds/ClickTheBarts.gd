@@ -1,7 +1,7 @@
 extends Node2D
 @onready var BartSpawner: Marker2D = $BartSpawner
 @onready var BartSpawnDelay: Timer = $BartSpawnDelay
-const BART = preload("uid://d27n1yk5o3q4u")
+const BART = preload("res://Scenes/Objects/Bart.tscn")
 @onready var TimerScene: Node2D = $Timer
 @onready var Lose: ColorRect = $Lose
 @onready var Win: TextureRect = $Win

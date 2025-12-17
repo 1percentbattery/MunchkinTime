@@ -1,5 +1,5 @@
 extends Node2D
-@export var speedMod := 0.3
+@export var speedMod := 0.5
 var on = false
 var barList = []
 var targets = []
@@ -57,4 +57,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Lose":
 		G.lostGame()
 func _on_win_animation_animation_finished(anim_name: StringName) -> void:
-	G.lostGame()
+	G.wonGame()
