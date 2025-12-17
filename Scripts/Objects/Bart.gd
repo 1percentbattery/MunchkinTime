@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 func _on_button_pressed() -> void:
 	var splosion = EXPLOSION.instantiate()
 	get_parent().add_child(splosion)
+	splosion.bartsound = true
 	splosion.global_position = self.global_position
 	splosion.scale.x = 2
 	splosion.scale.y = 2

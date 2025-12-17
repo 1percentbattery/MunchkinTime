@@ -2,6 +2,7 @@ extends RigidBody2D
 var FallingVelocity = 60.0
 var RotationValue
 const EXPLOSION = preload("uid://bcqqfvfhfsqe8")
+@onready var Sound: AudioStreamPlayer = $"1Up"
 
 
 func _ready() -> void:
@@ -21,6 +22,9 @@ func _on_body_entered(body: Node) -> void:
 		get_parent().Video.visible = true
 		get_parent().Video.paused = false
 		get_parent().lose()
+		get_parent().winlose_indicator.lose()
+		get_parent().Music.stop()
 		for object in get_tree().get_nodes_in_group("Objective"):
 			object.queue_free()
+		
 	queue_free()

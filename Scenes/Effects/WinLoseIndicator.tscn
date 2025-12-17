@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3k0t1sp3hjag"]
+
+[ext_resource type="AudioStream" uid="uid://dlveloakoklve" path="res://Audio/FUCK.mp3" id="1_t8y7t"]
+[ext_resource type="Script" uid="uid://b04cvjq2tdfsf" path="res://Scripts/Objects/WinLoseIndicator.gd" id="1_uye86"]
+[ext_resource type="AudioStream" uid="uid://byq0yeaqmeyvp" path="res://Audio/Ding.mp3" id="2_uye86"]
+
+[sub_resource type="Animation" id="Animation_e1f7c"]
+resource_name = "Win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.40392157), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yj4p0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t6ipl"]
+resource_name = "Lose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.40392157), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f34s7"]
+_data = {
+&"Lose": SubResource("Animation_t6ipl"),
+&"RESET": SubResource("Animation_yj4p0"),
+&"Win": SubResource("Animation_e1f7c")
+}
+
+[node name="WinloseIndicator" type="Node2D"]
+script = ExtResource("1_uye86")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 7
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Fuck" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_t8y7t")
+
+[node name="Ding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uye86")
+volume_db = -12.84
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f34s7")
+}

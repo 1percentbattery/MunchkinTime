@@ -6,6 +6,9 @@ const SHMALOOGLE = preload("uid://c6yjl7ftjfimr")
 var spawning: bool = false
 var count: int = 0
 var won = false
+@onready var winlose_indicator: Node2D = $WinloseIndicator
+@onready var Music: AudioStreamPlayer = $Shmaloogle
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	G.CurrentGame = self
@@ -21,6 +24,7 @@ func win():
 	won = true
 	spawning = false
 	WinAnimation.play("Win")
+	winlose_indicator.win()
 	for object in get_tree().get_nodes_in_group("Objective"):
 		object.queue_free()
 func end():

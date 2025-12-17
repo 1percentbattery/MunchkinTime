@@ -11,10 +11,17 @@ var started = false
 @onready var HandShake2: ShakerComponent2D = $Cursor/Node2D/ShakerComponent2D
 @onready var BGShake: ShakerComponent2D = $Node2D2/ShakerComponent2D
 @onready var Animations: AnimationPlayer = $AnimationPlayer
+@onready var AlarmSound: AudioStreamPlayer = $Alarm
+@onready var LullabyMusic: AudioStreamPlayer = $Lullaby
+@onready var ScreamSound: AudioStreamPlayer = $Scream
+@onready var WinLose: Node2D = $AnimationPlayer2
+
 
 var wasd_movement_speed = 15.0
 
 var CursorDelta = Vector2.ZERO
+
+var pressed_button: bool = false
 
 
 
@@ -35,16 +42,24 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Right"):
 		Cursor.global_position.x += wasd_movement_speed
 	
+	if pressed_button:
+		LullabyMusic.volume_db = lerp(LullabyMusic.volume_db,0.0,delta * 1)
 	
 	for body in Snooze.get_overlapping_areas():
 		if body.is_in_group("Cursor"):
 			if Input.is_action_just_pressed("Special"):
+				AlarmSound.stop()
 				win()
+				WinLose.win()
+				pressed_button = true
 				
 	for body in Stop.get_overlapping_areas():
 		if body.is_in_group("Cursor"):
 			if Input.is_action_just_pressed("Special"):
+				AlarmSound.stop()
 				lose()
+				WinLose.lose()
+				pressed_button = true
 				
 func start():
 	TimerScene.TimerNode.start()
@@ -73,3 +88,7 @@ func fadeout():
 	HandShake1.stop_shake()
 	HandShake2.stop_shake()
 	BGShake.stop_shake()
+
+func bad_music():
+	LullabyMusic.stop()
+	ScreamSound.play()

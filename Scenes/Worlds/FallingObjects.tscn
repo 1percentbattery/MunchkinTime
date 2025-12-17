@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://babybec8acwon"]
+[gd_scene load_steps=32 format=3 uid="uid://babybec8acwon"]
 
 [ext_resource type="Script" uid="uid://grgxjgejef05" path="res://Scripts/Worlds/FallingObjects.gd" id="1_562vh"]
 [ext_resource type="Script" uid="uid://b51jxu6j717o3" path="res://Scripts/PlayerTypes/SideScrollerPlayer.gd" id="2_gly0o"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="15_e8456"]
 [ext_resource type="Script" uid="uid://bmqgyfl5jkygk" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="15_miccp"]
 [ext_resource type="PackedScene" uid="uid://bcqqfvfhfsqe8" path="res://Scenes/Effects/Explosion.tscn" id="16_e8456"]
+[ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="19_w8wle"]
+[ext_resource type="AudioStream" uid="uid://c7owfj5pea1m2" path="res://Audio/Music/Shmaloogle.mp3" id="20_l7iht"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylhp7"]
 size = Vector2(124, 96)
@@ -420,5 +422,11 @@ libraries = {
 [node name="Explosion" parent="WinAnimation" instance=ExtResource("16_e8456")]
 z_index = 3
 scale = Vector2(28.997612, 28.997612)
+
+[node name="WinloseIndicator" parent="." instance=ExtResource("19_w8wle")]
+
+[node name="Shmaloogle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_l7iht")
+autoplay = true
 
 [connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

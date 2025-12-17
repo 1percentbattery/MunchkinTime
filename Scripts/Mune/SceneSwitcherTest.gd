@@ -74,3 +74,6 @@ func playvideo():
 func restartvideo():
 	Video.loop = true
 	Video.paused = true
+
+func play_sound():
+	$NewGameStart.play()

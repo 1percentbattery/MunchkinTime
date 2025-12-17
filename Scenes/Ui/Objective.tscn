@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwswfxflqmmm"]
+[gd_scene load_steps=16 format=3 uid="uid://dwswfxflqmmm"]
 
 [ext_resource type="Script" uid="uid://b5eefmfe10c1p" path="res://Scripts/Ui/objective.gd" id="1_pkyht"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="1_rqcp5"]
@@ -8,6 +8,58 @@
 [ext_resource type="Script" uid="uid://dbfj765haimqk" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_dcc61"]
 [ext_resource type="Script" uid="uid://d24820x8yvs4j" path="res://addons/shaker/data/Single/ShakerTypeRandom1D.gd" id="7_1pwdy"]
 [ext_resource type="Script" uid="uid://bubcpu3121y34" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="8_v2hcl"]
+[ext_resource type="AudioStream" uid="uid://ce47m7tqe22au" path="res://Audio/NewGameStart.mp3" id="9_p2bvk"]
+
+[sub_resource type="Animation" id="Animation_0wh6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/ObjectiveText:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/ObjectiveText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-276.9065, -112.0108)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.39999998)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_qtrdu"]
 resource_name = "Start"
@@ -47,57 +99,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.39999998), Color(0, 0, 0, 0.39999998), Color(0, 0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_0wh6e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/ObjectiveText:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/ObjectiveText:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-276.9065, -112.0108)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0.39999998)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -172,10 +173,12 @@ vertical_alignment = 1
 
 [node name="ShakerComponent2D" type="Node2D" parent="Node2D"]
 script = ExtResource("3_p2bvk")
-is_playing = true
 AutoPlay = true
 intensity = 2.0
 shakerPreset = SubResource("Resource_ixmb0")
 metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_p2bvk")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

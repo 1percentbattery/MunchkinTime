@@ -1,52 +1,26 @@
-[gd_scene load_steps=23 format=3 uid="uid://cup220pspjpfk"]
+[gd_scene load_steps=24 format=3 uid="uid://lxbbivoo887l"]
 
-[ext_resource type="Script" uid="uid://owdw0r7jcwh5" path="res://Scripts/Worlds/frogger.gd" id="1_umnbs"]
-[ext_resource type="Script" uid="uid://dyh1mnuijj3a" path="res://FroggerBody.gd" id="2_1sd8u"]
+[ext_resource type="Script" path="res://Scripts/Worlds/frogger.gd" id="1_umnbs"]
+[ext_resource type="Script" path="res://FroggerBody.gd" id="2_1sd8u"]
 [ext_resource type="Texture2D" uid="uid://deudswf33mlv7" path="res://Textures/Images/Forg.png" id="3_an2ax"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="4_qwllj"]
-[ext_resource type="Script" uid="uid://c7gwfha8yucg5" path="res://Scripts/Objects/RushSpawners.gd" id="5_2s2dy"]
+[ext_resource type="Script" path="res://Scripts/Objects/RushSpawners.gd" id="5_2s2dy"]
 [ext_resource type="PackedScene" uid="uid://dla8emsv03dqx" path="res://Scenes/Objects/obj_scroller_spawner.tscn" id="6_g1pa2"]
-[ext_resource type="PackedScene" uid="uid://f6ex3jyurn0y" path="res://Scenes/Objects/blocks/froggerBlock2.tscn" id="7_ch1f1"]
-[ext_resource type="PackedScene" uid="uid://bei3jutckuyu5" path="res://Scenes/Objects/blocks/froggerBlock.tscn" id="8_jrlhp"]
-[ext_resource type="Script" uid="uid://lelr7u2fxago" path="res://Scripts/Objects/win_box.gd" id="9_w8d11"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/blocks/froggerBlock2.tscn" id="7_ch1f1"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/blocks/froggerBlock.tscn" id="8_jrlhp"]
+[ext_resource type="Script" path="res://Scripts/Objects/win_box.gd" id="9_w8d11"]
 [ext_resource type="Texture2D" uid="uid://c7wcddtxepufo" path="res://Textures/Images/light_default_square.png" id="10_iq0tt"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="11_wad7s"]
-[ext_resource type="Shader" uid="uid://d2dpof31s3haq" path="res://Scripts/Shader/Overlay.gdshader" id="12_1sd8u"]
+[ext_resource type="Shader" path="res://Scripts/Shader/Overlay.gdshader" id="12_1sd8u"]
 [ext_resource type="Texture2D" uid="uid://c2s8mtxt01ewo" path="res://Textures/Images/skull(tuff).webp" id="13_an2ax"]
-[ext_resource type="Script" uid="uid://cd2hsy1fhcmq2" path="res://Scripts/Objects/push_right.gd" id="14_qwllj"]
+[ext_resource type="Script" path="res://Scripts/Objects/push_right.gd" id="14_qwllj"]
+[ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="15_2s2dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byso3"]
 size = Vector2(22, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uduw"]
 size = Vector2(1920, 302)
-
-[sub_resource type="Animation" id="Animation_umnbs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_1sd8u"]
 resource_name = "Winner"
@@ -76,6 +50,33 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(0.05, 0.05)]
 }
 
+[sub_resource type="Animation" id="Animation_umnbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_an2ax"]
 resource_name = "Winner"
 tracks/0/type = "value"
@@ -102,6 +103,7 @@ _data = {
 shader = ExtResource("12_1sd8u")
 shader_parameter/tex = ExtResource("13_an2ax")
 shader_parameter/scrollSpeed = Vector2(0.5, 0)
+shader_parameter/amnt = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_an2ax"]
 size = Vector2(1941.5, 40)
@@ -349,6 +351,8 @@ shape = SubResource("RectangleShape2D_an2ax")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Arears/Push Left"]
 position = Vector2(969, 449)
 shape = SubResource("RectangleShape2D_an2ax")
+
+[node name="WinloseIndicator" parent="." instance=ExtResource("15_2s2dy")]
 
 [connection signal="area_entered" from="WinBox" to="." method="_on_win_box_area_entered"]
 [connection signal="body_entered" from="WinBox" to="." method="_on_win_box_body_entered"]

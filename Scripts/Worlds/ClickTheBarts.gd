@@ -5,6 +5,7 @@ const BART = preload("res://Scenes/Objects/Bart.tscn")
 @onready var TimerScene: Node2D = $Timer
 @onready var Lose: ColorRect = $Lose
 @onready var Win: TextureRect = $Win
+@onready var winlose_indicator: Node2D = $WinloseIndicator
 
 var barts = 7
 var can_spawn = false
@@ -43,6 +44,7 @@ func win():
 	won = true
 	lost = false
 	if won:
+		winlose_indicator.win()
 		Win.show()
 		TimerScene.stop()
 		TimerScene.hide()
@@ -53,6 +55,7 @@ func lose():
 	won = false
 	lost = true
 	if lost: 
+		winlose_indicator.win()
 		Lose.show()
 		TimerScene.stop()
 		TimerScene.hide()

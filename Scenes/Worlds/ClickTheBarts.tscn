@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qdbx1l3s7fdd"]
+[gd_scene load_steps=11 format=3 uid="uid://qdbx1l3s7fdd"]
 
 [ext_resource type="Script" uid="uid://ckqm3xbc1ssxi" path="res://Scripts/Worlds/ClickTheBarts.gd" id="1_mydwi"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="2_vxraa"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://m56aff16aib4" path="res://Textures/Backgrounds/ClickTheBarts.png" id="4_sofvv"]
 [ext_resource type="Texture2D" uid="uid://co86bck5q5wsd" path="res://Textures/Images/Screenshot 2025-12-16 145759.png" id="5_gbeft"]
 [ext_resource type="Texture2D" uid="uid://c5ubrln0w5gj7" path="res://Textures/Images/bart_simpson_happy_pose_360-1.jpg" id="6_bao88"]
+[ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="7_vxraa"]
+[ext_resource type="AudioStream" uid="uid://ommh1gnd0bqw" path="res://Audio/Music/Bart.mp3" id="8_mq6mj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qrx5"]
 size = Vector2(1945, 20)
@@ -137,5 +139,12 @@ offset_right = 1998.0
 offset_bottom = 1154.0
 scale = Vector2(0.9232701, 0.9232701)
 texture = ExtResource("6_bao88")
+
+[node name="WinloseIndicator" parent="." instance=ExtResource("7_vxraa")]
+
+[node name="Bart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mq6mj")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="timeout" from="BartSpawnDelay" to="." method="_on_bart_spawn_delay_timeout"]

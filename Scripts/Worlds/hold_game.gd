@@ -48,8 +48,10 @@ func win():
 	$Indicator.hide()
 	#$AnimationPlayer.clear_queue()
 	$WinAnimation.play("Win")
+	$WinloseIndicator.win()
 func lose():
 	$AnimationPlayer.play("Lose")
+	$WinloseIndicator.lose()
 	on = false
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Good":

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6yjl7ftjfimr"]
+[gd_scene load_steps=5 format=3 uid="uid://c6yjl7ftjfimr"]
 
 [ext_resource type="Texture2D" uid="uid://uw4xn2m0au6r" path="res://Textures/Images/Shmaloogle.png" id="1_lersq"]
 [ext_resource type="Script" uid="uid://cm0trfn5onpy5" path="res://Scripts/Objects/Falling/Shmaloogle.gd" id="1_p3n58"]
+[ext_resource type="AudioStream" uid="uid://v1qbw5gpx1ly" path="res://Audio/1up.mp3" id="3_p2c1b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p3n58"]
 radius = 50.0
@@ -18,5 +19,9 @@ texture = ExtResource("1_lersq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p3n58")
+
+[node name="1Up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p2c1b")
+volume_db = -15.561
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

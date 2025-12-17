@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bne2oqiiedlmb"]
+[gd_scene load_steps=30 format=3 uid="uid://bne2oqiiedlmb"]
 
 [ext_resource type="Script" uid="uid://cg87p4w3v3cug" path="res://Scripts/Worlds/MurderPim.gd" id="1_atkc0"]
 [ext_resource type="Texture2D" uid="uid://byqfudane4d5d" path="res://Textures/Backgrounds/MurderPim.webp" id="2_16xea"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" uid="uid://bubcpu3121y34" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="11_fu4ux"]
 [ext_resource type="Script" uid="uid://c5jnblraugfr8" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="12_syhd5"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="14_cqvw7"]
+[ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="16_4b8cw"]
+[ext_resource type="AudioStream" uid="uid://dbnwv3gh5w4mp" path="res://Audio/Stab.mp3" id="17_uqcxy"]
+[ext_resource type="AudioStream" uid="uid://bocugnnlo3pmx" path="res://Audio/Music/KillPim.mp3" id="18_ogp8u"]
 
 [sub_resource type="Animation" id="Animation_ifsta"]
 length = 0.001
@@ -483,5 +486,15 @@ offset_bottom = 755.0
 theme_override_fonts/font = SubResource("SystemFont_uqcxy")
 theme_override_font_sizes/font_size = 271
 text = "why?"
+
+[node name="WinloseIndicator" parent="." instance=ExtResource("16_4b8cw")]
+
+[node name="Stab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_uqcxy")
+
+[node name="KillPim" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_ogp8u")
+autoplay = true
+parameters/looping = true
 
 [connection signal="animation_finished" from="Node2D2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -20,4 +20,5 @@ func wonGame():
 	WonGames += 1.0
 	SceneSwitcher.switch()
 	Score += 1
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgg6s62u1p6sq"]
+[gd_scene load_steps=9 format=3 uid="uid://bgg6s62u1p6sq"]
 
 [ext_resource type="Script" uid="uid://dso3whlfk3bia" path="res://Scripts/Mune/SceneSwitcherTest.gd" id="1_7g7gc"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="2_fbe26"]
-[ext_resource type="VideoStream" path="res://Video/betterskelton.ogv" id="3_ibf1n"]
+[ext_resource type="VideoStream" uid="uid://dk7ev0e448vxw" path="res://Video/betterskelton.ogv" id="3_ibf1n"]
 [ext_resource type="Texture2D" uid="uid://b36eg7gh344uf" path="res://Textures/Images/IMG_0349 (1).png" id="4_qf4l0"]
+[ext_resource type="AudioStream" uid="uid://ce47m7tqe22au" path="res://Audio/NewGameStart.mp3" id="5_sexfu"]
 
 [sub_resource type="Animation" id="Animation_sexfu"]
 length = 0.001
@@ -66,14 +67,17 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.23333333, 1.2333333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.23333333, 1.2333333, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"playvideo"
 }, {
 "args": [],
 "method": &"restartvideo"
+}, {
+"args": [],
+"method": &"play_sound"
 }]
 }
 
@@ -106,8 +110,8 @@ text = "2"
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 236.00002
 offset_top = 136.0
-offset_right = 2156.0032
-offset_bottom = 1216.0002
+offset_right = 2156.003
+offset_bottom = 1216.0005
 scale = Vector2(0.7738961, 0.7738961)
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
@@ -123,7 +127,7 @@ libraries = {
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 offset_left = 234.0
 offset_top = 131.0
-offset_right = 2154.0027
+offset_right = 2154.0022
 offset_bottom = 1211.0
 scale = Vector2(0.77495366, 0.77708703)
 stream = ExtResource("3_ibf1n")
@@ -164,3 +168,6 @@ offset_right = 2114.0
 offset_bottom = 2048.0
 scale = Vector2(0.06136583, 0.06136583)
 texture = ExtResource("4_qf4l0")
+
+[node name="NewGameStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sexfu")

@@ -1,17 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://7ga4nhgwkawx"]
+[gd_scene load_steps=26 format=3 uid="uid://7ga4nhgwkawx"]
 
 [ext_resource type="Script" uid="uid://ck8oge6pjfng5" path="res://Scripts/Worlds/wow.gd" id="1_8ovph"]
 [ext_resource type="Script" uid="uid://c4guf37sq5kfa" path="res://Scripts/PlayerTypes/WOWController.gd" id="2_5yd8y"]
 [ext_resource type="Material" uid="uid://da14fw283ixm6" path="res://Textures/Shaders/wow.tres" id="2_ayon8"]
 [ext_resource type="Texture2D" uid="uid://dpr3byy6gtwpd" path="res://Textures/Images/WOWWOW.webp" id="3_53sxc"]
-[ext_resource type="Script" uid="uid://c0prkxru6tdbw" path="res://Scripts/Objects/kill_box.gd" id="4_uxbtt"]
+[ext_resource type="Script" path="res://Scripts/Objects/kill_box.gd" id="4_uxbtt"]
 [ext_resource type="Texture2D" uid="uid://dkalxq8vgf5f1" path="res://Textures/Images/WOW.webp" id="6_sqo7n"]
 [ext_resource type="PackedScene" uid="uid://dla8emsv03dqx" path="res://Scenes/Objects/obj_scroller_spawner.tscn" id="7_ayon8"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="7_nusk5"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="8_pvalw"]
-[ext_resource type="Shader" uid="uid://by64p05b4ikqt" path="res://Textures/Shaders/Background.gdshader" id="13_cydkp"]
+[ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="13_ayon8"]
+[ext_resource type="Shader" path="res://Textures/Shaders/Background.gdshader" id="13_cydkp"]
 [ext_resource type="Texture2D" uid="uid://c7wcddtxepufo" path="res://Textures/Images/light_default_square.png" id="13_ratbn"]
 [ext_resource type="Texture2D" uid="uid://qkxxsatnkh4s" path="res://Textures/Images/skull.webp" id="14_lunhl"]
+[ext_resource type="AudioStream" uid="uid://c5dykuo0gbupg" path="res://Audio/Roy.mp3" id="14_ratbn"]
+[ext_resource type="AudioStream" uid="uid://731adnihot35" path="res://Audio/Music/Wow.mp3" id="15_cydkp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5yd8y"]
 animations = [{
@@ -487,6 +490,20 @@ material = SubResource("ShaderMaterial_ujceh")
 position = Vector2(1031, 448.00003)
 scale = Vector2(3, 3)
 texture = ExtResource("13_ratbn")
+
+[node name="WinloseIndicator" parent="." instance=ExtResource("13_ayon8")]
+
+[node name="Roy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ratbn")
+volume_db = -3.817
+autoplay = true
+parameters/looping = true
+
+[node name="Wow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_cydkp")
+volume_db = -2.863
+autoplay = true
+parameters/looping = true
 
 [connection signal="animation_finished" from="WinAnimation" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="loseAnimation" to="." method="_on_lose_animation_animation_finished"]

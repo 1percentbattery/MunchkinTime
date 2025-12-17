@@ -6,7 +6,11 @@ func win():
 		$CharacterBody2D/Sprite2D.play("WOW")
 		$WinAnimation.play("WOWAnimation")
 		$objScroller_spawner.queue_free()
+		$WinloseIndicator.win()
 func lose():
+	$Wow.stop()
+	$Roy.stop()
+	$WinloseIndicator.lose()
 	lost = true
 	$CharacterBody2D/Sprite2D.play("WOW")
 	$objScroller_spawner.queue_free()

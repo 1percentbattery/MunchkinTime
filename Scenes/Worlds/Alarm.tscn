@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bu0qyhxcesltu"]
+[gd_scene load_steps=47 format=3 uid="uid://bu0qyhxcesltu"]
 
 [ext_resource type="Script" uid="uid://cyqfi8h8yb71w" path="res://Scripts/Worlds/Alarm.gd" id="1_t60p1"]
 [ext_resource type="Texture2D" uid="uid://bbpirxjo8jgdk" path="res://Textures/Images/IMG_0339.png" id="2_n1uc3"]
@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://docyq4lmi0ylf" path="res://Textures/Images/IMG_0342 (1).png" id="14_kc4nf"]
 [ext_resource type="Texture2D" uid="uid://cjph0eksmn2dh" path="res://Textures/Images/IMG_0343 (1).png" id="15_si3lg"]
 [ext_resource type="Script" uid="uid://c5jnblraugfr8" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="16_ydlpg"]
+[ext_resource type="AudioStream" uid="uid://dnbp428en7sby" path="res://Audio/Scream.mp3" id="17_r6b4e"]
+[ext_resource type="AudioStream" uid="uid://djx43eblfmu18" path="res://Audio/Alarm.mp3" id="17_si3lg"]
+[ext_resource type="AudioStream" uid="uid://bgjmbex4ucluj" path="res://Audio/Lullaby.mp3" id="18_ydlpg"]
+[ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="20_umdqn"]
 
 [sub_resource type="Resource" id="Resource_uew1b"]
 script = ExtResource("5_kc4nf")
@@ -114,8 +118,8 @@ PositionShake = Array[ExtResource("4_4wnhn")]([SubResource("Resource_yxtmr"), Su
 RotationShake = Array[ExtResource("6_si3lg")]([SubResource("Resource_kc4nf")])
 metadata/_custom_type_script = "uid://bubcpu3121y34"
 
-[sub_resource type="Animation" id="Animation_n1uc3"]
-resource_name = "Win"
+[sub_resource type="Animation" id="Animation_r6b4e"]
+resource_name = "Lose"
 length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -148,7 +152,7 @@ tracks/2/path = NodePath("ColorRect:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.56, 1.8, 2.2, 3.4666667, 3.9666667),
+"times": PackedFloat32Array(0, 1.56, 2.1333334, 2.2, 3.4666667, 3.5666666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -168,7 +172,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WinLoseImages/Win:visible")
+tracks/4/path = NodePath("WinLoseImages/Lose:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -176,6 +180,34 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WinLoseImages/ShakerComponent2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_shake"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"bad_music"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_yxtmr"]
@@ -253,8 +285,8 @@ tracks/5/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_r6b4e"]
-resource_name = "Lose"
+[sub_resource type="Animation" id="Animation_n1uc3"]
+resource_name = "Win"
 length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -287,7 +319,7 @@ tracks/2/path = NodePath("ColorRect:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.56, 2.1333334, 2.2, 3.4666667, 3.5666666),
+"times": PackedFloat32Array(0, 1.56, 1.8, 2.2, 3.4666667, 3.9666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -307,7 +339,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WinLoseImages/Lose:visible")
+tracks/4/path = NodePath("WinLoseImages/Win:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -315,20 +347,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("WinLoseImages/ShakerComponent2D")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_shake"
-}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wnhn"]
@@ -553,3 +571,18 @@ script = ExtResource("3_yxtmr")
 intensity = 7.0
 shakerPreset = SubResource("Resource_6rohs")
 metadata/_custom_type_script = "uid://c4gk22bwiqjif"
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_r6b4e")
+
+[node name="Alarm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_si3lg")
+autoplay = true
+parameters/looping = true
+
+[node name="Lullaby" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_ydlpg")
+volume_db = -80.0
+autoplay = true
+
+[node name="AnimationPlayer2" parent="." instance=ExtResource("20_umdqn")]

@@ -9,6 +9,7 @@ func start():
 	$Timer.show()
 	$Timer.start()
 func win():
+	$WinloseIndicator.win()
 	$Timer.hide()
 	$Spawners.queue_free()
 	$decoration.queue_free()
@@ -16,6 +17,7 @@ func win():
 	$CharacterBody2D.position = Vector2(960,540)
 	$AnimationPlayer.play("Winner")
 func lose():
+	$WinloseIndicator.lose()
 	$Spawners.set_process_mode(ProcessMode.PROCESS_MODE_DISABLED)
 	$CharacterBody2D.set_process_mode(ProcessMode.PROCESS_MODE_DISABLED)
 	$WinBackground2.show()
