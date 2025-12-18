@@ -13,7 +13,7 @@ const MURDER_PIM = preload("uid://bne2oqiiedlmb")
 @onready var _2: TextureRect = $"Node2D/2"
 @onready var _3: TextureRect = $"Node2D/3"
 
-
+var timescale = 1.0
 var games = []
 var global_game
 var global_rng
@@ -38,8 +38,13 @@ func _process(delta: float) -> void:
 		switch()
 	if Input.is_action_just_pressed("ARGGGHHHHH!!!!"):
 		if $Pirate.visible == true:
+			Engine.time_scale = timescale
 			$Pirate.hide()
+			$Pirate/ArghdioStreamPlayer.stop()
 		else:
+			$Pirate/ArghdioStreamPlayer.play()
+			timescale = Engine.time_scale
+			Engine.time_scale = 0.0
 			$Pirate.show()
 	if G.Lives ==2:
 		_3.hide()

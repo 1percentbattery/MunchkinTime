@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgg6s62u1p6sq"]
+[gd_scene load_steps=11 format=3 uid="uid://bgg6s62u1p6sq"]
 
 [ext_resource type="Script" uid="uid://dso3whlfk3bia" path="res://Scripts/Mune/SceneSwitcherTest.gd" id="1_7g7gc"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="2_fbe26"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b36eg7gh344uf" path="res://Textures/Images/IMG_0349 (1).png" id="4_qf4l0"]
 [ext_resource type="AudioStream" uid="uid://ce47m7tqe22au" path="res://Audio/NewGameStart.mp3" id="5_sexfu"]
 [ext_resource type="Texture2D" uid="uid://d0g0xcxocmwgs" path="res://Textures/Images/Pirate.webp" id="6_o8wwd"]
+[ext_resource type="AudioStream" uid="uid://df2mi1d7kvjf7" path="res://Audio/arghh.mp3" id="7_8rsuo"]
 
 [sub_resource type="Animation" id="Animation_sexfu"]
 length = 0.001
@@ -195,3 +196,9 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_fbe26")
 theme_override_font_sizes/font_size = 100
 text = "ARGGHHHHH!!!!!"
+
+[node name="ArghdioStreamPlayer" type="AudioStreamPlayer" parent="Pirate"]
+stream = ExtResource("7_8rsuo")
+volume_db = 4.771
+pitch_scale = 0.89
+parameters/looping = true
