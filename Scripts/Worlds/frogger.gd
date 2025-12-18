@@ -8,7 +8,10 @@ func start():
 	$CharacterBody2D.on = true
 	$Timer.show()
 	$Timer.start()
+	$SonImCrine.play()
 func win():
+	$SonImCrine.stop()
+	$Hello.play()
 	$WinloseIndicator.win()
 	$Timer.hide()
 	$Spawners.queue_free()

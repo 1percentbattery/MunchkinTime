@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwrbd8i5vby1c"]
+[gd_scene load_steps=17 format=3 uid="uid://cwrbd8i5vby1c"]
 
 [ext_resource type="Script" uid="uid://cq437phchbafk" path="res://Scripts/Worlds/HammerGame.gd" id="1_u8yr8"]
 [ext_resource type="Texture2D" uid="uid://dq0rdulvmvsna" path="res://Textures/Images/concrete.webp" id="2_587op"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcuvkeiadlqa7" path="res://Textures/Images/Blood2.png" id="5_32nxo"]
 [ext_resource type="Texture2D" uid="uid://bw4ihsaswewkv" path="res://Textures/Images/star.webp" id="6_3uyqo"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="7_587op"]
+[ext_resource type="AudioStream" uid="uid://dnbp428en7sby" path="res://Audio/Scream.mp3" id="8_vmsrt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f3ayd"]
 shader = ExtResource("3_vmsrt")
@@ -20,6 +21,7 @@ shader_parameter/showTo = 1.0
 
 [sub_resource type="Animation" id="Animation_atesk"]
 resource_name = "Lose"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,7 +29,7 @@ tracks/0/path = NodePath(".:amntR")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.96666664),
+"times": PackedFloat32Array(0, 1.4666667),
 "transitions": PackedFloat32Array(0.59460354, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -39,7 +41,7 @@ tracks/1/path = NodePath(".:amntL")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.96666664),
+"times": PackedFloat32Array(0, 1.4666667),
 "transitions": PackedFloat32Array(0.53588676, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -78,21 +80,6 @@ _data = {
 &"RESET": SubResource("Animation_ml0ld")
 }
 
-[sub_resource type="Animation" id="Animation_50hte"]
-resource_name = "Win"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.93333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1920, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_jldqw"]
 length = 0.001
 tracks/0/type = "value"
@@ -106,6 +93,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_50hte"]
+resource_name = "Win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.93333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1920, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jldqw"]
@@ -173,6 +175,9 @@ texture = ExtResource("6_3uyqo")
 
 [node name="SceneOpener" parent="." instance=ExtResource("7_587op")]
 Objective = "Hammer The Nails In Order"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_vmsrt")
 
 [connection signal="animation_finished" from="Lose" to="." method="_on_lose_animation_finished"]
 [connection signal="animation_finished" from="Win" to="." method="_on_win_animation_finished"]
