@@ -46,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	if order[0] == directionHit:
 		boardList[order[0]].play("Won")
 		order.pop_front()
+		$AudioStreamPlayer.play()
 		if order.is_empty():
 			win()
 			return

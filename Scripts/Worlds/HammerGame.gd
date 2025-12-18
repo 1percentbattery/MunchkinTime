@@ -38,6 +38,7 @@ func win():
 	curScene.queue_free()
 	$Win.play("Win")
 func lose():
+	$AudioStreamPlayer.play()
 	curScene.queue_free()
 	$Lose.play("Lose")
 func _on_lose_animation_finished(anim_name: StringName) -> void:

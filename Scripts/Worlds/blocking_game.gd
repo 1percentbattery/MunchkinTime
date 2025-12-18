@@ -1,5 +1,5 @@
 extends Node2D
-@onready var spawnerList = [$Spawners/objScroller_spawner3,$Spawners/objScroller_spawner4]
+@onready var spawnerList = [$Spawners/objScroller_spawner3,$Spawners/objScroller_spawner4,$Spawners/objScroller_spawner5]
 @export var on = false
 @export var freq = 0.5
 
@@ -23,6 +23,14 @@ func _process(delta: float) -> void:
 				area.global_position = Vector2(0,3000)
 	if Input.is_action_just_pressed("Right"):
 		var areas: Array = $Area2DR.get_overlapping_areas()
+		if areas.is_empty():
+			pass
+			#lose()
+		else:
+			for area in areas:
+				area.global_position = Vector2(0,3000)
+	if Input.is_action_just_pressed("Up"):
+		var areas: Array = $Area2DL2.get_overlapping_areas()
 		if areas.is_empty():
 			pass
 			#lose()

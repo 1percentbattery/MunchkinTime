@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("Down"):
 		jump(directions["Down"])
 func jump(dir : Vector2):
+	$JumpSound.play()
 	if jumpTimer <= 0.0:
 		jumpTimer = timeBetweenJumps
 	else:

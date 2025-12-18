@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://cup220pspjpfk"]
+[gd_scene load_steps=27 format=3 uid="uid://cup220pspjpfk"]
 
 [ext_resource type="Script" uid="uid://owdw0r7jcwh5" path="res://Scripts/Worlds/frogger.gd" id="1_umnbs"]
 [ext_resource type="Script" uid="uid://dyh1mnuijj3a" path="res://FroggerBody.gd" id="2_1sd8u"]
 [ext_resource type="Texture2D" uid="uid://deudswf33mlv7" path="res://Textures/Images/Forg.png" id="3_an2ax"]
+[ext_resource type="AudioStream" uid="uid://ba88k2arc1sry" path="res://Audio/jump.wav" id="4_g1pa2"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="4_qwllj"]
 [ext_resource type="Script" uid="uid://c7gwfha8yucg5" path="res://Scripts/Objects/RushSpawners.gd" id="5_2s2dy"]
 [ext_resource type="PackedScene" uid="uid://dla8emsv03dqx" path="res://Scenes/Objects/obj_scroller_spawner.tscn" id="6_g1pa2"]
@@ -15,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c2s8mtxt01ewo" path="res://Textures/Images/skull(tuff).webp" id="13_an2ax"]
 [ext_resource type="Script" uid="uid://cd2hsy1fhcmq2" path="res://Scripts/Objects/push_right.gd" id="14_qwllj"]
 [ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="15_2s2dy"]
+[ext_resource type="AudioStream" uid="uid://cia33ffy8tpw7" path="res://Audio/HellobutImnotSorry.mp3" id="17_ch1f1"]
+[ext_resource type="AudioStream" uid="uid://bmi3mh0b82jb5" path="res://Audio/Crine.mp3" id="18_jrlhp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byso3"]
 size = Vector2(22, 68)
@@ -125,6 +128,9 @@ texture = ExtResource("3_an2ax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_byso3")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("4_g1pa2")
 
 [node name="Timer" parent="." instance=ExtResource("4_qwllj")]
 time = 15
@@ -353,6 +359,12 @@ position = Vector2(969, 449)
 shape = SubResource("RectangleShape2D_an2ax")
 
 [node name="WinloseIndicator" parent="." instance=ExtResource("15_2s2dy")]
+
+[node name="Hello" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ch1f1")
+
+[node name="SonImCrine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_jrlhp")
 
 [connection signal="area_entered" from="WinBox" to="." method="_on_win_box_area_entered"]
 [connection signal="body_entered" from="WinBox" to="." method="_on_win_box_body_entered"]
