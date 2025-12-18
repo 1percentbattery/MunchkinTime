@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgg6s62u1p6sq"]
+[gd_scene load_steps=15 format=3 uid="uid://bgg6s62u1p6sq"]
 
 [ext_resource type="Script" uid="uid://dso3whlfk3bia" path="res://Scripts/Mune/SceneSwitcherTest.gd" id="1_7g7gc"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="2_fbe26"]
-[ext_resource type="VideoStream" path="res://Video/betterskelton.ogv" id="3_ibf1n"]
+[ext_resource type="VideoStream" uid="uid://dk7ev0e448vxw" path="res://Video/betterskelton.ogv" id="3_ibf1n"]
 [ext_resource type="Texture2D" uid="uid://b36eg7gh344uf" path="res://Textures/Images/IMG_0349 (1).png" id="4_qf4l0"]
 [ext_resource type="AudioStream" uid="uid://ce47m7tqe22au" path="res://Audio/NewGameStart.mp3" id="5_sexfu"]
 [ext_resource type="Texture2D" uid="uid://d0g0xcxocmwgs" path="res://Textures/Images/Pirate.webp" id="6_o8wwd"]
 [ext_resource type="AudioStream" uid="uid://df2mi1d7kvjf7" path="res://Audio/arghh.mp3" id="7_8rsuo"]
+[ext_resource type="Texture2D" uid="uid://76w4he0sdjps" path="res://Textures/Images/man-grabbed-his-head-screaming-260nw-216461521.webp" id="8_duj14"]
 
 [sub_resource type="Animation" id="Animation_sexfu"]
 length = 0.001
@@ -87,6 +88,42 @@ tracks/2/keys = {
 _data = {
 &"RESET": SubResource("Animation_sexfu"),
 &"Transition": SubResource("Animation_qf4l0")
+}
+
+[sub_resource type="Animation" id="Animation_cpdje"]
+resource_name = "Lose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1112.075), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2jyen"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1106.19)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rswya"]
+_data = {
+&"Lose": SubResource("Animation_cpdje"),
+&"RESET": SubResource("Animation_2jyen")
 }
 
 [node name="Node2D2" type="Node2D"]
@@ -202,3 +239,45 @@ stream = ExtResource("7_8rsuo")
 volume_db = 4.771
 pitch_scale = 0.89
 parameters/looping = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 3
+offset_top = -1106.19
+offset_right = 1920.0
+offset_bottom = -26.189941
+texture = ExtResource("8_duj14")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_rswya")
+}
+speed_scale = 0.5
+
+[node name="Button" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 790.0
+offset_right = 1236.0
+offset_bottom = 1058.0
+theme_override_font_sizes/font_size = 190
+text = "RETRY"
+
+[node name="ObjectiveText" type="Label" parent="TextureRect"]
+z_index = 3
+layout_mode = 0
+offset_left = -9057.0
+offset_top = 13.0
+offset_right = 10943.0
+offset_bottom = 221.0
+pivot_offset = Vector2(10028.754, 110.99399)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 58
+theme_override_fonts/font = ExtResource("2_fbe26")
+theme_override_font_sizes/font_size = 207
+text = "YOU LOSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

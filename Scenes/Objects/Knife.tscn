@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://8iune22d4j68"]
+[gd_scene load_steps=12 format=3 uid="uid://8iune22d4j68"]
 
 [ext_resource type="Script" uid="uid://ichnw5thmme4" path="res://Scripts/Objects/Knife.gd" id="1_evjpl"]
 [ext_resource type="Texture2D" uid="uid://6etlogdhf2ot" path="res://Textures/Images/sprite_sheet.png" id="1_ol3en"]
 [ext_resource type="Texture2D" uid="uid://np7o5jhihelk" path="res://Textures/Fonts/ezgif-82fb9a5ac5fb5c78.png" id="2_1gk1a"]
 [ext_resource type="Texture2D" uid="uid://2r0brw1r4vdk" path="res://Textures/Fonts/realistic-blood-stain-on-transparent-surface-depicting-a-dramatic-scene-of-potential-injury-or-violence-real-blood-stain-on-transparent-background-free-png.webp" id="2_evjpl"]
+[ext_resource type="AudioStream" uid="uid://1hljenaoton0" path="res://Audio/KnifeHit.mp3" id="5_aq6xc"]
+[ext_resource type="AudioStream" uid="uid://dbnwv3gh5w4mp" path="res://Audio/Stab.mp3" id="6_5u37w"]
+[ext_resource type="AudioStream" uid="uid://cmwmcydbn5n5q" path="res://Audio/JermaScream.mp3" id="7_5u37w"]
 
 [sub_resource type="Animation" id="Animation_ol3en"]
 resource_name = "Knife"
@@ -43,6 +46,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_17unc"]
@@ -127,3 +144,13 @@ autoplay = "Knife"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ol3en")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_aq6xc")
+volume_db = -6.679
+
+[node name="Gib" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5u37w")
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5u37w")

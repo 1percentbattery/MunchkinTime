@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bne2oqiiedlmb"]
+[gd_scene load_steps=31 format=3 uid="uid://bne2oqiiedlmb"]
 
 [ext_resource type="Script" uid="uid://cg87p4w3v3cug" path="res://Scripts/Worlds/MurderPim.gd" id="1_atkc0"]
 [ext_resource type="Texture2D" uid="uid://byqfudane4d5d" path="res://Textures/Backgrounds/MurderPim.webp" id="2_16xea"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c408mu05c7u1a" path="res://Textures/Images/pngimg.com - knife_PNG106130.png" id="6_uqcxy"]
 [ext_resource type="PackedScene" uid="uid://cbb1q3hwu6r1v" path="res://Scenes/Ui/Timer.tscn" id="7_16xea"]
 [ext_resource type="Script" uid="uid://c4gk22bwiqjif" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="7_ogp8u"]
+[ext_resource type="Script" uid="uid://dtrphhfg4h5hs" path="res://Scripts/Objects/CameraLoseFUCK.gd" id="8_1dwgt"]
 [ext_resource type="Script" uid="uid://dwcdnbhdlni5g" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="8_s60kw"]
 [ext_resource type="Script" uid="uid://bmqgyfl5jkygk" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="9_1dwgt"]
 [ext_resource type="Script" uid="uid://dbfj765haimqk" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="10_7gbon"]
@@ -387,6 +388,7 @@ rotation = -0.0025033774
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 position = Vector2(-73.10224, 47.138657)
 offset = Vector2(960, 540)
+script = ExtResource("8_1dwgt")
 
 [node name="LeftWallColor" type="ColorRect" parent="Node2D/Camera2D"]
 z_index = 2
@@ -430,6 +432,7 @@ position = Vector2(-14.133827, 3.8688977)
 rotation = 0.0025033774
 scale = Vector2(1.0000001, 1.0000001)
 time = 4
+QuitSceneOnTimeout = false
 WinOnTimeout = false
 
 [node name="IdleShake" type="Node2D" parent="Node2D"]

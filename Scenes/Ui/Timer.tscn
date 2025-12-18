@@ -116,6 +116,7 @@ value = 56.05
 show_percentage = false
 
 [node name="Img0347(1)" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1038, 1047)
 texture = ExtResource("4_b046l")
 

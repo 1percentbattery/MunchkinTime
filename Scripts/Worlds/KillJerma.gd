@@ -8,6 +8,7 @@ const KNIFE = preload("res://Scenes/Objects/Knife.tscn")
 var won = false
 @onready var JermaShaker: ShakerComponent2D = $Node2D/ShakerComponent2D
 @onready var Animations: AnimationPlayer = $AnimationPlayer
+@onready var loseaudio: AudioStreamPlayer = $lose
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -52,6 +53,7 @@ func win():
 	
 func lose():
 	Animations.play("Lose")
+	loseaudio.play()
 	winlose_indicator.lose()
 	await get_tree().create_timer(4.0).timeout
 	G.lostGame()

@@ -1,13 +1,11 @@
 class_name sceneSwitcher
 extends Node2D
 @onready var Subviewport: SubViewport = $SubViewportContainer/SubViewport
-const WOW = preload("res://Scenes/Worlds/wow.tscn")
-const FALLING_OBJECTS = preload("uid://babybec8acwon")
-const MURDER_PIM = preload("uid://bne2oqiiedlmb")
 @onready var ScoreCounter: Label = $Label
 @onready var LivesCounter: Label = $Lives
 @onready var Video: VideoStreamPlayer = $VideoStreamPlayer
 @onready var TransitionAnimation: AnimationPlayer = $AnimationPlayer
+@onready var LoseAnimation: AnimationPlayer = $TextureRect/AnimationPlayer
 
 @onready var _1: TextureRect = $"Node2D/1"
 @onready var _2: TextureRect = $"Node2D/2"
@@ -55,7 +53,11 @@ func _process(delta: float) -> void:
 	
 	if G.Lives <= 0:
 		_1.hide()
-		get_tree().quit()
+		get_tree().paused = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		global_game.queue_free()
+		LoseAnimation.play("Lose")
+		G.Lives = 200
 func switch():
 	get_tree().paused = true
 	TransitionAnimation.play("Transition")
@@ -85,3 +87,7 @@ func restartvideo():
 	Video.paused = true
 func play_sound():
 	$NewGameStart.play()
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Muneue/MainMenu.tscn")

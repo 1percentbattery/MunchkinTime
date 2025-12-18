@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://jqehy5dsr7qf"]
+[gd_scene load_steps=21 format=3 uid="uid://jqehy5dsr7qf"]
 
 [ext_resource type="Script" uid="uid://bxyxhrs4jty5v" path="res://Scripts/Worlds/KillJerma.gd" id="1_xyuaw"]
 [ext_resource type="Texture2D" uid="uid://1eumfavqx4m3" path="res://Textures/Backgrounds/KillJerma.jpg" id="2_folkx"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="10_v7w51"]
 [ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="11_200b3"]
 [ext_resource type="Texture2D" uid="uid://2e7bk4imiw55" path="res://Textures/Fonts/JermaLose.webp" id="12_bwls0"]
+[ext_resource type="AudioStream" uid="uid://buumh86lfb4o5" path="res://Audio/Music/KillJerma.mp3" id="13_folkx"]
+[ext_resource type="AudioStream" uid="uid://dkq037itkhx3x" path="res://Audio/ScoutScreaming.mp3" id="14_s3d0x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glscx"]
 radius = 419.01074
@@ -165,6 +167,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Timer" parent="." instance=ExtResource("9_1718j")]
 time = 10
+QuitSceneOnTimeout = false
 WinOnTimeout = false
 
 [node name="SceneOpener" parent="." instance=ExtResource("10_v7w51")]
@@ -195,6 +198,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_folkx")
+autoplay = true
+
+[node name="lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_s3d0x")
 
 [connection signal="area_entered" from="Node2D/TextureRect/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Node2D/TextureRect/JermaArea" to="." method="_on_jerma_area_area_entered"]
