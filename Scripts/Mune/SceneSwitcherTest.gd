@@ -36,7 +36,11 @@ func findlevels(path):
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Debug"):
 		switch()
-		
+	if Input.is_action_just_pressed("ARGGGHHHHH!!!!"):
+		if $Pirate.visible == true:
+			$Pirate.hide()
+		else:
+			$Pirate.show()
 	if G.Lives ==2:
 		_3.hide()
 	if G.Lives == 1:
@@ -69,12 +73,10 @@ func switch():
 	print(previous_game)
 	await get_tree().create_timer(0.9).timeout
 	get_tree().paused = false
-	
 func playvideo():
 	Video.paused = false
 func restartvideo():
 	Video.loop = true
 	Video.paused = true
-
 func play_sound():
 	$NewGameStart.play()
