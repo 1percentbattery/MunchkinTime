@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwrbd8i5vby1c"]
+[gd_scene load_steps=18 format=3 uid="uid://u7sdicqcs0j2"]
 
 [ext_resource type="Script" uid="uid://cq437phchbafk" path="res://Scripts/Worlds/HammerGame.gd" id="1_u8yr8"]
 [ext_resource type="Texture2D" uid="uid://dq0rdulvmvsna" path="res://Textures/Images/concrete.webp" id="2_587op"]
-[ext_resource type="Shader" uid="uid://c3qgu4m3sj0ns" path="res://Textures/Shaders/shaderForBarstres.gdshader" id="3_vmsrt"]
+[ext_resource type="Shader" path="res://Textures/Shaders/shaderForBarstres.gdshader" id="3_vmsrt"]
 [ext_resource type="Texture2D" uid="uid://b6jtuwpmjk8da" path="res://Textures/Images/blurd.webp" id="4_h3m4j"]
 [ext_resource type="Texture2D" uid="uid://dcuvkeiadlqa7" path="res://Textures/Images/Blood2.png" id="5_32nxo"]
 [ext_resource type="Texture2D" uid="uid://bw4ihsaswewkv" path="res://Textures/Images/star.webp" id="6_3uyqo"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="7_587op"]
 [ext_resource type="AudioStream" uid="uid://dnbp428en7sby" path="res://Audio/Scream.mp3" id="8_vmsrt"]
+[ext_resource type="AudioStream" uid="uid://cmtxx3d480hqu" path="res://Audio/Music/home_depot_theme.mp3" id="9_h3m4j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f3ayd"]
 shader = ExtResource("3_vmsrt")
@@ -178,6 +179,10 @@ Objective = "Hammer The Nails In Order"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vmsrt")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_h3m4j")
+autoplay = true
 
 [connection signal="animation_finished" from="Lose" to="." method="_on_lose_animation_finished"]
 [connection signal="animation_finished" from="Win" to="." method="_on_win_animation_finished"]

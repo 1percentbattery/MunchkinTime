@@ -5,9 +5,12 @@ var beef = false
 @onready var Chicken: MeshInstance3D = $MeshInstance3D
 @onready var Beef: MeshInstance3D = $MeshInstance3D2
 @onready var Steve: CharacterBody3D = $Steve
+@onready var music: AudioStreamPlayer = $AudioStreamPlayer
 
 var choice = false
 
+func _ready() -> void:
+	music.play(40.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bcsh4nl4vkiad"]
+[gd_scene load_steps=58 format=3 uid="uid://bcsh4nl4vkiad"]
 
 [ext_resource type="Script" uid="uid://8ng6178lf4mk" path="res://Scripts/Worlds/Parkour.gd" id="1_qy210"]
 [ext_resource type="PackedScene" uid="uid://cqbybjwv7upfu" path="res://Scenes/PlayerTypes/Steve.tscn" id="2_joqcp"]
@@ -24,6 +24,8 @@
 [ext_resource type="Script" uid="uid://dxuyjnid4oop4" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="22_ij4lh"]
 [ext_resource type="Texture2D" uid="uid://mqt6foovh55v" path="res://Models/Obj/textures/Steak_JE4_BE3.webp" id="23_cir2x"]
 [ext_resource type="PackedScene" uid="uid://d3k0t1sp3hjag" path="res://Scenes/Effects/WinLoseIndicator.tscn" id="24_2yc6l"]
+[ext_resource type="AudioStream" uid="uid://bc5brymmskw6u" path="res://Audio/Music/goforbeef.mp3" id="25_tbu1u"]
+[ext_resource type="AudioStream" uid="uid://djoecshjihl2x" path="res://Audio/Music/minecraft.mp3" id="26_lcmi0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q622e"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -594,6 +596,18 @@ transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 2.4762459, 2.2698238
 shape = SubResource("BoxShape3D_tsx4b")
 
 [node name="WinloseIndicator" parent="." instance=ExtResource("24_2yc6l")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6042562, 2.1564584, -3.5678785)
+stream = ExtResource("25_tbu1u")
+attenuation_model = 1
+volume_db = 15.534
+unit_size = 2.35
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_lcmi0")
+parameters/looping = true
 
 [connection signal="area_entered" from="Chicken" to="." method="_on_chicken_area_entered"]
 [connection signal="body_entered" from="Chicken" to="." method="_on_chicken_body_entered"]
