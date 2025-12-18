@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vfik7u814tyy"]
+[gd_scene load_steps=16 format=3 uid="uid://vfik7u814tyy"]
 
 [ext_resource type="Script" uid="uid://b1ojbn5djvp58" path="res://Scripts/Worlds/blocking_game.gd" id="1_j80lx"]
 [ext_resource type="PackedScene" uid="uid://dwswfxflqmmm" path="res://Scenes/Ui/Objective.tscn" id="2_jjkg1"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://qkxxsatnkh4s" path="res://Textures/Images/skull.webp" id="7_bfxks"]
 [ext_resource type="Texture2D" uid="uid://d0g0xcxocmwgs" path="res://Textures/Images/Pirate.webp" id="8_18sc1"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="9_cmnr5"]
+[ext_resource type="AudioStream" uid="uid://c74vb1e86uxyc" path="res://Audio/Music/YoHo.mp3" id="11_0nu82"]
+[ext_resource type="AudioStream" uid="uid://byo5xmgvuhgqu" path="res://Audio/AreaYeLookinAtMeTreasure.mp3" id="12_cw18w"]
+[ext_resource type="AudioStream" uid="uid://c3bif3lfrocvr" path="res://Audio/ShiverMeTimbers.mp3" id="13_gsvdr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyhsq"]
 size = Vector2(125, 125)
@@ -126,5 +129,15 @@ theme_override_constants/outline_size = 25
 theme_override_fonts/font = ExtResource("9_cmnr5")
 theme_override_font_sizes/font_size = 400
 text = "ARGGHHHHH!!!!!"
+
+[node name="YoHoYoHo!" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_0nu82")
+parameters/looping = true
+
+[node name="Treasure" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_cw18w")
+
+[node name="SHiver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_gsvdr")
 
 [connection signal="area_entered" from="CharacterBody2D" to="." method="_on_character_body_2d_area_entered"]

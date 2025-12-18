@@ -2,10 +2,9 @@ extends Node2D
 @onready var spawnerList = [$Spawners/objScroller_spawner3,$Spawners/objScroller_spawner4,$Spawners/objScroller_spawner5]
 @export var on = false
 @export var freq = 0.5
-
 var counter = 0.0
 func _ready():
-	pass
+	$"YoHoYoHo!".play()
 func _process(delta: float) -> void:
 	if !on:
 		return
@@ -40,6 +39,7 @@ func _process(delta: float) -> void:
 func _on_character_body_2d_area_entered(area: Area2D) -> void:
 	lose()
 func start():
+	$Treasure.play()
 	$Timer.start()
 	on = true
 	for item in spawnerList:
@@ -49,6 +49,8 @@ func win():
 	on = false
 	G.wonGame()
 func lose():
+	
+	$SHiver.play()
 	$Pirate.show()
 	$Label.show()
 	$Timer.hide()

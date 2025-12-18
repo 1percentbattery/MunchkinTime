@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgg6s62u1p6sq"]
+[gd_scene load_steps=16 format=3 uid="uid://bgg6s62u1p6sq"]
 
 [ext_resource type="Script" uid="uid://dso3whlfk3bia" path="res://Scripts/Mune/SceneSwitcherTest.gd" id="1_7g7gc"]
 [ext_resource type="FontFile" uid="uid://b5tfkl2gggdsu" path="res://Textures/Fonts/Torment Pulsation.otf" id="2_fbe26"]
-[ext_resource type="VideoStream" uid="uid://dk7ev0e448vxw" path="res://Video/betterskelton.ogv" id="3_ibf1n"]
+[ext_resource type="VideoStream" path="res://Video/betterskelton.ogv" id="3_ibf1n"]
 [ext_resource type="Texture2D" uid="uid://b36eg7gh344uf" path="res://Textures/Images/IMG_0349 (1).png" id="4_qf4l0"]
 [ext_resource type="AudioStream" uid="uid://ce47m7tqe22au" path="res://Audio/NewGameStart.mp3" id="5_sexfu"]
 [ext_resource type="Texture2D" uid="uid://d0g0xcxocmwgs" path="res://Textures/Images/Pirate.webp" id="6_o8wwd"]
-[ext_resource type="AudioStream" uid="uid://df2mi1d7kvjf7" path="res://Audio/arghh.mp3" id="7_8rsuo"]
+[ext_resource type="AudioStream" uid="uid://c3bif3lfrocvr" path="res://Audio/ShiverMeTimbers.mp3" id="7_duj14"]
+[ext_resource type="AudioStream" uid="uid://d05m3fvi02nmt" path="res://Audio/shanty.mp3" id="8_cpdje"]
 [ext_resource type="Texture2D" uid="uid://76w4he0sdjps" path="res://Textures/Images/man-grabbed-his-head-screaming-260nw-216461521.webp" id="8_duj14"]
 
 [sub_resource type="Animation" id="Animation_sexfu"]
@@ -235,10 +236,12 @@ theme_override_font_sizes/font_size = 100
 text = "ARGGHHHHH!!!!!"
 
 [node name="ArghdioStreamPlayer" type="AudioStreamPlayer" parent="Pirate"]
-stream = ExtResource("7_8rsuo")
+stream = ExtResource("7_duj14")
 volume_db = 4.771
 pitch_scale = 0.89
-parameters/looping = true
+
+[node name="ArghdioStreamPlayer2" type="AudioStreamPlayer" parent="Pirate"]
+stream = ExtResource("8_cpdje")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = 3
