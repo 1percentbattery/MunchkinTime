@@ -39,8 +39,10 @@ func _process(delta: float) -> void:
 			Engine.time_scale = timescale
 			$Pirate.hide()
 			$Pirate/ArghdioStreamPlayer.stop()
+			$Pirate/ArghdioStreamPlayer2.stop()
 		else:
 			$Pirate/ArghdioStreamPlayer.play()
+			$Pirate/ArghdioStreamPlayer2.play()
 			timescale = Engine.time_scale
 			Engine.time_scale = 0.0
 			$Pirate.show()
